@@ -1,12 +1,12 @@
-package demo.Gustav.demo.Entity.Monsters;
+package com.Gustav.demo.Entity.Monsters;
 
-import demo.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.Attributes;
 
 public class Medusa extends Attributes {
 
     public Medusa() {
 
-        super(30,30, 30, 50, 0, 0, 30);
+        super(30,30, 25, 60, 0, 0, 5);
     }
 
 
@@ -18,6 +18,14 @@ public class Medusa extends Attributes {
 
     @Override
     public void flee() {
+
+        System.out.println("Medusa fleed");
+    }
+
+    @Override
+    public void  dodge() {
+
+
 
     }
 

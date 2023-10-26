@@ -1,4 +1,4 @@
-package demo.Gustav.demo.Entity;
+package com.Gustav.demo.Entity;
 
 
 
@@ -21,6 +21,7 @@ public abstract class Attributes implements Combat {
         this.level = level;
         this.baseDamage = baseDamage;
     }
+
 
     public int getStrength() {
         return strength;
@@ -105,15 +106,24 @@ public abstract class Attributes implements Combat {
 
     void getStatus(){
 
-
+        System.out.printf("Strength: %d %n", strength);
+        System.out.printf("Intelligence: %d %n", intelligence);
+        System.out.printf("Agility: %d %n", agility);
+        System.out.printf("Experience: %d %n", experience);
+        System.out.printf("Level: %d %n", level);
+        System.out.printf("Base damage: %d %n", baseDamage);
     }
+
+
 
     void calculateDamage(){
 
     }
 
+
     void didDoge(){
 
+        setHealth(getHealth());
 
     }
 
