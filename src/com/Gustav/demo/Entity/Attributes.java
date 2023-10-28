@@ -1,6 +1,7 @@
 package com.Gustav.demo.Entity;
 
-
+import static com.Gustav.demo.Resources.Paint.Colors.*;
+import static com.Gustav.demo.Resources.Print.MessageHandler.*;
 
 public abstract class Attributes implements Combat {
 
@@ -105,7 +106,16 @@ public abstract class Attributes implements Combat {
     }
 
 
-    void levelUp(){
+    public void levelUp(Attributes attacker){
+
+       attacker.setExperience(attacker.getExperience() + 100);
+
+       if (attacker.getExperience() == 100) {
+
+           attacker.setLevel(attacker.getLevel() + 1);
+           println(attacker.getName() + YELLOW + " gained 100 xp" + RESET);
+           println(BLUE_BOLD + "You reached level: " + attacker.getLevel() + RESET);
+       }
 
 
     }
@@ -118,12 +128,12 @@ public abstract class Attributes implements Combat {
 
     void getStatus(){
 
-        System.out.printf("Strength: %d %n", strength);
-        System.out.printf("Intelligence: %d %n", intelligence);
-        System.out.printf("Agility: %d %n", agility);
-        System.out.printf("Experience: %d %n", experience);
-        System.out.printf("Level: %d %n", level);
-        System.out.printf("Base damage: %d %n", baseDamage);
+        println("Strength "     + strength);
+        println("Intelligence " + intelligence);
+        println("Agility: "     + agility);
+        println("Experience: "  + experience);
+        println("Level: "       + level);
+        println("Base damage: " + baseDamage);
     }
 
 
@@ -138,6 +148,7 @@ public abstract class Attributes implements Combat {
 
 
     }
+
 
 
 }

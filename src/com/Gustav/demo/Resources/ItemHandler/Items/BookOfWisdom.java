@@ -4,7 +4,7 @@ import com.Gustav.demo.Resources.ItemHandler.ItemAttributes;
 
 public class BookOfWisdom extends ItemAttributes {
 
-    public BookOfWisdom(int strength, int intelligence, int agility, int health) {
-        super(strength, intelligence, agility, health);
+    public BookOfWisdom() {
+        super(10, 10, 10, 10);
     }
 }

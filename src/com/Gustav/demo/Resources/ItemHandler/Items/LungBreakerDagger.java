@@ -6,6 +6,6 @@ public class LungBreakerDagger extends ItemAttributes {
 
 
     public LungBreakerDagger() {
-        super(20, 10, 10, 0);
+        super(20, 0, 20, 0);
     }
 }

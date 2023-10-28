@@ -6,7 +6,7 @@ public class Titan extends Attributes {
 
 
     public Titan() {
-        super(10,20, 20, 100, 0, 1, 20);
+        super(10,20, 20, 100, 0, 1, 20,0);
     }
 
     @Override

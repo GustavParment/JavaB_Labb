@@ -8,14 +8,14 @@ public class Medusa extends Attributes implements Colors {
 
     public Medusa() {
 
-        super(30,30, 15, 5, 0, 0, 5);
+        super(30,30, 15, 5, 0, 0, 5,5);
     }
 
 
     @Override
     public String attack() {
 
-        return "Casts snakes!";
+        return "Casts snakes! ~~< ~~< ";
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Medusa extends Attributes implements Colors {
     @Override
     public String getName() {
 
-        return RED_BOLD + "Medusa" + RESET;
+        return  RED + "Medusa" + RESET;
     }
 
 

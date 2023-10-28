@@ -15,7 +15,7 @@ public class Hunter extends Attributes implements Colors {
     @Override
     public String attack() {
 
-        return "Shoots an arrow!";
+        return  "Shoots an arrow! >-> >->";
     }
 
     @Override
@@ -36,7 +36,7 @@ public class Hunter extends Attributes implements Colors {
     @Override
     public String getName() {
 
-        return GREEN + "Hunter" + RESET;
+        return GREEN_BOLD + "Hunter" + RESET;
     }
 
 

@@ -40,7 +40,7 @@ public class Rogue extends Attributes implements Colors {
     @Override
     public String getName() {
 
-        return YELLOW + "Rouge" + RESET;
+        return YELLOW_BOLD + "Rouge" + RESET;
     }
 
 }

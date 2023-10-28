@@ -8,7 +8,7 @@ public class Necromancer extends Attributes implements Colors {
 
 
     public Necromancer() {
-        super(10,20, 5, 50, 0, 0, 0,5);
+        super(0,20, 20, 50, 0, 0, 0,5);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Necromancer extends Attributes implements Colors {
     @Override
     public String getName() {
 
-        return PURPLE + "Necromancer" + RESET;
+        return PURPLE_BOLD + "Necromancer" + RESET;
     }
 
 
