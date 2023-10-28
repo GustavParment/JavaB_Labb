@@ -1,25 +1,21 @@
 package com.Gustav.demo;
 
 import com.Gustav.demo.Entity.Attributes;
-import com.Gustav.demo.Entity.Heros.Rogue;
 import com.Gustav.demo.Entity.Heros.Hunter;
-import com.Gustav.demo.Entity.Heros.Necromancer;
 import com.Gustav.demo.Entity.Monsters.Medusa;
+import com.Gustav.demo.Resources.Paint.Colors;
+import java.util.*;
 
 
-import static com.Gustav.demo.Paint.Colors.*;
-
-import java.util.Random;
-import java.util.Scanner;
-
-
-
-public class Main {
+public class Main implements Colors {
 
     public static void main(String[] args) {
 
+
+
         Scanner sc = new Scanner(System.in);
         Attributes hunter = new Hunter();
+        Attributes medusa = new Medusa();
 
 
         /**TODO-Dungeon Run
@@ -28,7 +24,7 @@ public class Main {
          *  Creat a start menu determine how the game is starting
          *  Creat a currency
          *  Creat a function for bossLoot()(gold drop)
-         *  creat a function to see stats.
+         *  Creat a function to see stats.
          *  Implements stats how much is you chance to doge/hit
          *  Creat Argument fight(Attributes boss)
          *
@@ -75,16 +71,14 @@ public class Main {
 
 
     }*/
-        fightMedusa(sc,hunter);
+
+        fight(sc,hunter,medusa);
+
     }
 
-    public static void fightMedusa(Scanner sc , Attributes player){
+    public static void fight(Scanner sc , Attributes attacker, Attributes defender){
 
-        Attributes medusa = new Medusa();
         boolean fightDone = false;
-
-
-
 
         System.out.println(YELLOW + "You engaged Medusa!" + RESET);
 
@@ -97,22 +91,34 @@ public class Main {
                 case "1" -> {
 
 
-                    if (chanceToDoge(player,medusa)) {
+                    if (chanceToDoge(attacker,defender)) {
 
-                        System.out.println("Attack missed");
-                        System.out.println(player.getHealth());
-                        System.out.println(medusa.getHealth());
-
+                        System.out.println(attacker.getName() + " " + attacker.attack());
+                        System.out.println(RED + "Attack missed!" + RESET);
 
                     }
                     else {
 
-                        System.out.println(player.getName() + " " + player.attack());
-                        medusa.setHealth(medusa.getHealth() - player.getBaseDamage());
-                        System.out.println(medusa.getName() + "'s hp is: " + medusa.getHealth());
-                        System.out.println(medusa.getName() + " " + medusa.attack());
-                        player.setHealth(player.getHealth() - medusa.getBaseDamage());
-                        System.out.println(player.getName() + "'s hp is: " + player.getHealth());
+                        //TODO-PLAYER ATTACK
+                        System.out.println(attacker.getName() + " " + attacker.attack());
+                        defender.setHealth(defender.getHealth() - attacker.getBaseDamage());
+                        System.out.println(defender.getName() + YELLOW_BOLD + " hp: "
+                                + defender.getHealth() + RESET);
+
+                    }
+
+                    if (chanceToDoge(defender,attacker)){
+
+                        System.out.println(defender.getName() + " " + defender.attack());
+                        System.out.println(RED + "Attack missed!" + RESET);
+                    }
+                    else{
+
+                        //TODO-BOSS ATTACK
+                        System.out.println(defender.getName() + " " + defender.attack());
+                        attacker.setHealth(attacker.getHealth() - defender.getBaseDamage());
+                        System.out.println(attacker.getName() + YELLOW_BOLD + " hp: " +
+                                attacker.getHealth() + RESET);
 
                     }
 
@@ -120,19 +126,24 @@ public class Main {
 
 
 
-                    if (medusa.getHealth() == 0) {
+                    if (defender.getHealth() == 0) {
 
-                        System.out.println(medusa.getName() + " is dead");
+                        System.out.println(YELLOW + "Congratulations!" + RESET + " You have slayed "
+                                + defender.getName());
+
+                        attacker.setLevel(attacker.getLevel() + 1);
+                        System.out.println(BLUE_BOLD + "You reached level: " + attacker.getLevel() + RESET);
 
                         fightDone = true;
 
 
                     }
-                    if (player.getHealth() == 0) {
+                    if (attacker.getHealth() == 0) {
 
-                        System.out.println(player.getName() + " was defeated by " + medusa.getName());
+                        System.out.println(attacker.getName() + " was defeated by "
+                                + defender.getName() + RESET);
 
-                        System.out.println("Game over");
+                        System.out.println(BLACK + RED_BACKGROUND + "Game over" + RESET);
 
                         fightDone = true;
 
@@ -141,30 +152,39 @@ public class Main {
                 }
                 case "2" -> {
 
-                    player.flee();
-                    System.out.println(player.getHealth());
+                    attacker.flee();
+                    System.out.println(attacker.getHealth());
+
                     fightDone = true;
                 }
+
+                default -> System.out.println(RED + "Wrong input try again..." + RESET);
             }
 
         }while (!fightDone);
     }
 
-    public static boolean chanceToDoge(Attributes player, Attributes boss){
+    public static boolean chanceToDoge(Attributes attacker, Attributes defender){
 
-        int agilityDifference = player.getAgility() - boss.getAgility();
-        int threshold = 20; // Justera detta värde efter dina behov
+        int agilityDifference = attacker.getAgility() - defender.getAgility();
+        int threshold = 20;
+
 
         // Skapa en slumpgenerator
         Random random = new Random();
 
-        // Generera ett slumpmässigt tal mellan 1 och 100
+        // Generera ett slumpmässigt tal mellan 1 och 20
         int randomNumber = random.nextInt(30) + 1;
+
 
         // Om det slumpmässiga talet är högre än tröskeln, missar attacken
         return (randomNumber > threshold + agilityDifference);
 
 
+
+
     }
+
+
 
 }

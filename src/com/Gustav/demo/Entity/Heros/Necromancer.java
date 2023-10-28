@@ -2,14 +2,13 @@ package com.Gustav.demo.Entity.Heros;
 
 
 import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Resources.Paint.Colors;
 
-import static com.Gustav.demo.Paint.Colors.*;
-
-public class Necromancer extends Attributes {
+public class Necromancer extends Attributes implements Colors {
 
 
     public Necromancer() {
-        super(10,20, 5, 50, 0, 0, 5);
+        super(10,20, 5, 50, 0, 0, 0,5);
     }
 
     @Override
@@ -35,7 +34,7 @@ public class Necromancer extends Attributes {
     @Override
     public String getName() {
 
-        return MAGENTA + "Necromancer" + RESET;
+        return PURPLE + "Necromancer" + RESET;
     }
 
 

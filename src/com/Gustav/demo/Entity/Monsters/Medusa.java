@@ -1,25 +1,27 @@
 package com.Gustav.demo.Entity.Monsters;
 
 import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Resources.Paint.Colors;
 
-public class Medusa extends Attributes {
+
+public class Medusa extends Attributes implements Colors {
 
     public Medusa() {
 
-        super(30,30, 25, 60, 0, 0, 5);
+        super(30,30, 15, 5, 0, 0, 5);
     }
 
 
     @Override
     public String attack() {
 
-        return "Casts snakes";
+        return "Casts snakes!";
     }
 
     @Override
     public void flee() {
 
-        System.out.println("Medusa fleed");
+        System.out.println(YELLOW + "Medusa fled" + RESET);
     }
 
     @Override
@@ -32,6 +34,8 @@ public class Medusa extends Attributes {
     @Override
     public String getName() {
 
-        return "Medusa";
+        return RED_BOLD + "Medusa" + RESET;
     }
+
+
 }

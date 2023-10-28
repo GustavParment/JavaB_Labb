@@ -11,8 +11,12 @@ public abstract class Attributes implements Combat {
    private int experience;
    private int level;
    private int baseDamage;
+   private int magicDamage;
 
-    public Attributes(int strength, int intelligence, int agility, int health, int experience, int level, int baseDamage) {
+
+   public Attributes(int strength, int intelligence, int agility, int health, int experience, int level, int baseDamage
+   , int magicDamage)
+    {
         this.strength = strength;
         this.intelligence = intelligence;
         this.agility = agility;
@@ -20,8 +24,16 @@ public abstract class Attributes implements Combat {
         this.experience = experience;
         this.level = level;
         this.baseDamage = baseDamage;
+        this.magicDamage = magicDamage;
     }
 
+    public int getMagicDamage() {
+        return magicDamage;
+    }
+
+    public void setMagicDamage(int magicDamage) {
+        this.magicDamage = magicDamage;
+    }
 
     public int getStrength() {
         return strength;
@@ -123,7 +135,7 @@ public abstract class Attributes implements Combat {
 
     void didDoge(){
 
-        setHealth(getHealth());
+
 
     }
 
