@@ -1,0 +1,18 @@
+      /*for (char c : text.toCharArray()) {
+
+
+            System.out.println( randomColor() + c + RETURN);
+            Thread.sleep(100);
+        }
+    }
+
+    private static String randomColor() {
+
+        // gen random num
+        // String temp = "";
+        //switch(num)
+          // case1 -> temp = "/033;133";
+
+        //return temp;
+    }
+}*/

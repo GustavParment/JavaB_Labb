@@ -4,18 +4,18 @@ import com.Gustav.demo.Entity.Attributes;
 import com.Gustav.demo.Resources.Paint.Colors;
 
 
-
 public class Hunter extends Attributes implements Colors {
 
 
     public Hunter() {
-        super(10, 5, 20, 50, 0, 0, 5,0);
+        super(10, 5, 20, 50,
+                0, 0, 5,0,0);
     }
 
     @Override
     public String attack() {
 
-        return  "Shoots an arrow! >-> >->";
+        return "Shoots an arrow!\n>-> >-> >-> >-> >->";
     }
 
     @Override
@@ -28,9 +28,10 @@ public class Hunter extends Attributes implements Colors {
     }
 
     @Override
-    public void dodge() {
+    public String dodge() {
 
 
+        return GREEN + "dodged the attack and lost no HP" + RESET;
     }
 
     @Override

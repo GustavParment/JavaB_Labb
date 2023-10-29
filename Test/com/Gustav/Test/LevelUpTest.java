@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 import static com.Gustav.demo.Resources.Paint.Colors.*;
-import static com.Gustav.demo.Resources.Print.MessageHandler.*;
+import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -21,7 +21,7 @@ class LevelUpTest {
 
         for (int i = 0; i < 5; i++) {
 
-            rogue.setExperience(rogue.getExperience() + 500);
+            rogue.setExperience(rogue.getExperience() + 100);
             rogue.setLevel(rogue.getLevel() + 1);
             System.out.println(i);
             println(YELLOW_BOLD + "you gained 100 xp" + RESET);

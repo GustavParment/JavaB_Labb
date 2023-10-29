@@ -6,7 +6,8 @@ public class Titan extends Attributes {
 
 
     public Titan() {
-        super(10,20, 20, 100, 0, 1, 20,0);
+        super(10,20, 20, 100,
+                0, 1, 20,0,20);
     }
 
     @Override
@@ -24,9 +25,10 @@ public class Titan extends Attributes {
     }
 
     @Override
-    public void dodge() {
+    public String dodge() {
 
 
+        return null;
     }
 
     @Override

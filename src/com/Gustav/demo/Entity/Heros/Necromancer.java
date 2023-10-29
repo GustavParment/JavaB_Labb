@@ -8,13 +8,14 @@ public class Necromancer extends Attributes implements Colors {
 
 
     public Necromancer() {
-        super(0,20, 20, 50, 0, 0, 0,5);
+        super(0,20, 20, 50,
+                0, 0, 5,5,0);
     }
 
     @Override
     public String attack() {
 
-        return "Casted a death bolt";
+        return "Casts a death bolt!\n--* --* --* --* --*";
     }
 
     @Override
@@ -26,9 +27,10 @@ public class Necromancer extends Attributes implements Colors {
     }
 
     @Override
-    public void dodge() {
+    public String dodge() {
 
 
+        return GREEN + "dodged the attack and lost no HP" + RESET;
     }
 
     @Override

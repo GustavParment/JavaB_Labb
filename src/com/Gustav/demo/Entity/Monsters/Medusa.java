@@ -8,14 +8,15 @@ public class Medusa extends Attributes implements Colors {
 
     public Medusa() {
 
-        super(30,30, 15, 5, 0, 0, 5,5);
+        super(30,30, 15, 5,
+                0, 0, 5,5,20);
     }
 
 
     @Override
     public String attack() {
 
-        return "Casts snakes! ~~< ~~< ";
+        return "Casts snakes!\n~~< ~~< ~~< ~~< ~~<";
     }
 
     @Override
@@ -25,9 +26,9 @@ public class Medusa extends Attributes implements Colors {
     }
 
     @Override
-    public void  dodge() {
+    public String dodge() {
 
-
+    return GREEN + "dodged the attack and lost no HP" + RESET;
 
     }
 

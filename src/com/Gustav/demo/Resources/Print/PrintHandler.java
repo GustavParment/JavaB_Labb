@@ -1,6 +1,6 @@
 package com.Gustav.demo.Resources.Print;
 
-public class MessageHandler {
+public class PrintHandler {
 
     public static void println(String message){System.out.println(message);}
 

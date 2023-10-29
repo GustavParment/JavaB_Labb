@@ -8,4 +8,6 @@ public class HealthPotion extends ItemAttributes {
     public HealthPotion() {
         super(0, 0, 0, 20);
     }
+
+
 }

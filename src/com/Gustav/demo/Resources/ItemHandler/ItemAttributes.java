@@ -1,6 +1,6 @@
 package com.Gustav.demo.Resources.ItemHandler;
 
-public abstract class ItemAttributes {
+public abstract class ItemAttributes{
 
     private int strength;
     private int intelligence;
@@ -45,4 +45,8 @@ public abstract class ItemAttributes {
     public void setHealth(int health) {
         this.health = health;
     }
+
+
+
+
 }

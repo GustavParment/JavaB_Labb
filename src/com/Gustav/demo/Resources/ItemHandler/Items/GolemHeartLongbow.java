@@ -7,4 +7,6 @@ public class GolemHeartLongbow extends ItemAttributes {
     public GolemHeartLongbow() {
         super(20, 0, 20,0);
     }
+
+
 }

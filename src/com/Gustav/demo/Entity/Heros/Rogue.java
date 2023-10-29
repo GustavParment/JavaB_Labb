@@ -11,13 +11,14 @@ public class Rogue extends Attributes implements Colors {
 
 
     public Rogue() {
-        super(20,5, 10, 50, 0, 0, 5,0);
+        super(20,0, 20, 50,
+                0, 0, 5,0,0);
     }
 
     @Override
     public String attack() {
 
-        return "Slice and dice";
+        return "Slice and dice!\n`/ `/ `/ `/ `/ `/ ";
 
     }
 
@@ -31,10 +32,10 @@ public class Rogue extends Attributes implements Colors {
     }
 
     @Override
-    public void dodge() {
+    public String dodge() {
 
 
-
+        return GREEN + "dodged the attack and lost no HP" + RESET;
     }
 
     @Override

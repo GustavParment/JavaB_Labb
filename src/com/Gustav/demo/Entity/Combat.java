@@ -6,7 +6,7 @@ public interface Combat {
 
    void flee();
 
-   void dodge();
+   String dodge();
 
    String getName();
 
