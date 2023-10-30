@@ -1,14 +1,15 @@
 package com.Gustav.demo.Entity;
 
 import com.Gustav.demo.Entity.Heros.Hunter;
+import com.Gustav.demo.Entity.Heros.Mage;
 import com.Gustav.demo.Entity.Heros.Necromancer;
 import com.Gustav.demo.Entity.Heros.Rogue;
-import com.Gustav.demo.Entity.Monsters.Medusa;
 import com.Gustav.demo.Resources.Paint.Colors;
 import com.Gustav.demo.Resources.TheLoreMaster.LoreMasterKristoffer;
-
 import java.util.Random;
 import java.util.Scanner;
+import static com.Gustav.demo.Entity.Rooms.MedusasLair.medusasLairOptions;
+import static com.Gustav.demo.Entity.Rooms.TitansCave.titansCaveOption;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
@@ -23,14 +24,14 @@ public class GameLogic implements Colors {
        println("1." + YELLOW + "Rogue" + RESET);
        println("2." + PURPLE + "Necromancer" + RESET);
        println("3." + GREEN + "Hunter" + RESET);
-
+       println("4." + CYAN_BOLD + "Mage" + RESET);
 
        Attributes player = null;
        switch (sc.nextLine()) {
            case "1" -> player = new Rogue();
            case "2" -> player = new Necromancer();
            case "3" -> player = new Hunter();
-
+           case "4" -> player = new Mage();
            default -> println("Wrong input");
        }
 
@@ -38,59 +39,32 @@ public class GameLogic implements Colors {
 
     }
 
-    private void roomChooser(Attributes player,Scanner sc) {
-        println(BLUE_BACKGROUND + "---Enter a room---" + RESET);
+    public void roomChooser(Attributes attacker,Scanner sc) {
+        println(BLACK + RED_BACKGROUND + "---Room's---" + RESET);
         println("1.Medusas Lair");
-        println("2.Clash of the Titan");
+        println("2.The Titan's Cave");
         println("3.The Gigant Black Squirrel´s Nest");
-        println("4.");
+        println("4.La Chancla");
+        println("4.Fridas Revenge");
         println("5.Benny The Evil King");
 
-
         switch (sc.nextLine()){
-            case "1" -> medusasLairOptions(player,sc);
+            case "1" -> medusasLairOptions(attacker,sc);
+            case "2" -> titansCaveOption(attacker,sc);
             default -> println(RED + "Wrong input, try again... " + RESET);
         }
-    }
-
-    public void medusasLairOptions(Attributes attacker,Scanner sc){
-
-        Attributes medusa = new Medusa();
-        boolean fight = false;
-
-    do {
-
-
-        println(BLACK + RED_BACKGROUND + "---Medusas Lair---" + RESET);
-        println(RED + "Medusa is angry be careful! " + RESET);
-
-        println("1. Engage Medusa \n2. See Medusas attributes \n3. Exit Medusas lair");
-
-        switch (sc.nextLine()) {
-            case "1" -> {fight(sc, attacker, medusa);fight = true;}
-            case "2" -> {
-                println("Hp: " + medusa.getHealth());
-                println("Damage: " + medusa.getDamage());
-                println("Level: " + medusa.getLevel());
-
-            }
-            case "3" -> System.exit(0);
-
-            default -> println(RED + "Wrong input, try again..." + RESET);
-        }
-    }while(!fight);
     }
 
     public void fight (Scanner sc, Attributes attacker, Attributes defender){
 
             boolean fightDone = false;
 
-            println(YELLOW + "You engaged " + defender.getName()+"!" + RESET);
+            println(YELLOW + "You Engaged " + defender.getName()+ RESET);
 
             do {
 
                 println("1.Attack " + defender.getName());
-                println("2.flee the fight");
+                println("2.Flee the fight");
 
                 switch (sc.nextLine()) {
                     case "1" -> {
@@ -111,7 +85,7 @@ public class GameLogic implements Colors {
                         fightDone = true;
                     }
 
-                    default -> println(RED + "Wrong input try again..." + RESET);
+                    default -> println(RED + "Wrong input, try again..." + RESET);
                 }
 
             } while (!fightDone);
@@ -143,8 +117,11 @@ public class GameLogic implements Colors {
                         + defender.getName() + RESET);
 
                 println(BLACK + RED_BACKGROUND + "Game over" + RESET);
-
+                printDelay(PURPLE_BOLD+"Thanks for Playing better luck next time summoner..."
+                        + RESET);
                 fightDone = true;
+
+                System.exit(0);
 
 
             }
@@ -192,8 +169,6 @@ public class GameLogic implements Colors {
         boolean input = false;
 
         do {
-
-
             println("\n" + BLUE_BACKGROUND + "---Player Menu---" + RESET);
             println("1.Lore Master Kristoffer's Inn");
             println("2.Enter new Room");
@@ -202,7 +177,7 @@ public class GameLogic implements Colors {
             switch (sc.nextLine()) {
                 case "1" -> {enter.loreMastersInn(attacker,sc); input = true;}
                 case "2" -> {roomChooser(attacker,sc); input = true;}
-                case "3" -> attacker.getStatus();
+                case "3" -> attacker.getStatus(attacker);
 
                 default -> println(RED + "Wrong input try again..." + RESET);
             }

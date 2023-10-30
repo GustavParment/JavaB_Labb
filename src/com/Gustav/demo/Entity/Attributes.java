@@ -127,12 +127,13 @@ public abstract class Attributes implements Combat {
 
     }
 
-    void getStatus(){
+    void getStatus(Attributes attacker){
 
+        println(attacker.getName());
         println("HP: " + GREEN + health + RESET);
         println("Level: " + BLUE + level + RESET);
         println("Damage: " + RED + damage + RESET );
-        println("Magical Damage: " + RED + damage + RESET );
+        println("Magical Damage: " + RED + magicDamage+ RESET );
         println("Gold: " + YELLOW + gold + RESET);
         println("Strength " + BLACK +  strength + RESET );
         println("Intelligence " + PURPLE + intelligence + RESET);
@@ -144,7 +145,21 @@ public abstract class Attributes implements Combat {
 
     void calculateDamage(Attributes attacker){
 
+       int damage = attacker.getDamage();
+       int magicalDamage = attacker.getMagicDamage();
 
+       if (attacker.getIntelligence() > 10 && attacker.getIntelligence() % 10 == 0){
+
+            magicalDamage += 5;
+
+            attacker.setMagicDamage(magicalDamage);
+
+        }else if (attacker.getStrength() > 10 && attacker.getStrength() % 10 == 0){
+
+            damage += 5;
+
+            attacker.setDamage(damage);
+        }
 
     }
 

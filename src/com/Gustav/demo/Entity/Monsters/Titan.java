@@ -1,20 +1,20 @@
 package com.Gustav.demo.Entity.Monsters;
 
 import com.Gustav.demo.Entity.Attributes;
+import static com.Gustav.demo.Resources.Paint.Colors.*;
+
 
 public class Titan extends Attributes {
 
-
     public Titan() {
-        super(10,20, 20, 100,
-                0, 1, 20,0,20);
+        super(25,25, 30, 80,
+                0, 1, 10,10,20);
     }
 
     @Override
     public String attack() {
 
-
-        return "Stomps the ground";
+        return "Throws a big Rock\n ^ * ^ * ^ * ^ * ^ *";
     }
 
     @Override
@@ -27,14 +27,13 @@ public class Titan extends Attributes {
     @Override
     public String dodge() {
 
-
-        return null;
+        return GREEN + "dodged the attack and lost no HP" + RESET;
     }
 
     @Override
     public String getName() {
 
-        return "Titan";
+        return RED + "Titan" + RESET;
     }
 
 

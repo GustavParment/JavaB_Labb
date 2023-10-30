@@ -20,26 +20,25 @@ import java.util.Scanner;
 
 public class LoreMasterKristoffer extends Shop{
 
-    public void loreMastersInn(Attributes attacker,Scanner sc){
+    public void loreMastersInn(Attributes attacker,Scanner sc) {
 
+        GameLogic returnTo = new GameLogic();
+        boolean wrongInput = false;
 
-        GameLogic logic = new GameLogic();
+        do {
+            println(YELLOW + BLUE_BACKGROUND + "---Lore Master Kristoffer's Inn---" + RESET);
+            println("1.Purchase Kristoffer´s items");
+            println("2.Learn The Lore Master wisdom");
+            println("3.Back to Player menu ");
 
+            switch (sc.nextLine()) {
+                case "1" -> buyItems(attacker, sc);
+                case "2" -> println(tellTheLore);
+                case "3" -> returnTo.playerMenu(attacker, sc);
+                default ->{println(RED + "Wrong input" + RESET); wrongInput = true;}
+            }
 
-        println(YELLOW + BLUE_BACKGROUND + "---Lore Master Kristoffer's Inn---" + RESET);
-        println("1.Purchase Kristoffer´s items");
-        println("2.Learn The Lore Master wisdom");
-        println("3.Back to Player menu ");
-
-        switch (sc.nextLine()){
-            case "1" -> buyItems(attacker,sc);
-            case "2" -> println(tellTheLore);
-            case "3" -> logic.playerMenu(attacker,sc);
-
-            default  -> println(RED + "Wrong input" + RESET);
-        }
-
+        }while(wrongInput);
     }
-
 
 }

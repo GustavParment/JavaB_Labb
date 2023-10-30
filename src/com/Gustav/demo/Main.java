@@ -4,7 +4,6 @@ import com.Gustav.demo.Entity.Attributes;
 import com.Gustav.demo.Entity.GameLogic;
 import com.Gustav.demo.Entity.Heros.Hunter;
 import com.Gustav.demo.Entity.Monsters.Medusa;
-import com.Gustav.demo.Entity.StartMenu;
 
 import java.util.Scanner;
 
@@ -38,6 +37,7 @@ public class Main {
         GameLogic play = new GameLogic();
         Scanner sc = new Scanner(System.in);
         play.fight(sc,hunter,medusa);
+
 
 
 

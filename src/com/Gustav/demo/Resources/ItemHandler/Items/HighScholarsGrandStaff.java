@@ -6,7 +6,7 @@ public class HighScholarsGrandStaff extends ItemAttributes {
 
 
     public HighScholarsGrandStaff() {
-        super(0, 20, 10, 0);
+        super(0, 20, 20, 0);
     }
 
 }

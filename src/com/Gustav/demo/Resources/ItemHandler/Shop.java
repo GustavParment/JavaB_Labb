@@ -11,96 +11,77 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
 public class Shop {
 
-    public void buyItems(Attributes attacker,Scanner sc) {
+    public void buyItems(Attributes attacker, Scanner sc) {
 
         boolean wrongInput = true;
-
         ItemAttributes item;
+
         do {
 
             LoreMasterKristoffer returnTo = new LoreMasterKristoffer();
-
-            println("1.Book of Wisdom " + YELLOW_BOLD + " 20 gold " + RESET);
-            println("2.Health Potion " + YELLOW_BOLD + " 20 gold " + RESET);
-            println("3.Golem Heart Longbow " + YELLOW_BOLD + " 35 gold " + RESET);
-            println("4.High Scholars Grand Staff " + YELLOW_BOLD + " 35 gold " + RESET);
-            println("5.Lung Breaker Dagger" + YELLOW_BOLD + " 35 gold " + RESET);
+            println(CYAN_BACKGROUND_BRIGHT + "---Kristoffer's Shop---" + RESET);
+            println("1.Book of Wisdom: " + YELLOW_BOLD + "20 gold" + RESET + "/"
+                    + BLUE + "AGI:+10 INTEL:+10 STRNG:+10" + RESET);
+            println("2.Health Potion: " + YELLOW_BOLD + "20 gold" + RESET +
+                    "/" + BLUE + "HP:+10" + RESET);
+            println("3.Golem Heart Longbow: " + YELLOW_BOLD + "35 gold" + RESET + "/" +
+                    BLUE + "AGI:+20 STRNG:+20" + RESET);
+            println("4.High Scholars Grand Staff: " + YELLOW_BOLD + "35 gold" + RESET + "/" +
+                    BLUE + "INTEL:+20 AGI:+20" + RESET);
+            println("5.Lung Breaker Dagger: " + YELLOW_BOLD + "35 gold" + RESET + "/" +
+                    BLUE + "AGI:+20 STRNG:+20" + RESET);
             println("6.Return to Lore Master's Inn");
 
             item = null;
-            switch (sc.nextLine()) {
-                case "1" -> {
-                    item = new BookOfWisdom();
-
-                    if(attacker.getGold() < 20){
-                        System.out.println("Inefficient funds");
-                    }
-                    else{
-                        attacker.setStrength(attacker.getStrength() + item.getStrength());
-                        attacker.setAgility(attacker.getStrength() + item.getAgility());
-                        attacker.setIntelligence(attacker.getStrength() + item.getIntelligence());
-                    }
-
-
-                }
-                case "2" -> {
-                    item = new HealthPotion();
-
-                    if(attacker.getGold() < 35){
-                        System.out.println("Inefficient funds");
-                    }else{
-                        attacker.setHealth(attacker.getStrength() + item.getHealth());
-                    }
-
-                }
-                case "3" -> {
-                    item = new GolemHeartLongbow();
-
-                    if(attacker.getGold() < 35){
-                        System.out.println("Inefficient funds");
-                    }else{
-                        attacker.setStrength(attacker.getStrength() + item.getStrength());
-                        attacker.setAgility(attacker.getStrength() + item.getAgility());
-                        attacker.setIntelligence(attacker.getStrength() + item.getIntelligence());
-                    }
-
-                }
-                case "4" -> {
-                    item = new HighScholarsGrandStaff();
-
-                    if(attacker.getGold() < 35){
-                        System.out.println("Inefficient funds");
-                    }else{
-
-                        attacker.setStrength(attacker.getStrength() + item.getStrength());
-                        attacker.setAgility(attacker.getStrength() + item.getAgility());
-                        attacker.setIntelligence(attacker.getStrength() + item.getIntelligence());
-                    }
-
-
-                }
-                case "5" -> {
-                    item = new LungBreakerDagger();
-
-                  if (attacker.getGold() < 35){
-                        System.out.println("Inefficient funds");
-                    }else{
-                      attacker.setStrength(attacker.getStrength() + item.getStrength());
-                      attacker.setAgility(attacker.getStrength() + item.getAgility());
-                      attacker.setIntelligence(attacker.getStrength() + item.getIntelligence());
-                  }
-
-
-                }
-                case "6" -> {returnTo.loreMastersInn(attacker,sc); wrongInput = false;}
-
+            switch (sc.nextLine()){
+                case "1" -> {item = new BookOfWisdom();
+                    withdraw20Gold(attacker, item);}
+                case "2" -> {item = new HealthPotion();
+                    withdraw20Gold(attacker, item);}
+                case "3" -> {item = new GolemHeartLongbow();
+                    withdraw30Gold(attacker, item);}
+                case "4" -> {item = new HighScholarsGrandStaff();
+                    withdraw30Gold(attacker, item);}
+                case "5" -> {item = new LungBreakerDagger();
+                    withdraw30Gold(attacker, item);}
+                case "6" -> {returnTo.loreMastersInn(attacker, sc);wrongInput = false;}
                 default -> println(RED + "Wrong input" + RESET);
             }
-
         }
         while (wrongInput);
 
 
-
     }
-}
+
+    private void withdraw20Gold(Attributes attacker, ItemAttributes item){
+
+        if (attacker.getGold() < 20) {
+
+            println("Inefficient funds");
+
+        } else {
+                attacker.setStrength(attacker.getStrength() + item.getStrength());
+                attacker.setAgility(attacker.getStrength() + item.getAgility());
+                attacker.setIntelligence(attacker.getIntelligence() + item.getIntelligence());
+                attacker.setGold(attacker.getGold() - 20);
+
+        }
+    }
+
+    private void withdraw30Gold(Attributes attacker, ItemAttributes item){
+        if (attacker.getGold() < 35) {
+
+            println("Inefficient funds");
+
+        }
+        else {
+            attacker.setStrength(attacker.getStrength() + item.getStrength());
+            attacker.setAgility(attacker.getStrength() + item.getAgility());
+            attacker.setIntelligence(attacker.getIntelligence() + item.getIntelligence());
+            attacker.setGold(attacker.getGold() - 35);
+
+        }
+    }
+    }
+
+
