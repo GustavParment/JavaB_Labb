@@ -154,7 +154,8 @@ public abstract class Attributes implements Combat {
 
             attacker.setMagicDamage(magicalDamage);
 
-        }else if (attacker.getStrength() > 10 && attacker.getStrength() % 10 == 0){
+        }
+       if (attacker.getStrength() > 10 && attacker.getStrength() % 10 == 0){
 
             damage += 5;
 
