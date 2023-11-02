@@ -29,6 +29,7 @@ public class MedusasLair {
                     println("Hp: " + medusa.getHealth());
                     println("Damage: " + medusa.getDamage());
                     println("Level: " + medusa.getLevel());
+                    println("Gold: " + medusa.getGold());
                 }
                 case "3" -> start.roomChooser(attacker,sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);

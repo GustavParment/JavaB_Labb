@@ -1,5 +1,7 @@
 package com.Gustav.demo.Entity;
 
+import java.util.jar.Attributes;
+
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
@@ -129,7 +131,7 @@ public abstract class AAttributes implements ICombat {
 
     }
 
-    void getStatus(AAttributes attacker) {
+   protected void getStatus(AAttributes attacker) {
 
         println(attacker.getName());
         println("HP: " + GREEN + health + RESET);
@@ -145,25 +147,25 @@ public abstract class AAttributes implements ICombat {
     }
 
 
-    protected int calculateDamage() {
+    protected void calculateDamage(AAttributes attacker) {
 
-        int damage =  getDamage();
-        int maxIncrease = getStrength();
-        int newDamage;
+        int damage = attacker.getDamage();
+        int maxIncrease = attacker.getStrength();
 
-        if (getStrength() > 10) {
-            while (getStrength() % 10 == 0 && damage < maxIncrease) {
+
+        if (attacker.getStrength() >= 10) {
+            while (attacker.getStrength() % 2 == 0 && damage < maxIncrease) {
                 damage += 10;
-                setDamage(damage);
+                attacker.setDamage(damage);
+                attacker.setDamage(getDamage()-10);
 
-                newDamage = getDamage();
-
-                return newDamage;
+                System.out.println("\nCALC DMG: " + attacker.getDamage());
 
             }
         }
 
-         return getDamage();
+
+
     }
 
 

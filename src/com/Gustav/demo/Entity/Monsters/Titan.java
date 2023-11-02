@@ -7,8 +7,8 @@ import static com.Gustav.demo.Resources.Paint.Colors.*;
 public class Titan extends AAttributes {
 
     public Titan() {
-        super(20,25, 30, 80,
-                0, 1, 10,10,30);
+        super(0,0, 30, 80,
+                0, 1, 15,10,30);
     }
 
     @Override

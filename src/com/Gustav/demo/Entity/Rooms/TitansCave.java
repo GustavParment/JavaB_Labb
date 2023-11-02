@@ -7,6 +7,7 @@ import com.Gustav.demo.Entity.Monsters.Titan;
 import java.util.Scanner;
 
 import static com.Gustav.demo.Resources.Paint.Colors.*;
+import static com.Gustav.demo.Resources.Print.PrintHandler.print;
 import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
@@ -29,6 +30,7 @@ public class TitansCave {
                     println("Hp: " + titan.getHealth());
                     println("Damage: " + titan.getDamage());
                     println("Level: " + titan.getLevel());
+                    print("Gold: " + titan.getGold());
                 }
                 case "3" -> start.roomChooser(attacker, sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);

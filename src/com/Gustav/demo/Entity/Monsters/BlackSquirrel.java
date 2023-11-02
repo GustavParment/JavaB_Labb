@@ -2,14 +2,17 @@ package com.Gustav.demo.Entity.Monsters;
 
 import com.Gustav.demo.Entity.AAttributes;
 
+import static com.Gustav.demo.Resources.Paint.Colors.*;
+
 public class BlackSquirrel extends AAttributes {
-    public BlackSquirrel(int strength, int intelligence, int agility, int health, int experience, int level, int damage, int magicDamage, int gold) {
-        super(strength, intelligence, agility, health, experience, level, damage, magicDamage, gold);
+    public BlackSquirrel() {
+        super(0,0, 30, 110, 100, 3, 30, 0, 40);
     }
 
     @Override
     public String attack() {
-        return null;
+
+        return "Shoots a laser canon!\n ==) ==) ==) ==) ==)";
     }
 
     @Override
@@ -19,12 +22,13 @@ public class BlackSquirrel extends AAttributes {
 
     @Override
     public String dodge() {
-        return null;
+
+        return GREEN + "dodged the attack and lost no HP" + RESET;
     }
 
     @Override
     public String getName() {
-        return null;
+        return RED + "The Gigant Black Squirrel" + RESET;
     }
 
 

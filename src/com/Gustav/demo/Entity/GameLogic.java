@@ -10,6 +10,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import static com.Gustav.demo.Entity.Rooms.MedusasLair.medusasLairOptions;
+import static com.Gustav.demo.Entity.Rooms.TheGigantBlackSquirrelsNest.gigantBlackSquirrelOptions;
 import static com.Gustav.demo.Entity.Rooms.TitansCave.titansCaveOption;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
@@ -46,13 +47,15 @@ public class GameLogic implements Colors {
         println("1.Medusas Lair");
         println("2.The Titan's Cave");
         println("3.The Gigant Black Squirrel´s Nest");
-        println("4.La Chancla");
-        println("4.Fridas Revenge");
+        println("4.La Chancla's Castle");
+        println("4.Fridas Redemption");
         println("5.Benny The Evil King");
 
         switch (sc.nextLine()){
             case "1" -> medusasLairOptions(attacker,sc);
             case "2" -> titansCaveOption(attacker,sc);
+            case "3" -> gigantBlackSquirrelOptions(attacker,sc);
+           // case "4" ->
             default -> println(RED + "Wrong input, try again... " + RESET);
         }
     }
@@ -157,7 +160,7 @@ public class GameLogic implements Colors {
             println("\n" + defender.getName() + YELLOW_BOLD + " remaining HP: "
                     + defender.getHealth() + RESET);
 
-            System.out.println(attacker.getName() +" HP " + attacker.getHealth());
+
 
         }
 
@@ -170,11 +173,11 @@ public class GameLogic implements Colors {
     private void attack(AAttributes attacker, AAttributes defender) {
 
         printDelay(attacker.getName() + " " + attacker.attack());
-        attacker.setDamage((attacker.getDamage() + attacker.calculateDamage()));
+        attacker.calculateDamage(attacker);
         defender.setHealth(defender.getHealth() - attacker.getDamage());
 
         System.out.println("DMG ATTACKER: " + attacker.getDamage());
-        System.out.println("Calculated DMG: " + attacker.calculateDamage());
+
 
 
 

@@ -10,7 +10,7 @@ public class Medusa extends AAttributes implements Colors {
 
     public Medusa() {
 
-        super(10,30, 13, 5,
+        super(0,0, 13, 60,
                 0, 0, 5,5,20);
     }
 
