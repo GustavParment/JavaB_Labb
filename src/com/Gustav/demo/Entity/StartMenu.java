@@ -22,7 +22,7 @@ public class StartMenu implements Colors {
 
 
         switch (sc.nextLine()){
-            case "1" -> game.chooseClass();
+            case "1" -> game.characterChooser();
             case "2" -> printDelay(tellTheLore);
             case "3" -> System.exit(0);
 

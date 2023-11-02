@@ -1,10 +1,9 @@
 package com.Gustav.demo.Entity.Rooms;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import com.Gustav.demo.Entity.GameLogic;
 import com.Gustav.demo.Entity.Monsters.Medusa;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 import static com.Gustav.demo.Resources.Paint.Colors.*;
@@ -13,9 +12,9 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class MedusasLair {
 
-    public static void medusasLairOptions(Attributes attacker, Scanner sc){
+    public static void medusasLairOptions(AAttributes attacker, Scanner sc){
 
-        Attributes medusa = new Medusa();
+        AAttributes medusa = new Medusa();
         GameLogic start = new GameLogic();
         boolean fight = false;
 

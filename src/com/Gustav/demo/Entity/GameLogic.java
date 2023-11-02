@@ -8,6 +8,7 @@ import com.Gustav.demo.Resources.Paint.Colors;
 import com.Gustav.demo.Resources.TheLoreMaster.LoreMasterKristoffer;
 import java.util.Random;
 import java.util.Scanner;
+
 import static com.Gustav.demo.Entity.Rooms.MedusasLair.medusasLairOptions;
 import static com.Gustav.demo.Entity.Rooms.TitansCave.titansCaveOption;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
@@ -16,7 +17,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 public class GameLogic implements Colors {
     Scanner sc;
 
-    public void chooseClass() {
+    public void characterChooser() {
 
        sc = new Scanner(System.in);
 
@@ -26,7 +27,7 @@ public class GameLogic implements Colors {
        println("3." + GREEN + "Hunter" + RESET);
        println("4." + CYAN_BOLD + "Mage" + RESET);
 
-       Attributes player = null;
+       AAttributes player = null;
        switch (sc.nextLine()) {
            case "1" -> player = new Rogue();
            case "2" -> player = new Necromancer();
@@ -37,9 +38,10 @@ public class GameLogic implements Colors {
 
         roomChooser(player,sc);
 
+
     }
 
-    public void roomChooser(Attributes attacker,Scanner sc) {
+    public void roomChooser(AAttributes attacker, Scanner sc) {
         println(BLACK + RED_BACKGROUND + "---Room's---" + RESET);
         println("1.Medusas Lair");
         println("2.The Titan's Cave");
@@ -55,26 +57,33 @@ public class GameLogic implements Colors {
         }
     }
 
-    public void fight (Scanner sc, Attributes attacker, Attributes defender){
+    public void fight(Scanner sc, AAttributes attacker, AAttributes defender){
 
             boolean fightDone = false;
+
 
             println(YELLOW + "You Engaged " + defender.getName()+ RESET);
 
             do {
 
-                println("1.Attack " + defender.getName());
+                println("\n1.Attack " + defender.getName());
                 println("2.Flee the fight");
 
                 switch (sc.nextLine()) {
                     case "1" -> {
 
-                        didDodge(attacker, defender);
 
-                        didDodge(defender, attacker);
+                        attack(attacker,defender);
+                        didDodge(attacker,defender);
+                        attack(defender,attacker);
+                        didDodge(defender,attacker);
+                        if (defender.getHealth() <= 0 || attacker.getHealth() <= 0){
+                            fightDone = isFightDone(attacker, defender,false);
+                            attacker.levelUp(attacker);}
 
-                        fightDone = isFightDone(attacker, defender, false);
-                        attacker.levelUp(attacker);
+
+
+
 
                     }
                     case "2" -> {
@@ -83,6 +92,7 @@ public class GameLogic implements Colors {
                         println("" + attacker.getHealth());
 
                         fightDone = true;
+
                     }
 
                     default -> println(RED + "Wrong input, try again..." + RESET);
@@ -90,81 +100,102 @@ public class GameLogic implements Colors {
 
             } while (!fightDone);
 
-            playerMenu(attacker,sc);
+        playerMenu(attacker,sc); ;
         }
 
-    private static boolean isFightDone (Attributes attacker, Attributes defender,
+    private boolean isFightDone (AAttributes attacker, AAttributes defender,
                                         boolean fightDone){
 
-            if (defender.getHealth() == 0) {
+        if (defender.getHealth() <= 0) {
 
-                printDelay(YELLOW + "\nCongratulations!" + RESET + " You have slayed "
-                        + defender.getName());
-                println("\n"+attacker.getName() + YELLOW +  " looted 20 gold" + RESET);
-                println(attacker.getName() + YELLOW + " gained 100 xp" + RESET);
+            printDelay(YELLOW + "\nCongratulations!" + RESET + " You have slayed "
+                    + defender.getName());
+            println("\n"+attacker.getName() + YELLOW +  " looted " + defender.getGold() + " gold" + RESET);
+            println(attacker.getName() + YELLOW + " gained 100 xp" + RESET);
+            println(attacker.getName() + YELLOW + " gained 10 Hp" + RESET);
+            println(attacker.getName() + YELLOW + " gained +2 in all Attributes" + RESET);
 
-                attacker.setExperience(attacker.getExperience() + 100);
-                attacker.setGold(attacker.getGold() + 20);
+            attacker.setExperience(attacker.getExperience() + 100);
+            attacker.setGold(attacker.getGold() + defender.getGold());
 
-                fightDone = true;
+            fightDone = true;
 
-                defender = null;
+            defender = null;
 
-            }
-            if (attacker.getHealth() == 0) {
+        }
+        if (attacker.getHealth() <= 0) {
 
-                println(attacker.getName() + " was defeated by "
-                        + defender.getName() + RESET);
+            println(attacker.getName() + " was defeated by "
+                    + defender.getName() + RESET);
 
-                println(BLACK + RED_BACKGROUND + "Game over" + RESET);
-                printDelay(PURPLE_BOLD+"Thanks for Playing better luck next time summoner..."
-                        + RESET);
-                fightDone = true;
+            println(BLACK + RED_BACKGROUND + "Game over" + RESET);
+            printDelay(PURPLE_BOLD+"Thanks for Playing better luck next time summoner..."
+                    + RESET);
+            fightDone = true;
 
-                System.exit(0);
+            System.exit(0);
 
 
-            }
-            return fightDone;
+        }
+        return fightDone;
+    }
+
+    private void didDodge (AAttributes attacker, AAttributes defender){
+
+        if (calculateDodge(attacker, defender)) {
+
+            print(RED + " MISS!" + RESET);
+                println("\n"+defender.getName() + " " + defender.dodge());
+
+                defender.setHealth(defender.getHealth() + attacker.getDamage());
+
+
+
+
+        }else{
+            print(GREEN + " HIT FOR "+ attacker.getDamage() + " DAMAGE!" + RESET);
+            println("\n" + defender.getName() + YELLOW_BOLD + " remaining HP: "
+                    + defender.getHealth() + RESET);
+
+            System.out.println(attacker.getName() +" HP " + attacker.getHealth());
+
         }
 
-    private void didDodge (Attributes attacker, Attributes defender){
-
-            if (chanceToDodge(attacker, defender)) {
-
-                printDelay(attacker.getName() + " " + attacker.attack() );
-                println(RED + " ATTACK MISSED!" + RESET);
-                println( defender.getName() + " " + defender.dodge());
 
 
-            } else {
 
-                printDelay(attacker.getName() + " " + attacker.attack());
-                defender.setHealth(defender.getHealth() - attacker.getDamage());
-                println(GREEN + " ATTACK SUCCESSFUL!" + RESET);
-                println(defender.getName() + YELLOW_BOLD + " lost HP and has now "
-                        + defender.getHealth() + " HP"+  RESET);
 
-            }
-        }
+    }
 
-    private boolean chanceToDodge (Attributes attacker, Attributes defender){
+    private void attack(AAttributes attacker, AAttributes defender) {
+
+        printDelay(attacker.getName() + " " + attacker.attack());
+        attacker.setDamage((attacker.getDamage() + attacker.calculateDamage()));
+        defender.setHealth(defender.getHealth() - attacker.getDamage());
+
+        System.out.println("DMG ATTACKER: " + attacker.getDamage());
+        System.out.println("Calculated DMG: " + attacker.calculateDamage());
+
+
+
+    }
+
+    private boolean calculateDodge(AAttributes attacker, AAttributes defender){
 
             int agilityDifference = attacker.getAgility() - defender.getAgility();
             int threshold = 20;
 
-            // Skapa en slumpgenerator
+          
             Random random = new Random();
-
-            // Generera ett slumpmässigt tal mellan 1 och 30
             int randomNumber = random.nextInt(30) + 1;
 
-            // Om det slumpmässiga talet är högre än tröskeln, missar attacken
+
             return (randomNumber > threshold + agilityDifference);
 
         }
 
-    public void playerMenu(Attributes attacker, Scanner sc) {
+    public void playerMenu(AAttributes attacker, Scanner sc) {
+
         LoreMasterKristoffer enter = new LoreMasterKristoffer();
         boolean input = false;
 
@@ -186,6 +217,5 @@ public class GameLogic implements Colors {
     }
 
 
-
-}
+    }
 

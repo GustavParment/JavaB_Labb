@@ -1,8 +1,8 @@
 package com.Gustav.demo.Entity.Monsters;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 
-public class Frida extends Attributes {
+public class Frida extends AAttributes {
     public Frida(int strength, int intelligence, int agility, int health, int experience, int level, int damage, int magicDamage, int gold) {
         super(strength, intelligence, agility, health, experience, level, damage, magicDamage, gold);
     }
@@ -26,4 +26,6 @@ public class Frida extends Attributes {
     public String getName() {
         return null;
     }
+
+
 }

@@ -1,16 +1,16 @@
 package com.Gustav.demo.Entity.Monsters;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import com.Gustav.demo.Resources.Paint.Colors;
 
 import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 
-public class Medusa extends Attributes implements Colors {
+public class Medusa extends AAttributes implements Colors {
 
     public Medusa() {
 
-        super(30,30, 15, 5,
+        super(10,30, 13, 5,
                 0, 0, 5,5,20);
     }
 
@@ -38,6 +38,8 @@ public class Medusa extends Attributes implements Colors {
 
         return  RED + "Medusa" + RESET;
     }
+
+
 
 
 }

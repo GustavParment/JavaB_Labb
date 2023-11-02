@@ -1,6 +1,6 @@
 package com.Gustav.demo.Entity.Rooms;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import com.Gustav.demo.Entity.GameLogic;
 import com.Gustav.demo.Entity.Monsters.Titan;
 
@@ -12,9 +12,9 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class TitansCave {
 
-    public static void titansCaveOption(Attributes attacker, Scanner sc){
+    public static void titansCaveOption(AAttributes attacker, Scanner sc){
 
-        Attributes titan = new Titan();
+        AAttributes titan = new Titan();
         GameLogic start = new GameLogic();
         boolean fight = false;
 

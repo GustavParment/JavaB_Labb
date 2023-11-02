@@ -2,9 +2,8 @@ package com.Gustav.demo.Resources.TheLoreMaster;
 
 
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import com.Gustav.demo.Entity.GameLogic;
-import com.Gustav.demo.Entity.StartMenu;
 import com.Gustav.demo.Resources.ItemHandler.Shop;
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
@@ -20,7 +19,7 @@ import java.util.Scanner;
 
 public class LoreMasterKristoffer extends Shop{
 
-    public void loreMastersInn(Attributes attacker,Scanner sc) {
+    public void loreMastersInn(AAttributes attacker, Scanner sc) {
 
         GameLogic returnTo = new GameLogic();
         boolean wrongInput = false;

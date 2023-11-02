@@ -1,6 +1,6 @@
 package com.Gustav.Test;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import com.Gustav.demo.Entity.Heros.Hunter;
 import com.Gustav.demo.Entity.Monsters.Medusa;
 import org.junit.jupiter.api.Test;
@@ -12,8 +12,8 @@ class DodgeTest {
     @Test
     void missTest() {
 
-      Attributes attacker = new Hunter();
-      Attributes defender = new Medusa();
+      AAttributes attacker = new Hunter();
+      AAttributes defender = new Medusa();
 
         int agilityDifference = attacker.getAgility() - defender.getAgility();
         int threshold = 20;
@@ -44,8 +44,8 @@ class DodgeTest {
         @Test
         void hitTest(){
 
-            Attributes attacker = new Hunter();
-            Attributes defender = new Medusa();
+            AAttributes attacker = new Hunter();
+            AAttributes defender = new Medusa();
 
             int agilityDifference = attacker.getAgility() - defender.getAgility();
             int threshold = 40;

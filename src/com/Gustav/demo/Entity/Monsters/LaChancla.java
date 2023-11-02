@@ -1,8 +1,8 @@
 package com.Gustav.demo.Entity.Monsters;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 
-public class LaChancla extends Attributes {
+public class LaChancla extends AAttributes {
     public LaChancla(int strength, int intelligence, int agility, int health, int experience, int level, int damage, int magicDamage, int gold) {
         super(strength, intelligence, agility, health, experience, level, damage, magicDamage, gold);
     }
@@ -26,4 +26,6 @@ public class LaChancla extends Attributes {
     public String getName() {
         return null;
     }
+
+
 }

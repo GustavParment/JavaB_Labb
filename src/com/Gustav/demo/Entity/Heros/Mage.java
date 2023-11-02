@@ -1,14 +1,16 @@
 package com.Gustav.demo.Entity.Heros;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import com.Gustav.demo.Resources.Paint.Colors;
 
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
-public class Mage extends Attributes implements Colors {
+public class Mage extends AAttributes implements Colors {
     public Mage() {
-        super(0, 20, 20, 50,
-                0, 0, 5, 5, 0);
+        super(0, 10, 20, 50,
+                0, 0, 5, 10, 0);
+
+
     }
 
     @Override
@@ -36,4 +38,6 @@ public class Mage extends Attributes implements Colors {
 
         return CYAN_BOLD + "Mage" + RESET;
     }
+
+
 }

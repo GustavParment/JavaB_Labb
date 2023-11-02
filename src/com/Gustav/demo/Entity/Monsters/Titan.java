@@ -1,14 +1,14 @@
 package com.Gustav.demo.Entity.Monsters;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 
 
-public class Titan extends Attributes {
+public class Titan extends AAttributes {
 
     public Titan() {
-        super(25,25, 30, 80,
-                0, 1, 10,10,20);
+        super(20,25, 30, 80,
+                0, 1, 10,10,30);
     }
 
     @Override

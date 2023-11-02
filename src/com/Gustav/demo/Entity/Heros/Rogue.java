@@ -1,18 +1,20 @@
 package com.Gustav.demo.Entity.Heros;
 
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import com.Gustav.demo.Resources.Paint.Colors;
 
 
 
 
-public class Rogue extends Attributes implements Colors {
+public class Rogue extends AAttributes implements Colors {
 
 
     public Rogue() {
-        super(20,0, 20, 50,
-                0, 0, 5,0,0);
+        super(10, 0, 20, 50,
+                0, 0, 10, 0, 0);
+
+
     }
 
     @Override
@@ -26,7 +28,7 @@ public class Rogue extends Attributes implements Colors {
     public void flee() {
 
         System.out.println(getName() + YELLOW + " fled and lost 2 hp" + RESET);
-        setHealth(getHealth()-2);
+        setHealth(getHealth() - 2);
 
 
     }
@@ -43,5 +45,8 @@ public class Rogue extends Attributes implements Colors {
 
         return YELLOW_BOLD + "Rouge" + RESET;
     }
-
 }
+
+
+
+

@@ -1,17 +1,13 @@
 package com.Gustav.Test;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import com.Gustav.demo.Entity.Heros.Mage;
 import com.Gustav.demo.Resources.ItemHandler.ItemAttributes;
 import com.Gustav.demo.Resources.ItemHandler.Items.*;
-import com.Gustav.demo.Resources.TheLoreMaster.LoreMasterKristoffer;
 import org.junit.jupiter.api.Test;
-
-import java.util.Scanner;
 
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Paint.Colors.RESET;
-import static com.Gustav.demo.Resources.Print.PrintHandler.print;
 import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +16,7 @@ class ShopTest {
     @Test
     void buyItems() {
 
-        Attributes attacker = new Mage();
+        AAttributes attacker = new Mage();
 
         attacker.setGold(attacker.getGold() + 20);
         println("GOLD BEFORE PURCHASE: " + attacker.getGold());

@@ -1,15 +1,17 @@
 package com.Gustav.demo.Entity.Heros;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import com.Gustav.demo.Resources.Paint.Colors;
 
 
-public class Hunter extends Attributes implements Colors {
+public class Hunter extends AAttributes implements Colors {
 
 
     public Hunter() {
-        super(10, 5, 20, 50,
+        super(10, 0, 20, 50,
                 0, 0, 5,0,0);
+
+
     }
 
     @Override
@@ -40,7 +42,9 @@ public class Hunter extends Attributes implements Colors {
         return GREEN_BOLD + "Hunter" + RESET;
     }
 
-
 }
+
+
+
 
 

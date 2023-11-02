@@ -1,6 +1,6 @@
 package com.Gustav.Test;
 
-import com.Gustav.demo.Entity.Attributes;
+import com.Gustav.demo.Entity.AAttributes;
 import com.Gustav.demo.Entity.Heros.Hunter;
 import com.Gustav.demo.Entity.Heros.Rogue;
 import com.Gustav.demo.Entity.Monsters.Medusa;
@@ -17,7 +17,7 @@ class LevelUpTest {
     @Test
     void levelUp() {
 
-        Attributes rogue = new Rogue();
+        AAttributes rogue = new Rogue();
 
         for (int i = 0; i < 5; i++) {
 
@@ -36,8 +36,8 @@ class LevelUpTest {
     @Test
     void bossKillExp() {
 
-        Attributes medusa = new Medusa();
-        Attributes hunter = new Hunter();
+        AAttributes medusa = new Medusa();
+        AAttributes hunter = new Hunter();
 
         hunter.setLevel(0);
         medusa.setHealth(0);

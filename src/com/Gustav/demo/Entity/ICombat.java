@@ -1,6 +1,6 @@
 package com.Gustav.demo.Entity;
 
-public interface Combat {
+public interface ICombat {
 
    String attack();
 
@@ -9,8 +9,6 @@ public interface Combat {
    String dodge();
 
    String getName();
-
-
 
 
 }
