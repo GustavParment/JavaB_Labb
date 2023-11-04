@@ -7,18 +7,16 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class LaChancla extends AAttributes {
     public LaChancla() {
-        super(0, 0, 50, 150, 0, 4, 45,60);
+        super(0, 0, 40, 150, 0, 3, 45,60);
     }
 
     @Override
     public String attack() {
-
         return  "Throws a cat and a rat\n\uD83D\uDC08\uD83D\uDC01.ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* ";
     }
 
     @Override
     public void flee() {
-
         println(YELLOW + "La Chancla fled" + RESET);
 
     }

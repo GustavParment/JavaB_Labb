@@ -7,7 +7,7 @@ import static com.Gustav.demo.Resources.Paint.Colors.*;
 public class GolemHeartLongbow extends AItemAttributes {
 
     public GolemHeartLongbow() {
-        super(20, 10, 20,0);
+        super(30, 10, 20,0);
     }
 
 

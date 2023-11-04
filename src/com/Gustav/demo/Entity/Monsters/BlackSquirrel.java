@@ -7,12 +7,11 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class BlackSquirrel extends AAttributes {
     public BlackSquirrel() {
-        super(0,0, 40, 110, 100, 3, 30,  40);
+        super(0,0, 35, 110, 100, 2, 30,  40);
     }
 
     @Override
     public String attack() {
-
         return "Shoots lasers!\n\uD83C\uDF20 ==) ==) ==) ==) ==) ==)";
     }
 
@@ -24,7 +23,6 @@ public class BlackSquirrel extends AAttributes {
 
     @Override
     public String dodge() {
-
         return GREEN + "dodged the attack and lost no HP" + RESET;
     }
 

@@ -13,7 +13,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class MedusasLair {
 
-    public static void medusasLairOptions(AAttributes attacker, Scanner sc){
+    public void medusasLairOptions(AAttributes attacker, Scanner sc){
 
         AAttributes medusa = new Medusa();
         GameLogic start = new GameLogic();

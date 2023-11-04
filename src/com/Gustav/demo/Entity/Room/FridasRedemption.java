@@ -14,7 +14,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class FridasRedemption {
 
-    public static void fridaOption(AAttributes attacker, Scanner sc){
+    public void fridaOption(AAttributes attacker, Scanner sc){
 
         AAttributes frida = new Frida();
         GameLogic start = new GameLogic();

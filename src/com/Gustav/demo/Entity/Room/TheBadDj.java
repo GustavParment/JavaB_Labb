@@ -13,7 +13,7 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class TheBadDj {
-    public static void badDjOption(AAttributes attacker, Scanner sc){
+    public void badDjOption(AAttributes attacker, Scanner sc){
 
         AAttributes badDj = new BadDj();
         GameLogic start = new GameLogic();

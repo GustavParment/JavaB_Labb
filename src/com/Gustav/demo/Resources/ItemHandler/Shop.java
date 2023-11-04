@@ -22,19 +22,19 @@ public class Shop {
             println(YELLOW + BLACK_BACKGROUND + "☰ Kristoffer's Shop ☰" + RESET);
 
             println("📖" + "1.Book of Wisdom: " + YELLOW_BOLD + "20 gold" + RESET + "/"
-                    + BLUE + "AGI:+10 SPIRIT:+10 STRNG:+10 HP:+10" + RESET);
+                    + BLUE + "AGI:+10 SPIRIT:+20 STRNG:+20 HP:+20" + RESET);
 
             println("💗" + "2.Health Potion: " + YELLOW_BOLD + "20 gold" + RESET +
                     "/" + BLUE + "HP:+20" + RESET);
 
             println("🏹"+"3.Golem Heart Longbow: " + YELLOW_BOLD + "40 gold" + RESET + "/" +
-                    BLUE + "AGI:+20 STRNG:+20 SPIRIT:+10" + RESET);
+                    BLUE + "AGI:+20 STRNG:+30 SPIRIT:+10" + RESET);
 
             println("✨"+ "4.High Scholars Grand Staff: " + YELLOW_BOLD + "40 gold" + RESET + "/" +
-                    BLUE + "STRNG:+10 AGI:+20 SPIRIT:+20" + RESET);
+                    BLUE + "STRNG:+10 AGI:+20 SPIRIT:+30" + RESET);
 
             println("🔪" + "5.Lung Breaker Dagger: " + YELLOW_BOLD + "80 gold" + RESET + "/" +
-                    BLUE + "AGI:+30 STRNG:+30 SPIRIT:30" + RESET);
+                    BLUE + "AGI:+40 STRNG:+40 SPIRIT:40" + RESET);
 
             println(PURPLE + "╰┈➤6.Return to Lore Master's Inn" + RESET);
 
@@ -59,10 +59,9 @@ public class Shop {
 
     }
 
-    protected void withdraw20GoldAndAddStats(AAttributes attacker, AItemAttributes item){
+    private void withdraw20GoldAndAddStats(AAttributes attacker, AItemAttributes item){
 
         if (attacker.getGold() < 20) {
-
             println("Inefficient funds");
 
         } else {
@@ -78,9 +77,8 @@ public class Shop {
         }
     }
 
-    protected void withdraw40GoldAndAddStats(AAttributes attacker, AItemAttributes item){
+    private void withdraw40GoldAndAddStats(AAttributes attacker, AItemAttributes item){
         if (attacker.getGold() < 40) {
-
             println("Inefficient funds");
 
         }
@@ -92,14 +90,13 @@ public class Shop {
             attacker.setGold(attacker.getGold() - 40);
 
             println(YELLOW + "You purchased " + item.getName());
-            println("Gold: " + attacker.getGold());
+            println(YELLOW + "Gold: " + attacker.getGold() + RESET);
 
 
         }
     }
-    protected void withdraw80GoldAndAddStats(AAttributes attacker, AItemAttributes item){
+    private void withdraw80GoldAndAddStats(AAttributes attacker, AItemAttributes item){
         if (attacker.getGold() < 80) {
-
             println("Inefficient funds");
 
         }
@@ -111,7 +108,7 @@ public class Shop {
             attacker.setGold(attacker.getGold() - 80);
 
             println(YELLOW + "You purchased " + item.getName());
-            println("Gold: " + attacker.getGold());
+            println(YELLOW + "Gold: " + attacker.getGold() + RESET);
 
         }
 

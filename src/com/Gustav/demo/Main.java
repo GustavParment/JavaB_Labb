@@ -37,16 +37,14 @@ public class Main {
          *
          *
          */
-        StartMenu startMenu = new StartMenu();
-            startMenu.options();
+        /*StartMenu startMenu = new StartMenu();
+            startMenu.options();*/
 
-        /*AAttributes medusa = new Benny();
-        AAttributes hunter = new Hunter();
+        AAttributes medusa = new Medusa();
+        AAttributes hunter = new Rogue();
         GameLogic play = new GameLogic();
         Scanner sc = new Scanner(System.in);
-        play.fight(sc,hunter,medusa);*/
-
-
+        play.fight(sc,hunter,medusa);
 
 
 

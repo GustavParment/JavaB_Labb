@@ -4,7 +4,7 @@ import com.Gustav.demo.Entity.Interface.AAttributes;
 
 public class BadDj extends AAttributes {
     public BadDj() {
-        super(0, 0, 0, 0, 0, 0, 0, 0);
+        super(0, 0, 50, 0, 0, 4, 50, 20);
     }
 
     @Override

@@ -148,6 +148,7 @@ public abstract class AAttributes implements ICombat {
                 damage += 10;
                 attacker.setDamage(damage);
                 attacker.setDamage(getDamage()-10);
+                System.out.println("CALC:"+ damage);
 
 
 

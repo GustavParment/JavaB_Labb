@@ -14,7 +14,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class TheGigantBlackSquirrelsNest {
 
-    public static void gigantBlackSquirrelOptions(AAttributes attacker, Scanner sc){
+    public void gigantBlackSquirrelOptions(AAttributes attacker, Scanner sc){
 
         AAttributes blackSquirrel = new BlackSquirrel();
         GameLogic start = new GameLogic();

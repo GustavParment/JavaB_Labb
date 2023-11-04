@@ -17,9 +17,9 @@ public class GameLogic implements Colors {
             println(YELLOW + "You Engaged " + defender.getName()+ RESET);
 
             do {
-
                 println("\n1.Attack " + defender.getName());
-                println("2.Flee the fight");
+                println("2.Player Attributes");
+                println(PURPLE + "╰┈➤3.Flee the fight" + RED + " and lose 2 hp" + RESET);
 
                 switch (sc.nextLine()) {
                     case "1" -> {
@@ -39,8 +39,9 @@ public class GameLogic implements Colors {
                         if (attacker.getHealth() <= 0) fightDone = isFightDone(attacker, defender, false);
 
                     }
-                    case "2" -> {attacker.flee();println("" + attacker.getHealth());fightDone = true;}
-                    default -> println(RED + "Wrong input, try again..." + RESET);
+                    case "2" -> attacker.getStatus(attacker);
+                    case "3" -> {attacker.flee();println("" + attacker.getHealth());fightDone = true;}
+                    default  -> println(RED + "Wrong input, try again..." + RESET);
                 }
 
             } while (!fightDone);
@@ -111,20 +112,18 @@ public class GameLogic implements Colors {
 
     }
 
-    private boolean attack(AAttributes attacker, AAttributes defender) {
-
-        boolean attackerHealth = true;
-
-
-            printDelay(attacker.getName() + " " + attacker.attack());
-            attacker.calculateDamage(attacker);
-            defender.setHealth(defender.getHealth() - attacker.getDamage());
+    private void attack(AAttributes attacker, AAttributes defender) {
+        printDelay(attacker.getName() + " " + attacker.attack());
+        attacker.calculateDamage(attacker);
+        defender.setHealth(defender.getHealth() - attacker.getDamage());
+        System.out.println(attacker.getDamage());
 
 
 
 
 
-        return attackerHealth;
+
+
     }
 
     private boolean calculateDodge(AAttributes attacker, AAttributes defender){

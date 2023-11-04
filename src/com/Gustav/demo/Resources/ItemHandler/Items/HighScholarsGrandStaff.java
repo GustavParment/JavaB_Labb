@@ -8,7 +8,7 @@ public class HighScholarsGrandStaff extends AItemAttributes {
 
 
     public HighScholarsGrandStaff() {
-        super(10, 20, 20, 0);
+        super(10, 30, 20, 0);
     }
 
     @Override

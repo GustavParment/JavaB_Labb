@@ -14,7 +14,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class TheEvilKingBenny {
 
-    public static void bennyOption(AAttributes attacker, Scanner sc){
+    public void bennyOption(AAttributes attacker, Scanner sc){
 
         AAttributes benny = new Benny();
         GameLogic start = new GameLogic();

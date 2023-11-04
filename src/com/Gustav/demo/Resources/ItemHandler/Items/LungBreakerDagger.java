@@ -8,7 +8,7 @@ public class LungBreakerDagger extends AItemAttributes {
 
 
     public LungBreakerDagger() {
-        super(30, 30, 30, 0);
+        super(40, 40, 40, 0);
     }
 
 

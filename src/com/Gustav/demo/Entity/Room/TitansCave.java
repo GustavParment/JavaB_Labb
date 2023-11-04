@@ -14,7 +14,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class TitansCave {
 
-    public static void titansCaveOption(AAttributes attacker, Scanner sc){
+    public void titansCaveOption(AAttributes attacker, Scanner sc){
 
         AAttributes titan = new Titan();
         GameLogic start = new GameLogic();

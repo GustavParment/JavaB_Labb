@@ -6,7 +6,7 @@ import static com.Gustav.demo.Resources.Paint.Colors.*;
 public class BookOfWisdom extends AItemAttributes {
 
     public BookOfWisdom() {
-        super(10, 10, 10, 10);
+        super(20, 20, 10, 20);
     }
 
     @Override

@@ -12,20 +12,17 @@ public class Frida extends AAttributes {
 
     @Override
     public String attack() {
-
         return "Throws flowers!\n\uD83C\uDF37⋆₊˚❀⋆₊˚❀⋆₊˚❀⋆₊˚❀⋆₊˚❀⋆₊˚❀";
     }
 
     @Override
     public void flee() {
-
         println(YELLOW + "Frida fled" + RESET);
-
     }
 
     @Override
     public String dodge() {
-       return GREEN + "dodged the attack and lost no HP" + RESET;
+        return GREEN + "dodged the attack and lost no HP" + RESET;
     }
 
     @Override

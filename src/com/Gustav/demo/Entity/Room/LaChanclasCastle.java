@@ -14,7 +14,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class LaChanclasCastle {
 
-    public static void laChanclaOption(AAttributes attacker, Scanner sc){
+    public void laChanclaOption(AAttributes attacker, Scanner sc){
 
         AAttributes laChancla = new LaChancla();
         GameLogic start = new GameLogic();
