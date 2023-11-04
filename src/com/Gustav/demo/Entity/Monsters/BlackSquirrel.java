@@ -1,22 +1,24 @@
 package com.Gustav.demo.Entity.Monsters;
 
-import com.Gustav.demo.Entity.AAttributes;
+import com.Gustav.demo.Entity.Interface.AAttributes;
 
 import static com.Gustav.demo.Resources.Paint.Colors.*;
+import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class BlackSquirrel extends AAttributes {
     public BlackSquirrel() {
-        super(0,0, 30, 110, 100, 3, 30, 0, 40);
+        super(0,0, 40, 110, 100, 3, 30,  40);
     }
 
     @Override
     public String attack() {
 
-        return "Shoots a laser canon!\n ==) ==) ==) ==) ==)";
+        return "Shoots lasers!\n\uD83C\uDF20 ==) ==) ==) ==) ==) ==)";
     }
 
     @Override
     public void flee() {
+        println(YELLOW + "The Gigant Black Squirrel fled" + RESET);
 
     }
 

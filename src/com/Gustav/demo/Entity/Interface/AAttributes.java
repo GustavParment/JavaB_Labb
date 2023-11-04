@@ -1,6 +1,4 @@
-package com.Gustav.demo.Entity;
-
-import java.util.jar.Attributes;
+package com.Gustav.demo.Entity.Interface;
 
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
@@ -8,35 +6,29 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 public abstract class AAttributes implements ICombat {
 
     private int strength;
-    private int intelligence;
+    private int spirit;
     private int agility;
     private int damage;
-    private int magicDamage;
     private int health;
     private int experience;
     private int level;
     private int gold;
 
-    public AAttributes(int strength, int intelligence, int agility, int health,
-                       int experience, int level, int damage, int magicDamage, int gold) {
+    public AAttributes(int strength, int spirit, int agility, int health,
+                       int experience, int level, int damage,int gold) {
         this.strength = strength;
-        this.intelligence = intelligence;
+        this.spirit = spirit;
         this.agility = agility;
         this.health = health;
         this.experience = experience;
         this.level = level;
         this.damage = damage;
-        this.magicDamage = magicDamage;
+
         this.gold = gold;
     }
 
-    public int getMagicDamage() {
-        return magicDamage;
-    }
 
-    public void setMagicDamage(int magicDamage) {
-        this.magicDamage = magicDamage;
-    }
+
 
     public int getStrength() {
         return strength;
@@ -48,13 +40,13 @@ public abstract class AAttributes implements ICombat {
     }
 
 
-    public int getIntelligence() {
-        return intelligence;
+    public int getSpirit() {
+        return spirit;
     }
 
 
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
+    public void setSpirit(int spirit) {
+        this.spirit = spirit;
     }
 
 
@@ -120,9 +112,8 @@ public abstract class AAttributes implements ICombat {
         if (attacker.getExperience() >= 100) {
 
             attacker.setLevel(attacker.getLevel() + 1);
-            attacker.setHealth(attacker.getHealth() + 20);
             attacker.setAgility(attacker.getAgility() + 2);
-            attacker.setIntelligence(attacker.getIntelligence() + 2);
+            attacker.setSpirit(attacker.getSpirit() + 2);
             attacker.setStrength(attacker.getStrength() + 2);
             println(BLUE_BOLD + "You reached level: " + attacker.getLevel() + RESET);
             attacker.setExperience(0);
@@ -131,23 +122,22 @@ public abstract class AAttributes implements ICombat {
 
     }
 
-   protected void getStatus(AAttributes attacker) {
+   public void getStatus(AAttributes attacker) {
 
         println(attacker.getName());
         println("HP: " + GREEN + health + RESET);
         println("Level: " + BLUE + level + RESET);
         println("Damage: " + RED + damage + RESET);
-        println("Magical Damage: " + RED + magicDamage + RESET);
         println("Gold: " + YELLOW + gold + RESET);
+        println("Spirit: " + PURPLE + spirit + RESET);
         println("Strength " + BLACK + strength + RESET);
-        println("Intelligence " + PURPLE + intelligence + RESET);
         println("Agility: " + CYAN + agility + RESET);
 
 
     }
 
 
-    protected void calculateDamage(AAttributes attacker) {
+    public void calculateDamage(AAttributes attacker) {
 
         int damage = attacker.getDamage();
         int maxIncrease = attacker.getStrength();
@@ -159,7 +149,7 @@ public abstract class AAttributes implements ICombat {
                 attacker.setDamage(damage);
                 attacker.setDamage(getDamage()-10);
 
-                System.out.println("\nCALC DMG: " + attacker.getDamage());
+
 
             }
         }
@@ -169,18 +159,27 @@ public abstract class AAttributes implements ICombat {
     }
 
 
-    protected void calculateMagicalDamage(){
+    public void calculateHealthReg(AAttributes attacker){
 
-        int magicalDamage = getMagicDamage();
-        int maxIncrease = getIntelligence();
+        int health = attacker.getHealth();
+        int maxIncrease = attacker.getSpirit();
 
-        if (getIntelligence() > 10) {
-            while (getIntelligence() % 10 == 0 && magicalDamage < maxIncrease) {
-                magicalDamage += 10;
-                setMagicDamage(magicalDamage);
-                setIntelligence(getIntelligence() - 10);
+        if (attacker.getSpirit() >= 10 ){
+            while (attacker.getSpirit() % 10 == 0 && health < maxIncrease ){
+
+                health += 2;
+
+
+                attacker.setHealth(health);
+                attacker.setHealth(attacker.getHealth() - 10);
+
+
+
             }
+
+            System.out.println("NEW HEALTH: " + attacker.getHealth());
         }
+
 
 
     }

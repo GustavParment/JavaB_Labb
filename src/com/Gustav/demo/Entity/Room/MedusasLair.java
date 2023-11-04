@@ -1,8 +1,9 @@
-package com.Gustav.demo.Entity.Rooms;
+package com.Gustav.demo.Entity.Room;
 
-import com.Gustav.demo.Entity.AAttributes;
-import com.Gustav.demo.Entity.GameLogic;
+import com.Gustav.demo.Entity.Interface.AAttributes;
+import com.Gustav.demo.GameEngine.GameLogic;
 import com.Gustav.demo.Entity.Monsters.Medusa;
+import com.Gustav.demo.GameEngine.Menu.RoomMenu;
 
 import java.util.Scanner;
 
@@ -16,12 +17,13 @@ public class MedusasLair {
 
         AAttributes medusa = new Medusa();
         GameLogic start = new GameLogic();
+        RoomMenu menu = new RoomMenu();
         boolean fight = false;
 
         do {
-            println(BLACK + RED_BACKGROUND + "---Medusas Lair---" + RESET);
+            println(BLACK + RED_BACKGROUND + "☰ Medusas Lair ☰" + RESET);
             printDelay(RED + "Medusa is angry be careful! " + RESET);
-            println("\n1.Engage Medusa \n2.Medusas attributes \n3.Back to Rooms");
+            println("\n1.Engage Medusa \n2.Medusas attributes "+ PURPLE + "\n╰┈➤3.Back to Rooms"+RESET);
 
             switch (sc.nextLine()) {
                 case "1" -> {start.fight(sc, attacker, medusa);fight = true;}
@@ -29,9 +31,10 @@ public class MedusasLair {
                     println("Hp: " + medusa.getHealth());
                     println("Damage: " + medusa.getDamage());
                     println("Level: " + medusa.getLevel());
+                    println("AGI: " + medusa.getAgility());
                     println("Gold: " + medusa.getGold());
                 }
-                case "3" -> start.roomChooser(attacker,sc);
+                case "3" -> menu.roomChooser(attacker,sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);
             }
         }while(!fight);

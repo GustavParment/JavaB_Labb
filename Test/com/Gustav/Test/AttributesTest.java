@@ -1,10 +1,13 @@
 package com.Gustav.Test;
 
-import com.Gustav.demo.Entity.AAttributes;
+import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Entity.Heros.Mage;
 import com.Gustav.demo.Entity.Heros.Necromancer;
 import com.Gustav.demo.Entity.Heros.Rogue;
 import org.junit.jupiter.api.Test;
+
+import java.sql.SQLOutput;
+import java.util.Random;
 
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
@@ -34,70 +37,61 @@ class AttributesTest {
 
     }
     @Test
-    void calculateDamageIntelligence(){
+    void calculateHealthReg() {
 
-        AAttributes attacker = new Necromancer();
+        AAttributes necro = new Necromancer();
 
-        int magicalDamage = attacker.getMagicDamage();
+        necro.setSpirit(necro.getSpirit()+60);
+        necro.setHealth(necro.getHealth());
 
-        println("ORIGINAL INTELLIGENCE " + attacker.getIntelligence());
-        println("MAGICAL DAMAGE BEFORE INTELLIGENCE ADD:" + attacker.getMagicDamage());
+        System.out.println("SPIRIT: " + necro.getSpirit());
+        System.out.println("OLD HEALTH: " + necro.getHealth());
 
-        attacker.setIntelligence(attacker.getIntelligence() + 10);
+        int health = necro.getHealth();
+        int maxIncrease = necro.getSpirit();
 
-        if (attacker.getIntelligence() > 10 && attacker.getIntelligence() % 10 == 0){
+        if (necro.getSpirit() >= 10 ){
+            while (necro.getSpirit() % 10 == 0 && health < maxIncrease ){
 
-            magicalDamage += 10;
-
-            attacker.setMagicDamage(magicalDamage);
-
-        }
-        println("NEW INTELLIGENCE " + attacker.getIntelligence());
-        println("MAGICAL DAMAGE AFTER INTELLIGENCE ADD " + attacker.getMagicDamage());
+                health += 2;
 
 
-    }
-    @Test
-    void checkDamageIncrease(){
+                necro.setHealth(health);
+                necro.setHealth(necro.getHealth() - 10);
 
-        AAttributes mage = new Mage();
-        AAttributes rogue = new Rogue();
 
-        System.out.println("INTEL BEFORE LOOP: " + mage.getIntelligence());
-        System.out.println("STRNG BEFORE LOOP: " + rogue.getStrength());
-        System.out.println("DAMAGE: " + rogue.getDamage());
-        System.out.println("MAGICAL DMG: " + mage.getMagicDamage());
-        int damage = rogue.getDamage();
-
-        int magicalDamage = mage.getMagicDamage();
-        for (int i = 1; i < 2 ; i++){
-
-            mage.setIntelligence(mage.getIntelligence() + 10);
-            rogue.setStrength(rogue.getStrength() + 10);
-
-            if (mage.getIntelligence() > 10 && mage.getIntelligence() % 10 == 0){
-
-                magicalDamage += 10;
-                mage.setMagicDamage(magicalDamage);
-
-            }if (rogue.getStrength() > 10 && rogue.getStrength() % 10 == 0){
-
-                damage += 10;
-                rogue.setDamage(damage);
 
             }
+
+            System.out.println("NEW HEALTH: " + necro.getHealth());
         }
-
-        System.out.println("\nDAMAGE AFTER INCREASE: " + rogue.getDamage());
-        System.out.println("MAGICAL DMG AFTER INCREASE: " + mage.getMagicDamage());
-        System.out.println("INTEL AFTER LOOP: " + mage.getIntelligence());
-        System.out.println("STRNG AFTER LOOP: " + rogue.getStrength());
-
-        //assertEquals(rogue.getDamage(),35);
-        //assertEquals(mage.getMagicDamage(),35);
-
 
 
     }
+
+    @Test
+    void healthRegChance(){
+
+        Random random = new Random();
+        int ranNum = random.nextInt(100)+1;
+
+        int chanceOnReg = 40;
+        while(true) {
+
+            if (ranNum > chanceOnReg) {
+
+                calculateHealthReg();
+
+
+            } else {
+                System.out.println("NO HEALTH REGGED");
+            }
+
+
+        }
+    }
+
+
 }
+
 

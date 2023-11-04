@@ -1,30 +1,36 @@
 package com.Gustav.demo.Entity.Monsters;
 
-import com.Gustav.demo.Entity.AAttributes;
+import com.Gustav.demo.Entity.Interface.AAttributes;
+
+import static com.Gustav.demo.Resources.Paint.Colors.*;
+import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class LaChancla extends AAttributes {
-    public LaChancla(int strength, int intelligence, int agility, int health, int experience, int level, int damage, int magicDamage, int gold) {
-        super(strength, intelligence, agility, health, experience, level, damage, magicDamage, gold);
+    public LaChancla() {
+        super(0, 0, 50, 150, 0, 4, 45,60);
     }
 
     @Override
     public String attack() {
-        return null;
+
+        return  "Throws a cat and a rat\n\uD83D\uDC08\uD83D\uDC01.ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* ";
     }
 
     @Override
     public void flee() {
 
+        println(YELLOW + "La Chancla fled" + RESET);
+
     }
 
     @Override
     public String dodge() {
-        return null;
+        return GREEN + "dodged the attack and lost no HP" + RESET;
     }
 
     @Override
     public String getName() {
-        return null;
+        return RED + "La Chancla" + RESET;
     }
 
 

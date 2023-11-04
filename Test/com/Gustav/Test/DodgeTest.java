@@ -1,6 +1,6 @@
 package com.Gustav.Test;
 
-import com.Gustav.demo.Entity.AAttributes;
+import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Entity.Heros.Hunter;
 import com.Gustav.demo.Entity.Monsters.Medusa;
 import org.junit.jupiter.api.Test;

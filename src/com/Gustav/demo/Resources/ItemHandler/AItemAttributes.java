@@ -1,15 +1,15 @@
 package com.Gustav.demo.Resources.ItemHandler;
 
-public abstract class ItemAttributes{
+public abstract class AItemAttributes implements IItems {
 
     private int strength;
-    private int intelligence;
+    private int spirit;
     private int agility;
     private int health;
 
-    public ItemAttributes(int strength, int intelligence, int agility, int health) {
+    public AItemAttributes(int strength, int spirit, int agility, int health) {
         this.strength = strength;
-        this.intelligence = intelligence;
+        this.spirit = spirit;
         this.agility = agility;
         this.health = health;
     }
@@ -22,12 +22,12 @@ public abstract class ItemAttributes{
         this.strength = strength;
     }
 
-    public int getIntelligence() {
-        return intelligence;
+    public int getSpirit() {
+        return spirit;
     }
 
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
+    public void setSpirit(int spirit) {
+        this.spirit = spirit;
     }
 
     public int getAgility() {

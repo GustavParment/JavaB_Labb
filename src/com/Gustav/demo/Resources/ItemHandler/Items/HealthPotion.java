@@ -1,8 +1,11 @@
 package com.Gustav.demo.Resources.ItemHandler.Items;
 
-import com.Gustav.demo.Resources.ItemHandler.ItemAttributes;
+import com.Gustav.demo.Resources.ItemHandler.AItemAttributes;
 
-public class HealthPotion extends ItemAttributes {
+import static com.Gustav.demo.Resources.Paint.Colors.GREEN;
+import static com.Gustav.demo.Resources.Paint.Colors.RESET;
+
+public class HealthPotion extends AItemAttributes {
 
 
     public HealthPotion() {
@@ -10,4 +13,8 @@ public class HealthPotion extends ItemAttributes {
     }
 
 
+    @Override
+    public String getName() {
+        return GREEN + "Health Potion" + RESET;
+    }
 }

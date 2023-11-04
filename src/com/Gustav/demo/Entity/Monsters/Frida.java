@@ -1,30 +1,36 @@
 package com.Gustav.demo.Entity.Monsters;
 
-import com.Gustav.demo.Entity.AAttributes;
+import com.Gustav.demo.Entity.Interface.AAttributes;
+
+import static com.Gustav.demo.Resources.Paint.Colors.*;
+import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class Frida extends AAttributes {
-    public Frida(int strength, int intelligence, int agility, int health, int experience, int level, int damage, int magicDamage, int gold) {
-        super(strength, intelligence, agility, health, experience, level, damage, magicDamage, gold);
+    public Frida() {
+        super(0,0, 65, 200,0, 5, 55, 70);
     }
 
     @Override
     public String attack() {
-        return null;
+
+        return "Throws flowers!\n\uD83C\uDF37⋆₊˚❀⋆₊˚❀⋆₊˚❀⋆₊˚❀⋆₊˚❀⋆₊˚❀";
     }
 
     @Override
     public void flee() {
 
+        println(YELLOW + "Frida fled" + RESET);
+
     }
 
     @Override
     public String dodge() {
-        return null;
+       return GREEN + "dodged the attack and lost no HP" + RESET;
     }
 
     @Override
     public String getName() {
-        return null;
+        return RED + "\uD83D\uDC78Frida\uD83D\uDC78" + RESET;
     }
 
 

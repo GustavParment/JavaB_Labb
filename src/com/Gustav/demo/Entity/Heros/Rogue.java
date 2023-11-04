@@ -1,7 +1,7 @@
 package com.Gustav.demo.Entity.Heros;
 
 
-import com.Gustav.demo.Entity.AAttributes;
+import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Resources.Paint.Colors;
 
 
@@ -11,8 +11,8 @@ public class Rogue extends AAttributes implements Colors {
 
 
     public Rogue() {
-        super(10, 0, 20, 50,
-                0, 0, 10, 0, 0);
+        super(10, 0, 10, 50,
+                0, 0, 5, 0);
 
 
     }
@@ -20,7 +20,7 @@ public class Rogue extends AAttributes implements Colors {
     @Override
     public String attack() {
 
-        return "Slice and dice!\n`/ `/ `/ `/ `/ `/ ";
+        return "Slice and dice!\n☠\uFE0F\uD83D\uDD2A ⚅〴 ⚅〴 ⚅〴 ⚅〴 ⚅〴 ⚅〴";
 
     }
 

@@ -1,8 +1,8 @@
 package com.Gustav.Test;
 
-import com.Gustav.demo.Entity.AAttributes;
+import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Entity.Heros.Mage;
-import com.Gustav.demo.Resources.ItemHandler.ItemAttributes;
+import com.Gustav.demo.Resources.ItemHandler.AItemAttributes;
 import com.Gustav.demo.Resources.ItemHandler.Items.*;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +23,7 @@ class ShopTest {
 
 
         int input = 1;
-        ItemAttributes item;
+        AItemAttributes item;
 
 
                 item = null;
@@ -38,7 +38,7 @@ class ShopTest {
                         else{
                             attacker.setStrength(attacker.getStrength() + item.getStrength());
                             attacker.setAgility(attacker.getStrength() + item.getAgility());
-                            attacker.setIntelligence(attacker.getStrength() + item.getIntelligence());
+                            attacker.setSpirit(attacker.getStrength() + item.getSpirit());
                             attacker.setGold(attacker.getGold() - 20);
                             println("GOLD AFTER PURCHASE: " + attacker.getGold());
 

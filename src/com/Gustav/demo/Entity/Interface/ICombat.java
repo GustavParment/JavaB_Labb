@@ -1,4 +1,4 @@
-package com.Gustav.demo.Entity;
+package com.Gustav.demo.Entity.Interface;
 
 public interface ICombat {
 
