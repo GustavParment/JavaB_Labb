@@ -7,7 +7,7 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class Benny extends AAttributes {
     public Benny() {
-        super(0, 20, 70, 300, 0, 7, 60, 100);
+        super(0, 70, 70, 400, 0, 7, 60, 100);
     }
 
     @Override

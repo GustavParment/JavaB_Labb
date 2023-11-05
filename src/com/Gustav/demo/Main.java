@@ -17,20 +17,11 @@ public class Main {
     public static void main(String[] args) {
 
         /**TODO-Dungeon Run
-         *  Creat a function for determine doge chance-Done
-         *  Creat a shop class / The shopkeeper and Lore-master Kristoffer-DONE
-         *  Creat a start menu determine how the game is starting-DONE
-         *  Creat a currency - DONE
-         *  Creat a function for bossLoot()(gold drop) - GOLD DROP DONE/ADD ITEM DROP?? - DONE
-         *  Creat a function to see stats-Done
-         *  Implements stats how much is you chance to doge/hit -DONE
-         *  Creat Argument fight(Attributes boss)-DONE
-         *  Make purchase item available - DONE
-         *  Creat more bosses - IN PROGRESS
-         *  Creat a damage calculator function which stats gives damage/Magical damage -DONE
-         *  Fix fight method/When boss hp is 0 then fight is over
-         *  Implement magicalDamage in fight method
-         *  Display gold
+            Creat more bosses - IN PROGRESS
+         *  Creat 3 more rooms that will be different from boss rooms-
+         *
+         *
+         *
          *
          *
          *
@@ -41,7 +32,7 @@ public class Main {
             startMenu.options();*/
 
         AAttributes medusa = new Medusa();
-        AAttributes hunter = new Rogue();
+        AAttributes hunter = new Hunter();
         GameLogic play = new GameLogic();
         Scanner sc = new Scanner(System.in);
         play.fight(sc,hunter,medusa);

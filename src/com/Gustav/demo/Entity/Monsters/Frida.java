@@ -7,7 +7,7 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class Frida extends AAttributes {
     public Frida() {
-        super(0,0, 65, 200,0, 5, 55, 70);
+        super(0,70, 65, 300,0, 6, 55, 70);
     }
 
     @Override

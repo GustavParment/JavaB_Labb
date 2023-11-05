@@ -22,7 +22,7 @@ public class TheBadDj {
 
         do {
             println(BLACK + RED_BACKGROUND + "☰ The Bad DJ ☰" + RESET);
-            printDelay(RED + " The Bad Dj plays a horrible song  " + RESET);
+            printDelay(RED + "The Bad Dj plays a horrible song  " + RESET);
             println("\n1.Engage The Bad Dj \n2.Bad Djs attributes " + PURPLE + "\n╰┈➤3.Back to Rooms" + RESET);
 
             switch (sc.nextLine()) {

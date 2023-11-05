@@ -11,7 +11,7 @@ public class Medusa extends AAttributes implements Colors {
     public Medusa() {
 
         super(0,0, 3, 5,
-                0, 0, 5,20);
+                0, 1, 5,20);
     }
 
     @Override

@@ -9,7 +9,7 @@ public class Titan extends AAttributes {
 
     public Titan() {
         super(0,0, 20, 80,
-                0, 1, 10,30);
+                0, 2, 10,20);
     }
 
     @Override

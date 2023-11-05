@@ -68,30 +68,6 @@ class AttributesTest {
 
 
     }
-
-    @Test
-    void healthRegChance(){
-
-        Random random = new Random();
-        int ranNum = random.nextInt(100)+1;
-
-        int chanceOnReg = 40;
-        while(true) {
-
-            if (ranNum > chanceOnReg) {
-
-                calculateHealthReg();
-
-
-            } else {
-                System.out.println("NO HEALTH REGGED");
-            }
-
-
-        }
-    }
-
-
 }
 
 

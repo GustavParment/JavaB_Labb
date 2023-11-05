@@ -15,7 +15,8 @@ public abstract class AAttributes implements ICombat {
     private int gold;
 
     public AAttributes(int strength, int spirit, int agility, int health,
-                       int experience, int level, int damage,int gold) {
+                       int experience, int level, int damage,int gold)
+    {
         this.strength = strength;
         this.spirit = spirit;
         this.agility = agility;
@@ -27,73 +28,57 @@ public abstract class AAttributes implements ICombat {
         this.gold = gold;
     }
 
-
-
-
     public int getStrength() {
         return strength;
     }
-
 
     public void setStrength(int strength) {
         this.strength = strength;
     }
 
-
     public int getSpirit() {
         return spirit;
     }
-
 
     public void setSpirit(int spirit) {
         this.spirit = spirit;
     }
 
-
     public int getAgility() {
         return agility;
     }
-
 
     public void setAgility(int agility) {
         this.agility = agility;
     }
 
-
     public int getHealth() {
         return health;
     }
-
 
     public void setHealth(int health) {
         this.health = health;
     }
 
-
     public int getExperience() {
         return experience;
     }
-
 
     public void setExperience(int experience) {
         this.experience = experience;
     }
 
-
     public int getLevel() {
         return level;
     }
-
 
     public void setLevel(int level) {
         this.level = level;
     }
 
-
     public int getDamage() {
         return damage;
     }
-
 
     public void setDamage(int damage) {
         this.damage = damage;
@@ -122,20 +107,19 @@ public abstract class AAttributes implements ICombat {
 
     }
 
-   public void getStatus(AAttributes attacker) {
+    public void getStatus(AAttributes attacker) {
 
         println(attacker.getName());
-        println("HP: " + GREEN + health + RESET);
-        println("Level: " + BLUE + level + RESET);
-        println("Damage: " + RED + damage + RESET);
-        println("Gold: " + YELLOW + gold + RESET);
-        println("Spirit: " + PURPLE + spirit + RESET);
-        println("Strength " + BLACK + strength + RESET);
-        println("Agility: " + CYAN + agility + RESET);
+        println(GREEN +"HP: " +  health + RESET);
+        println(BLUE +"Level: " +  level + RESET);
+        println(RED + "Damage: " + damage + RESET);
+        println(YELLOW + "Gold: " +  gold + RESET);
+        println(PURPLE + "Spirit: " + spirit + RESET);
+        println(BLACK + "Strength " +  strength + RESET);
+        println(CYAN + "Agility: " + agility + RESET);
 
 
     }
-
 
     public void calculateDamage(AAttributes attacker) {
 
@@ -148,42 +132,42 @@ public abstract class AAttributes implements ICombat {
                 damage += 10;
                 attacker.setDamage(damage);
                 attacker.setDamage(getDamage()-10);
-                System.out.println("CALC:"+ damage);
-
-
 
             }
         }
-
-
-
     }
-
 
     public void calculateHealthReg(AAttributes attacker){
-
-        int health = attacker.getHealth();
-        int maxIncrease = attacker.getSpirit();
-
-        if (attacker.getSpirit() >= 10 ){
-            while (attacker.getSpirit() % 10 == 0 && health < maxIncrease ){
-
-                health += 2;
-
-
-                attacker.setHealth(health);
-                attacker.setHealth(attacker.getHealth() - 10);
-
-
+        switch (attacker.getSpirit()){
+            case 20,21,22,23,24,25,26,27,28,29 ->{
+                attacker.setHealth(attacker.getHealth() + 2);
+                println(attacker.getName() + YELLOW +  " regenerated 2 hp " + RESET);
 
             }
+            case 30,32,33,34,35,36,37,38,39 ->{
+                attacker.setHealth(attacker.getHealth() + 4);
+                println(attacker.getName() + YELLOW +  " regenerated 4 hp " + RESET);
+            }
+            case 40,41,42,43,44,45,46,47,48,49 ->{
+                attacker.setHealth(attacker.getHealth() + 6);
+                println(attacker.getName() + YELLOW +  " regenerated 6 hp " + RESET);
+            }
+            case 50,51,52,53,54,55,56,57,58,59 ->{
+                attacker.setHealth(attacker.getHealth() + 8);
+                println(attacker.getName() + YELLOW +  " regenerated 8 hp " + RESET);
+            }
+            case 60,61,62,63,64,66,67,68,69 ->{
+                attacker.setHealth(attacker.getHealth() + 10);
+                println(attacker.getName() + YELLOW +  " regenerated 10 hp " + RESET);
+            }
+            case 70 ->{
+                attacker.setHealth(attacker.getHealth() + 20);
+                println(attacker.getName() + YELLOW +  " regenerated 20 hp " + RESET);
+            }
 
-            System.out.println("NEW HEALTH: " + attacker.getHealth());
         }
-
-
-
     }
 }
+
 
 

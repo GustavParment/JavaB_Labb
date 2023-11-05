@@ -7,7 +7,7 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class BlackSquirrel extends AAttributes {
     public BlackSquirrel() {
-        super(0,0, 35, 110, 100, 2, 30,  40);
+        super(0,0, 25, 110, 100, 3, 30,  20);
     }
 
     @Override
