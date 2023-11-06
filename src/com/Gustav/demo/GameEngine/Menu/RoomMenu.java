@@ -21,12 +21,14 @@ public class RoomMenu {
         TheGigantBlackSquirrelsNest squirrelsNest = new TheGigantBlackSquirrelsNest();
         TitansCave titansCave = new TitansCave();
         TheBadDj badDj = new TheBadDj();
+        TheRoomOfRiddles riddles = new TheRoomOfRiddles();
+
         boolean rightInput;
         do {
 
             roomDisplayer(attacker);
             rightInput = getRoom(attacker, sc, medusasLair, titansCave, squirrelsNest,
-                    laChancla, frida, theEvilKingBenny, badDj, returnTo);
+                    laChancla, frida, theEvilKingBenny, badDj, returnTo,riddles);
 
         }while(!rightInput);
     }
@@ -34,7 +36,7 @@ public class RoomMenu {
     private boolean getRoom(AAttributes attacker, Scanner sc, MedusasLair medusasLair,
                             TitansCave titansCave, TheGigantBlackSquirrelsNest squirrelsNest,
                             LaChanclasCastle laChancla, FridasRedemption frida,
-                            TheEvilKingBenny theEvilKingBenny,TheBadDj badDj ,PlayerMenu returnTo) {
+                            TheEvilKingBenny theEvilKingBenny,TheBadDj badDj ,PlayerMenu returnTo,TheRoomOfRiddles riddles) {
         switch (sc.nextLine()) {
             case "1" ->{
                 if (attacker.getLevel() >= 2){
@@ -91,6 +93,7 @@ public class RoomMenu {
                 }
 
             }
+            case "7" ->{riddles.roomOFRiddlesOption(attacker,sc);}
             case "9" ->{
                 if (attacker.getLevel() < 9){
                     println(RED + "To low level for this room");

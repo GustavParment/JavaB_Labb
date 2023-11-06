@@ -2,6 +2,7 @@ package com.Gustav.demo.GameEngine;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.GameEngine.Menu.PlayerMenu;
+import com.Gustav.demo.GameEngine.Menu.StartMenu;
 import com.Gustav.demo.Resources.Paint.Colors;
 import java.util.Random;
 import java.util.Scanner;
@@ -52,8 +53,8 @@ public class GameLogic implements Colors {
             printDelay(YELLOW + "\nCongratulations!" + RESET + " You have slayed "
                     + defender.getName());
             println("\n"+attacker.getName() + YELLOW +  " looted " + defender.getGold() + " gold" + RESET);
-            println(attacker.getName() + YELLOW + " gained 100 xp" + RESET);
-            println(attacker.getName() + YELLOW + " gained 10 Hp" + RESET);
+            println(attacker.getName() + YELLOW + " gained +100 xp" + RESET);
+            println(attacker.getName() + YELLOW + " gained +10 Hp" + RESET);
             println(attacker.getName() + YELLOW + " gained +2 in all Attributes" + RESET);
 
             attacker.setExperience(attacker.getExperience() + 100);
@@ -66,16 +67,17 @@ public class GameLogic implements Colors {
 
         }
         if (attacker.getHealth() <= 0) {
+            StartMenu start = new StartMenu();
 
             println(attacker.getName() + " was defeated by "
                     + defender.getName() + RESET);
 
             println(BLACK + RED_BACKGROUND + "\uD83D\uDC80Game over\uD83D\uDC80" + RESET);
-            printDelay(PURPLE_BOLD+"Thanks for Playing better luck next time summoner..."
+            printDelay(PURPLE_BOLD+"\nThanks for Playing better luck next time summoner...\n"
                     + RESET);
             fightDone = true;
 
-            System.exit(0);
+            start.options();
 
 
         }

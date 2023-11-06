@@ -7,7 +7,7 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class BadDj extends AAttributes {
     public BadDj() {
-        super(0, 0, 50, 200, 0, 5, 50, 30);
+        super(0, 30, 50, 200, 0, 5, 50, 30);
     }
 
     @Override

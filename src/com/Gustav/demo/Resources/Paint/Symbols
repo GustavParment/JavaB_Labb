@@ -7,3 +7,7 @@
 💿💓🎧
 🏹
 🐍
+private List<String> answers(){
+        return Arrays.asList("A Keyboard"/*0*/, "The Letter M"/*1*/, "A Fire"/*2*/, "A Clock"/*3*/, "A Candle" /*4*/,
+                "A Sponge" /*5*/);
+    }
