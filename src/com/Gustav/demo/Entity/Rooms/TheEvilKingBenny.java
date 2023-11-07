@@ -1,8 +1,7 @@
-package com.Gustav.demo.Entity.Room;
+package com.Gustav.demo.Entity.Rooms;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Entity.Monsters.Benny;
-import com.Gustav.demo.Entity.Monsters.Frida;
 import com.Gustav.demo.GameEngine.GameLogic;
 import com.Gustav.demo.GameEngine.Menu.RoomMenu;
 

@@ -1,4 +1,4 @@
-package com.Gustav.demo.Resources.TheLoreMaster;
+package com.Gustav.demo.Entity.TheLoreMaster;
 
 public class Lore {
 

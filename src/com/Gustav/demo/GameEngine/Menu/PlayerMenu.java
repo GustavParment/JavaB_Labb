@@ -1,7 +1,7 @@
 package com.Gustav.demo.GameEngine.Menu;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
-import com.Gustav.demo.Resources.TheLoreMaster.LoreMasterKristoffer;
+import com.Gustav.demo.Entity.TheLoreMaster.LoreMasterKristoffer;
 
 import java.util.Scanner;
 

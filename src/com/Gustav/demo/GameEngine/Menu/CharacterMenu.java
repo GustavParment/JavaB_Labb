@@ -1,20 +1,17 @@
-package com.Gustav.demo.GameEngine;
+package com.Gustav.demo.GameEngine.Menu;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Entity.Heros.Hunter;
 import com.Gustav.demo.Entity.Heros.Mage;
 import com.Gustav.demo.Entity.Heros.Necromancer;
 import com.Gustav.demo.Entity.Heros.Rogue;
-import com.Gustav.demo.GameEngine.Menu.PlayerMenu;
-import com.Gustav.demo.GameEngine.Menu.RoomMenu;
-import com.Gustav.demo.GameEngine.Menu.StartMenu;
 
 import java.util.Scanner;
 
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
-public class Character {
+public class CharacterMenu {
     Scanner sc;
     PlayerMenu menu;
 

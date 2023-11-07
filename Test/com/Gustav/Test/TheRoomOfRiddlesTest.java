@@ -1,15 +1,11 @@
 package com.Gustav.Test;
 
-import com.Gustav.demo.Entity.Room.TheRoomOfRiddles;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
-import static com.Gustav.demo.Resources.Print.PrintHandler.println;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TheRoomOfRiddlesTest {
 

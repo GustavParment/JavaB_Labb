@@ -1,19 +1,17 @@
 package com.Gustav.demo.GameEngine.Menu;
 
-import com.Gustav.demo.GameEngine.Character;
-import com.Gustav.demo.GameEngine.GameLogic;
 import com.Gustav.demo.Resources.Paint.Colors;
-import com.Gustav.demo.Resources.TheLoreMaster.LoreMasterKristoffer;
+import com.Gustav.demo.Entity.TheLoreMaster.LoreMasterKristoffer;
 import java.util.Scanner;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
-import static com.Gustav.demo.Resources.TheLoreMaster.Lore.tellTheLore;
+import static com.Gustav.demo.Entity.TheLoreMaster.Lore.tellTheLore;
 
 public class StartMenu implements Colors {
 
     public void options(){
 
-        Character character = new Character();
+        CharacterMenu characterMenu = new CharacterMenu();
         LoreMasterKristoffer kristoffer = new LoreMasterKristoffer();
         Scanner sc = new Scanner(System.in);
 
@@ -24,7 +22,7 @@ public class StartMenu implements Colors {
 
 
         switch (sc.nextLine()){
-            case "1" -> character.characterChooser();
+            case "1" -> characterMenu.characterChooser();
             case "2" -> printDelay(tellTheLore);
             case "3" -> System.exit(0);
 

@@ -134,7 +134,7 @@ public class GameLogic implements Colors {
     private void chanceOnHealthReg(AAttributes attacker){
 
        Random random = new Random();
-       int ranNum = random.nextInt(100)+ 1;
+       int ranNum = random.nextInt(70)+ 1;
        int num = 20;
 
         println("NUM: " + num);

@@ -1,4 +1,4 @@
-package com.Gustav.demo.Resources.ItemHandler;
+package com.Gustav.demo.Entity.ItemHandler;
 
 public interface IItems {
 

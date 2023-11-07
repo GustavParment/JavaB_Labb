@@ -1,4 +1,4 @@
-package com.Gustav.demo.Entity.Room;
+package com.Gustav.demo.Entity.Rooms;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.GameEngine.Menu.PlayerMenu;
@@ -26,7 +26,6 @@ public class TheRoomOfRiddles {
 
         boolean notOne = true;
         do {
-
 
             println(PURPLE_BOLD + "\n1.To generate Riddle");
             switch (sc.nextLine()) {

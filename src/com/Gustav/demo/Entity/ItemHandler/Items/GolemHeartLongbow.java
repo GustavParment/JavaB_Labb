@@ -1,6 +1,6 @@
-package com.Gustav.demo.Resources.ItemHandler.Items;
+package com.Gustav.demo.Entity.ItemHandler.Items;
 
-import com.Gustav.demo.Resources.ItemHandler.AItemAttributes;
+import com.Gustav.demo.Entity.ItemHandler.AItemAttributes;
 
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 

@@ -1,4 +1,4 @@
-package com.Gustav.demo.Entity.Room;
+package com.Gustav.demo.Entity.Rooms;
 
 
 import com.Gustav.demo.Entity.Interface.AAttributes;

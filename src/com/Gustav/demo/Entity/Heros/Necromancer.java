@@ -10,7 +10,7 @@ public class Necromancer extends AAttributes implements Colors {
 
 
     public Necromancer() {
-        super(0,0, 5, 50,
+        super(0,0, 6, 50,
                 0, 0,5,0);
 
 

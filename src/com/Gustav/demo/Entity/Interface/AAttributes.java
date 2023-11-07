@@ -163,9 +163,18 @@ public abstract class AAttributes implements ICombat {
             case 70 ->{
                 attacker.setHealth(attacker.getHealth() + 20);
                 println(attacker.getName() + YELLOW +  " regenerated 20 hp " + RESET);
+
             }
 
         }
+    }
+    public void setSpiritCap(AAttributes attacker){
+
+        if (attacker.getSpirit() >= 70){
+            attacker.setSpirit(70);
+
+        }
+
     }
 }
 

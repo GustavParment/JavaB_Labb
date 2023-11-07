@@ -1,14 +1,11 @@
 package com.Gustav.demo.GameEngine.Menu;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
-import com.Gustav.demo.Entity.Room.*;
-import jdk.jfr.consumer.RecordedStackTrace;
+import com.Gustav.demo.Entity.Rooms.*;
 
 import java.util.Scanner;
 import static com.Gustav.demo.Resources.Paint.Colors.*;
-import static com.Gustav.demo.Resources.Print.PrintHandler.print;
 import static com.Gustav.demo.Resources.Print.PrintHandler.println;
-import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class RoomMenu {
 
@@ -238,7 +235,7 @@ public class RoomMenu {
                 println(BLACK_BOLD_BRIGHT + "3.The Gigant Black Squirrel´s Nest" + RESET);
                 println(BLACK_BOLD_BRIGHT + "4.La Chancla's Castle" + RESET);
                 println(BLACK_BOLD_BRIGHT + "5.The Bad DJ" + RESET);
-                println(PURPLE + "6.Room of Mystery" + RESET);
+                println(PURPLE + "6.Room of Relics" + RESET);
                 println(PURPLE + "7.Room of Riddles " + RESET);
                 println("8. ☠️☠️☠️"+ RED + "???" + RESET);
                 println("9. ☠️☠️☠️"+ RED + "???" + RESET);
@@ -251,7 +248,7 @@ public class RoomMenu {
                 println(BLACK_BOLD_BRIGHT + "3.The Gigant Black Squirrel´s Nest" + RESET);
                 println(BLACK_BOLD_BRIGHT + "4.La Chancla's Castle" + RESET);
                 println(BLACK_BOLD_BRIGHT + "5.The Bad DJ" + RESET);
-                println(PURPLE + "6.Room of Mystery" + RESET);
+                println(PURPLE + "6.Room of Relics" + RESET);
                 println(PURPLE + "7.Room of Riddles " + RESET);
                 println(PURPLE + "8.Room of Traps" + RESET);
                 println(RED + "9.Fridas Redemption" + RESET);
@@ -264,9 +261,9 @@ public class RoomMenu {
                 println(BLACK_BOLD_BRIGHT + "3.The Gigant Black Squirrel´s Nest" + RESET);
                 println(BLACK_BOLD_BRIGHT + "4.La Chancla's Castle" + RESET);
                 println(BLACK_BOLD_BRIGHT + "5.The Bad DJ" + RESET);
-                println("6.");
-                println("7.");
-                println("8.In Construction");
+                println(PURPLE + "6.Room of Relics" + RESET);
+                println(PURPLE + "7.Room of Riddles " + RESET);
+                println(PURPLE + "8.Room of Traps" + RESET);
                 println(YELLOW + "9.Fridas Redemption" + RESET);
                 println(RED + "10.Benny The Evil King" + RESET);
                 println(PURPLE + "╰┈➤11.Back to Player Menu" + RESET);

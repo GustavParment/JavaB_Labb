@@ -1,10 +1,11 @@
-package com.Gustav.demo.Resources.ItemHandler;
+package com.Gustav.demo.Entity.ItemHandler;
 
 
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
-import com.Gustav.demo.Resources.ItemHandler.Items.*;
-import com.Gustav.demo.Resources.TheLoreMaster.LoreMasterKristoffer;
+import com.Gustav.demo.Entity.ItemHandler.Items.*;
+
+import com.Gustav.demo.Entity.TheLoreMaster.LoreMasterKristoffer;
 import java.util.Scanner;
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
@@ -22,7 +23,7 @@ public class Shop {
             println(YELLOW + BLACK_BACKGROUND + "☰ Kristoffer's Shop ☰" + RESET);
 
             println("📖" + "1.Book of Wisdom: " + YELLOW_BOLD + "20 gold" + RESET + "/"
-                    + BLUE + "AGI:+10 SPIRIT:+20 STRNG:+20 HP:+20" + RESET);
+                    + BLUE + "AGI:+10 SPIRIT:+10 STRNG:+10 HP:+20" + RESET);
 
             println("💗" + "2.Health Potion: " + YELLOW_BOLD + "20 gold" + RESET +
                     "/" + BLUE + "HP:+20" + RESET);
@@ -70,6 +71,7 @@ public class Shop {
                 attacker.setSpirit(attacker.getSpirit() + item.getSpirit());
                 attacker.setHealth(attacker.getHealth() + item.getHealth());
                 attacker.setGold(attacker.getGold() - 20);
+                attacker.setSpiritCap(attacker);
 
                 println(YELLOW + "You purchased " + item.getName());
                 println(YELLOW + "Gold: "+ attacker.getGold() + RESET);
@@ -88,6 +90,7 @@ public class Shop {
             attacker.setSpirit(attacker.getSpirit() + item.getSpirit());
             attacker.setHealth(attacker.getHealth() + item.getHealth());
             attacker.setGold(attacker.getGold() - 40);
+            attacker.setSpiritCap(attacker);
 
             println(YELLOW + "You purchased " + item.getName());
             println(YELLOW + "Gold: " + attacker.getGold() + RESET);
@@ -106,6 +109,7 @@ public class Shop {
             attacker.setSpirit(attacker.getSpirit() + item.getSpirit());
             attacker.setHealth(attacker.getHealth() + item.getHealth());
             attacker.setGold(attacker.getGold() - 80);
+            attacker.setSpiritCap(attacker);
 
             println(YELLOW + "You purchased " + item.getName());
             println(YELLOW + "Gold: " + attacker.getGold() + RESET);

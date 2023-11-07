@@ -1,18 +1,12 @@
-package com.Gustav.demo.Resources.TheLoreMaster;
+package com.Gustav.demo.Entity.TheLoreMaster;
 
 
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.GameEngine.Menu.PlayerMenu;
-import com.Gustav.demo.Resources.ItemHandler.Shop;
+import com.Gustav.demo.Entity.ItemHandler.Shop;
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
-import static com.Gustav.demo.Resources.TheLoreMaster.Lore.tellTheLore;
-
-
-
-
-
 
 
 import java.util.Scanner;
@@ -32,7 +26,7 @@ public class LoreMasterKristoffer extends Shop{
 
             switch (sc.nextLine()) {
                 case "1" -> buyItems(attacker, sc);
-                case "2" -> println(tellTheLore);
+                case "2" -> println(Lore.tellTheLore);
                 case "3" -> menu.playerOption(attacker, sc);
                 default ->{println(RED + "Wrong input" + RESET); wrongInput = true;}
             }
