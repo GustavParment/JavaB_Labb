@@ -1,8 +1,6 @@
 package com.Gustav.demo.Entity.Rooms;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
-
-import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 

@@ -12,7 +12,7 @@ public class BadDj extends AAttributes {
 
     @Override
     public String attack() {
-        return "Plays a terrible house song\n\uD83D\uDCBF\uD83C\uDFA7 ♫♪♬♪ ♫♪♬♪ ♫♪♬♪ ♫♪♬♪";
+        return "Plays a terrible house song!\n\uD83D\uDCBF\uD83C\uDFA7 ♫♪♬♪ ♫♪♬♪ ♫♪♬♪ ♫♪♬♪";
     }
 
     @Override

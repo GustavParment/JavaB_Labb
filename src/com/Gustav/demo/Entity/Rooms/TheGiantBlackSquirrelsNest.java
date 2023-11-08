@@ -12,7 +12,7 @@ import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
-public class TheGigantBlackSquirrelsNest {
+public class TheGiantBlackSquirrelsNest {
 
     public void gigantBlackSquirrelOptions(AAttributes attacker, Scanner sc){
 
@@ -22,19 +22,20 @@ public class TheGigantBlackSquirrelsNest {
         boolean fight = false;
 
         do {
-            println(BLACK + RED_BACKGROUND + "☰ The Gigant Black Squirrel's Nest ☰" + RESET);
-            printDelay(RED + "The Gigant Squirrel thinks you look like a delicious nut...." + RESET);
-            println("\n1.Engage The Gigant Black Squirrel \n2.Squirrel's attributes "
+            println(BLACK + RED_BACKGROUND + "☰ The Giant Black Squirrel's Nest ☰" + RESET);
+            printDelay(RED + "The Giant Squirrel thinks you look like a delicious nut...." + RESET);
+            println(RED + "\n1.Engage The Giant Black Squirrel" +
+                    BLUE_BOLD + "\n2.Squirrel's attributes "
                     + PURPLE + "\n╰┈➤3.Back to Rooms"+ RESET);
 
             switch (sc.nextLine()) {
                 case "1" -> {start.fight(sc, attacker, blackSquirrel);fight = true;}
                 case "2" -> {
-                    println("Hp: " + blackSquirrel.getHealth());
-                    println("Damage: " + blackSquirrel.getDamage());
-                    println("Level: " + blackSquirrel.getLevel());
-                    println("AGI: " + blackSquirrel.getAgility());
-                    println("Gold: " + blackSquirrel.getGold());
+                    println(GREEN + "Hp: " + blackSquirrel.getHealth());
+                    println(RED + "Damage: " + blackSquirrel.getDamage());
+                    println(BLUE + "Level: " + blackSquirrel.getLevel());
+                    println(BLUE_BOLD + "AGI: " + blackSquirrel.getAgility());
+                    println(YELLOW + "Gold: " + blackSquirrel.getGold() + RESET);
                 }
                 case "3" -> menu.roomChooser(attacker,sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);

@@ -7,7 +7,7 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
 public class Mage extends AAttributes implements Colors {
     public Mage() {
-        super(0, 0, 6, 50,
+        super(0, 0, 8, 50,
                 0, 0, 5, 0);
 
 

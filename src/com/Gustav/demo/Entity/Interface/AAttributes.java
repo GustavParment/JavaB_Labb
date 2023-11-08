@@ -98,8 +98,11 @@ public abstract class AAttributes implements ICombat {
 
             attacker.setLevel(attacker.getLevel() + 1);
             attacker.setAgility(attacker.getAgility() + 2);
+            attacker.setAgilityCap(attacker);
             attacker.setSpirit(attacker.getSpirit() + 2);
+            attacker.setSpiritCap(attacker);
             attacker.setStrength(attacker.getStrength() + 2);
+            attacker.setStrengthCap(attacker);
             println(BLUE_BOLD + "You reached level: " + attacker.getLevel() + RESET);
             attacker.setExperience(0);
         }
@@ -118,7 +121,24 @@ public abstract class AAttributes implements ICombat {
         println(BLACK + "Strength " +  strength + RESET);
         println(CYAN + "Agility: " + agility + RESET);
 
+        cappedStatusMessage(attacker);
 
+
+    }
+
+    private void cappedStatusMessage(AAttributes attacker) {
+        if (attacker.getStrength() == 80){
+            println(BLUE_BOLD + "You are capped in Strength and won't benefit from more" +  RESET);
+        }
+        if (attacker.getSpirit() == 70){
+            print(BLUE_BOLD + ("You are capped in Spirit and wont benefit from more") + RESET) ;
+        }
+        if (attacker.getAgility() == 72){
+            println(BLUE_BOLD + "You are capped in Agility and wont benefit from more" + RESET);
+        }
+        if (attacker.getAgility() == 72 && attacker.getStrength() == 80 && attacker.getSpirit() == 70){
+            print("You are capped in all physical stats and wont benefit from more");
+        }
     }
 
     public void calculateDamage(AAttributes attacker) {
@@ -168,13 +188,18 @@ public abstract class AAttributes implements ICombat {
 
         }
     }
+
     public void setSpiritCap(AAttributes attacker){
+        if (attacker.getSpirit() >= 70) attacker.setSpirit(70);
 
-        if (attacker.getSpirit() >= 70){
-            attacker.setSpirit(70);
+    }
 
-        }
+    public void setAgilityCap(AAttributes attacker){
+        if (attacker.getAgility() >= 72) attacker.setAgility(72);
+    }
 
+    public void setStrengthCap(AAttributes attacker){
+        if(attacker.getStrength() >= 80)attacker.setStrength(80);
     }
 }
 

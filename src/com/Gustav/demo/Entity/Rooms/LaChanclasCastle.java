@@ -22,17 +22,20 @@ public class LaChanclasCastle {
 
         do {
             println(BLACK + RED_BACKGROUND + "☰ La Chanclas Castle ☰" + RESET);
-            printDelay(RED + "La Chancla  " + RESET);
-            println("\n1.Engage La Chancla \n2.La Chanclas attributes " + PURPLE + "\n╰┈➤3.Back to Rooms" + RESET);
+            printDelay(RED + "Here but not further " + attacker.getName()  +
+                    RED + " i will do anything to protect the queen Frida "+ RESET);
+            println(RED + "\n1.Engage La Chancla"+
+                    BLUE_BOLD + "\n2.La Chanclas attributes "
+                    + PURPLE + "\n╰┈➤3.Back to Rooms" + RESET);
 
             switch (sc.nextLine()) {
                 case "1" -> {start.fight(sc, attacker, laChancla);fight = true;}
                 case "2" -> {
-                    println("Hp: " + laChancla.getHealth());
-                    println("Damage: " + laChancla.getDamage());
-                    println("Level: " + laChancla.getLevel());
-                    println("AGI: " + laChancla.getAgility());
-                    println("Gold: " + laChancla.getGold());
+                    println(GREEN + "Hp: " + laChancla.getHealth());
+                    println(RED + "Damage: " + laChancla.getDamage());
+                    println(BLUE + "Level: " + laChancla.getLevel());
+                    println(BLUE_BOLD + "AGI: " + laChancla.getAgility());
+                    println(YELLOW + "Gold: " + laChancla.getGold()  + RESET);
                 }
                 case "3" -> menu.roomChooser(attacker,sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);

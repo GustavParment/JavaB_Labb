@@ -22,17 +22,20 @@ public class TheEvilKingBenny {
 
         do {
             println(BLACK + RED_BACKGROUND + "☰ The Evil King Benny ☰" + RESET);
-            printDelay(RED + "Benny " + RESET);
-            println("\n1.Engage Benny \n2.Bennys attributes "+ PURPLE +"\n╰┈➤3.Back to Rooms" + RESET);
+            printDelay(RED + "What have you done to my beloved Frida " +
+                    attacker.getName() + " you will pay for this scum!!!" + RESET);
+            println(RED + "\n1.Engage Benny " +
+                            BLUE_BOLD + "\n2.Bennys attributes " +
+                    PURPLE +"\n╰┈➤3.Back to Rooms" + RESET);
 
             switch (sc.nextLine()) {
                 case "1" -> {start.fight(sc, attacker, benny);fight = true;}
                 case "2" -> {
-                    println("Hp: " + benny.getHealth());
-                    println("Damage: " + benny.getDamage());
-                    println("Level: " + benny.getLevel());
-                    println("AGI: " + benny.getAgility());
-                    println("Gold: " + benny.getGold());
+                    println(GREEN + "Hp: " + benny.getHealth());
+                    println(RED + "Damage: " + benny.getDamage());
+                    println(BLUE + "Level: " + benny.getLevel());
+                    println(BLUE_BOLD + "AGI: " + benny.getAgility());
+                    println(YELLOW + "Gold: " + benny.getGold() + RESET);
                 }
                 case "3" -> menu.roomChooser(attacker,sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);

@@ -10,7 +10,7 @@ public class Hunter extends AAttributes implements Colors {
 
 
     public Hunter() {
-        super(0, 0, 6, 50,
+        super(0, 0, 8, 50,
                 0, 0, 5,0);
 
 

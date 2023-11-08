@@ -13,8 +13,12 @@ public class Main {
     public static void main(String[] args) {
 
         /**TODO-Dungeon Run
-            Creat more bosses - IN PROGRESS
+            Creat more bosses - IN PROGRESS - done
          *  Creat 3 more rooms that will be different from boss rooms-
+         *  Remove e.PrintStackTrace() Deguging souts -
+         *  Balans the game -
+         *  Finish the Digging Room -
+         *  WRITE LORE!!!
          *
          *
          *

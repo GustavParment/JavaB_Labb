@@ -12,7 +12,7 @@ public class Benny extends AAttributes {
 
     @Override
     public String attack() {
-        return "Waves he's mighty sword\n\uD83D\uDD2Aˋ•⁀/ˋ•⁀/ˋ•⁀/ˋ•⁀/ˋ•⁀/ˋ•⁀/ ";
+        return "Waves he's mighty sword!\n\uD83D\uDD2Aˋ•⁀/ˋ•⁀/ˋ•⁀/ˋ•⁀/ˋ•⁀/ˋ•⁀/ ";
     }
 
     @Override

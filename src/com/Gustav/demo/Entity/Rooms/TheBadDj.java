@@ -21,17 +21,19 @@ public class TheBadDj {
 
         do {
             println(BLACK + RED_BACKGROUND + "☰ The Bad DJ ☰" + RESET);
-            printDelay(RED + "The Bad Dj plays a horrible song  " + RESET);
-            println("\n1.Engage The Bad Dj \n2.Bad Djs attributes " + PURPLE + "\n╰┈➤3.Back to Rooms" + RESET);
+            printDelay(RED + "The Bad Dj plays a horrible song!  " + RESET);
+            println(RED + "\n1.Engage The Bad Dj "+
+                    BLUE_BOLD + "\n2.Bad Djs attributes " +
+                    PURPLE + "\n╰┈➤3.Back to Rooms" + RESET);
 
             switch (sc.nextLine()) {
                 case "1" -> {start.fight(sc, attacker, badDj);fight = true;}
                 case "2" -> {
-                    println("Hp: " + badDj.getHealth());
-                    println("Damage: " + badDj.getDamage());
-                    println("Level: " + badDj.getLevel());
-                    println("AGI: " + badDj.getAgility());
-                    println("Gold: " + badDj.getGold());
+                    println(GREEN + "Hp: " + badDj.getHealth());
+                    println(RED + "Damage: " + badDj.getDamage());
+                    println(BLUE + "Level: " + badDj.getLevel());
+                    println(BLUE_BOLD + "AGI: " + badDj.getAgility());
+                    println(YELLOW + "Gold: " + badDj.getGold());
                 }
                 case "3" -> menu.roomChooser(attacker,sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);

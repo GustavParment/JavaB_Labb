@@ -24,16 +24,18 @@ public class TitansCave {
         do {
             println(BLACK + RED_BACKGROUND + "☰ The Titan's Cave ☰" + RESET);
             printDelay(RED + "You woke upp the Titan..." + RESET);
-            println("\n1.Engage Titan \n2.Titans attributes "+ PURPLE+"\n╰┈➤3.Back to Rooms"+RESET);
+            println(RED + "\n1.Engage Titan"+
+                     BLUE_BOLD + "\n2.Titans attributes " +
+                    PURPLE+"\n╰┈➤3.Back to Rooms"+RESET);
 
             switch (sc.nextLine()) {
                 case "1" -> {start.fight(sc, attacker, titan);fight = true;}
                 case "2" -> {
-                    println("Hp: " + titan.getHealth());
-                    println("Damage: " + titan.getDamage());
-                    println("Level: " + titan.getLevel());
-                    println("AGI: " + titan.getAgility());
-                    print("Gold: " + titan.getGold());
+                    println(GREEN + "Hp: " + titan.getHealth());
+                    println(RED + "Damage: " + titan.getDamage());
+                    println(BLUE + "Level: " + titan.getLevel());
+                    println(BLUE_BOLD + "AGI: " + titan.getAgility());
+                    print(YELLOW + "Gold: " + titan.getGold() + RESET);
                 }
                 case "3" -> menu.roomChooser(attacker, sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);

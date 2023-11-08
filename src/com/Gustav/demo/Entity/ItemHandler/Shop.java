@@ -13,7 +13,6 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 public class Shop {
 
     public void buyItems(AAttributes attacker, Scanner sc) {
-
         boolean wrongInput = true;
         AItemAttributes item;
 
@@ -37,9 +36,11 @@ public class Shop {
             println("🔪" + "5.Lung Breaker Dagger: " + YELLOW_BOLD + "80 gold" + RESET + "/" +
                     BLUE + "AGI:+40 STRNG:+40 SPIRIT:40" + RESET);
 
-            println(PURPLE + "╰┈➤6.Return to Lore Master's Inn" + RESET);
+            println("💗" + "6.Super Health Potion: " + YELLOW_BOLD + "80 gold" + RESET + "/" +
+                    BLUE + "HP:+100" + RESET);
 
-            item = null;
+            println(PURPLE + "╰┈➤7.Return to Lore Master's Inn" + RESET);
+
             switch (sc.nextLine()){
                 case "1" -> {item = new BookOfWisdom();
                     withdraw20GoldAndAddStats(attacker, item);}
@@ -51,7 +52,9 @@ public class Shop {
                     withdraw40GoldAndAddStats(attacker, item);}
                 case "5" -> {item = new LungBreakerDagger();
                     withdraw80GoldAndAddStats(attacker, item);}
-                case "6" -> {returnTo.loreMastersInn(attacker, sc);wrongInput = false;}
+                case "6" ->{item = new SuperHealthPotion();
+                    withdraw80GoldAndAddStats(attacker,item);}
+                case "7" -> {returnTo.loreMastersInn(attacker, sc);wrongInput = false;}
                 default -> println(RED + "Wrong input" + RESET);
             }
         }
@@ -61,7 +64,6 @@ public class Shop {
     }
 
     private void withdraw20GoldAndAddStats(AAttributes attacker, AItemAttributes item){
-
         if (attacker.getGold() < 20) {
             println("Inefficient funds");
 
@@ -72,6 +74,8 @@ public class Shop {
                 attacker.setHealth(attacker.getHealth() + item.getHealth());
                 attacker.setGold(attacker.getGold() - 20);
                 attacker.setSpiritCap(attacker);
+                attacker.setAgilityCap(attacker);
+                attacker.setStrengthCap(attacker);
 
                 println(YELLOW + "You purchased " + item.getName());
                 println(YELLOW + "Gold: "+ attacker.getGold() + RESET);
@@ -91,6 +95,8 @@ public class Shop {
             attacker.setHealth(attacker.getHealth() + item.getHealth());
             attacker.setGold(attacker.getGold() - 40);
             attacker.setSpiritCap(attacker);
+            attacker.setAgilityCap(attacker);
+            attacker.setStrengthCap(attacker);
 
             println(YELLOW + "You purchased " + item.getName());
             println(YELLOW + "Gold: " + attacker.getGold() + RESET);
@@ -110,6 +116,8 @@ public class Shop {
             attacker.setHealth(attacker.getHealth() + item.getHealth());
             attacker.setGold(attacker.getGold() - 80);
             attacker.setSpiritCap(attacker);
+            attacker.setAgilityCap(attacker);
+            attacker.setStrengthCap(attacker);
 
             println(YELLOW + "You purchased " + item.getName());
             println(YELLOW + "Gold: " + attacker.getGold() + RESET);

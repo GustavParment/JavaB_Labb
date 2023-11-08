@@ -25,12 +25,12 @@ public class GameLogic implements Colors {
                 switch (sc.nextLine()) {
                     case "1" -> {
                         attack(attacker, defender);
-                        if(attacker.getHealth() > 0){didDodge(attacker, defender);chanceOnHealthReg(defender);}
+                        if(attacker.getHealth() > 0){didDodge(attacker, defender);}
                         if (defender.getHealth() <= 0){
                             fightDone = isFightDone(attacker, defender,false);
                             attacker.levelUp(attacker);}
                         else attack(defender, attacker);
-                        if(defender.getHealth() > 0){didDodge(defender, attacker);chanceOnHealthReg(attacker);}
+                        if(defender.getHealth() > 0){didDodge(defender, attacker);}
                         if (attacker.getHealth() <= 0) fightDone = isFightDone(attacker, defender, false);
 
                     }
@@ -99,6 +99,8 @@ public class GameLogic implements Colors {
                 println("\n" + defender.getName() + YELLOW_BOLD + " remaining HP: "
                         + defender.getHealth() + RESET);
 
+                chanceOnHealthReg(defender);
+
 
             }
 
@@ -134,8 +136,8 @@ public class GameLogic implements Colors {
     private void chanceOnHealthReg(AAttributes attacker){
 
        Random random = new Random();
-       int ranNum = random.nextInt(70)+ 1;
-       int num = 20;
+       int ranNum = random.nextInt(100)+ 1;
+       int num = 40;
 
         println("NUM: " + num);
         println("RAN NUM: " + ranNum);

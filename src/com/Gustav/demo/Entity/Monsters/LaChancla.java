@@ -12,7 +12,7 @@ public class LaChancla extends AAttributes {
 
     @Override
     public String attack() {
-        return  "Throws a cat and a rat\n\uD83D\uDC08\uD83D\uDC01.ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* ";
+        return  "Throws a cat and a rat!\n\uD83D\uDC08\uD83D\uDC01.ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* ";
     }
 
     @Override

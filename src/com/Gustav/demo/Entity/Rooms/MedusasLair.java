@@ -23,16 +23,18 @@ public class MedusasLair {
         do {
             println(BLACK + RED_BACKGROUND + "☰ Medusas Lair ☰" + RESET);
             printDelay(RED + "Medusa is angry be careful! " + RESET);
-            println("\n1.Engage Medusa \n2.Medusas attributes "+ PURPLE + "\n╰┈➤3.Back to Rooms"+RESET);
+            println(RED + "\n1.Engage Medusa " +
+                    BLUE_BOLD + "\n2.Medusas attributes "+
+                    PURPLE + "\n╰┈➤3.Back to Rooms"+RESET);
 
             switch (sc.nextLine()) {
                 case "1" -> {start.fight(sc, attacker, medusa);fight = true;}
                 case "2" -> {
-                    println("Hp: " + medusa.getHealth());
-                    println("Damage: " + medusa.getDamage());
-                    println("Level: " + medusa.getLevel());
-                    println("AGI: " + medusa.getAgility());
-                    println("Gold: " + medusa.getGold());
+                    println(GREEN + "Hp: " + medusa.getHealth());
+                    println(RED + "Damage: " + medusa.getDamage());
+                    println(BLUE + "Level: " + medusa.getLevel());
+                    println(BLUE_BOLD + "AGI: " + medusa.getAgility());
+                    println(YELLOW + "Gold: " + medusa.getGold() + RESET);
                 }
                 case "3" -> menu.roomChooser(attacker,sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);

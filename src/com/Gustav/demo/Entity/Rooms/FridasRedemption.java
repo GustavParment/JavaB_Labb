@@ -22,17 +22,20 @@ public class FridasRedemption {
 
         do {
             println(BLACK + RED_BACKGROUND + "☰ Fridas Revenge ☰" + RESET);
-            printDelay(RED + "Frida blows a kiss" + RESET);
-            println("\n1.Engage Frida \n2.Fridas attributes " + PURPLE + "\n╰┈➤3.Back to Rooms" + RESET);
+            printDelay(RED + "\"Frida blows a kiss\"\nYou will never get passed me! " +
+                    "I shall protect my noble king Benny " + RESET);
+            println(RED + "\n1.Engage Frida " +
+                    BLUE_BOLD +  "\n2.Fridas attributes "
+                    + PURPLE + "\n╰┈➤3.Back to Rooms" + RESET);
 
             switch (sc.nextLine()) {
                 case "1" -> {start.fight(sc, attacker, frida);fight = true;}
                 case "2" -> {
-                    println("Hp: " + frida.getHealth());
-                    println("Damage: " + frida.getDamage());
-                    println("Level: " + frida.getLevel());
-                    println("AGI: " + frida.getAgility());
-                    println("Gold: " + frida.getGold());
+                    println(GREEN + "Hp: " + frida.getHealth());
+                    println(RED + "Damage: " + frida.getDamage());
+                    println(BLUE + "Level: " + frida.getLevel());
+                    println(BLUE_BOLD + "AGI: " + frida.getAgility());
+                    println(YELLOW + "Gold: " + frida.getGold() + RESET);
                 }
                 case "3" -> menu.roomChooser(attacker,sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);
