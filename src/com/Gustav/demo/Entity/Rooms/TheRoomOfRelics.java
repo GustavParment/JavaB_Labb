@@ -5,6 +5,7 @@ import com.Gustav.demo.Entity.Interface.ARelics;
 import com.Gustav.demo.Entity.ItemHandler.Relics.RelicOfFury;
 import com.Gustav.demo.Entity.ItemHandler.Relics.RelicOfLife;
 import com.Gustav.demo.Entity.ItemHandler.Relics.RelicOfProtection;
+import com.Gustav.demo.GameEngine.Menu.PlayerMenu;
 
 import java.util.*;
 
@@ -26,35 +27,32 @@ public class TheRoomOfRelics {
         digForRelic(attacker,sc);
     }
 
+
+
     private void digForRelic(AAttributes attacker,Scanner sc) {
+        PlayerMenu menu = new PlayerMenu();
         boolean relicFound;
 
         do {
-            println("\nPress \"Enter\" to dig! ");
-            println("╰┈➤1.Return to Rooms");
+            println("\nPress \"Enter\" to dig! ╰┈➤1.Return to Rooms");
             sc.nextLine();
-            countTimeForDig();
-            relicFound = chanceToFindRelic(attacker);
-            if (sc.nextLine().contains("1")){
 
-            }
+            countTimeForDig();
+
+            relicFound = chanceToFindRelic(attacker);
+
+            if (relicFound || sc.nextLine().contains("1")){
+               println("Your Attributes has been upgraded");
+               menu.playerOption(attacker,sc);
+               break;
+           }
+
+
+
+
 
 
         }while (!relicFound);
-    }
-
-
-    private void countTimeForDig() {
-        for ( int i = 0; i < 5; i++) {
-            println("\uD83D\uDDFF⛏\uFE0F \uD83D\uDC77\uD83C\uDFFC\u200D♂\uFE0F");
-
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
     }
 
     private boolean chanceToFindRelic(AAttributes attacker){
@@ -79,11 +77,24 @@ public class TheRoomOfRelics {
 
             relicFound = true;
         }else{
-            println(RED + "No relic where found, Try another digging site" + RESET);
+            println(RED + "No relic where found, Try Again" + RESET);
             relicFound = false;
         }
 
         return relicFound;
+    }
+
+    private void countTimeForDig() {
+        for ( int i = 0; i < 4; i++) {
+            println("\uD83D\uDDFF⛏\uFE0F \uD83D\uDC77\uD83C\uDFFC\u200D♂\uFE0F");
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public int generateRelics(){
