@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import static com.Gustav.demo.Resources.Print.PrintHandler.println;
+
 class TheRoomOfRiddlesTest {
 
     @Test
@@ -18,8 +20,8 @@ class TheRoomOfRiddlesTest {
 
         for (int i = 0; i < 1 ; i++) {
 
-            System.out.println(riddleList.get(ranNum));
-            System.out.println(ranNum);
+            println(riddleList.get(ranNum));
+            println(" "+ ranNum);
 
 
         }

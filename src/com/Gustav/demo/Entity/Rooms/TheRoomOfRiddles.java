@@ -44,7 +44,6 @@ public class TheRoomOfRiddles {
                                 killAttacker(attacker);
 
                             }
-
                         }
                         case 1 -> {
                             if (input.contains("m")) {
@@ -71,7 +70,7 @@ public class TheRoomOfRiddles {
                                 reward(attacker);
                                 returnTo.playerOption(attacker, sc);
                             } else {
-
+                                killAttacker(attacker);
                             }
                         }
                         case 4 -> {

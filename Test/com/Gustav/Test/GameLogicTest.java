@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameLogicTest {

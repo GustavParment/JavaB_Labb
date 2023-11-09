@@ -1,13 +1,9 @@
 package com.Gustav.Test;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
-import com.Gustav.demo.Entity.Heros.Mage;
 import com.Gustav.demo.Entity.Heros.Necromancer;
 import com.Gustav.demo.Entity.Heros.Rogue;
 import org.junit.jupiter.api.Test;
-
-import java.sql.SQLOutput;
-import java.util.Random;
 
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 

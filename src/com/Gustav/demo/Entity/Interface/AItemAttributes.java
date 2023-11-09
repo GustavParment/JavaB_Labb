@@ -1,4 +1,4 @@
-package com.Gustav.demo.Entity.ItemHandler;
+package com.Gustav.demo.Entity.Interface;
 
 public abstract class AItemAttributes implements IItems {
 

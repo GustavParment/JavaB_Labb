@@ -3,8 +3,9 @@ package com.Gustav.demo.Entity.ItemHandler;
 
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
-import com.Gustav.demo.Entity.ItemHandler.Items.*;
+import com.Gustav.demo.Entity.Interface.AItemAttributes;
 
+import com.Gustav.demo.Entity.ItemHandler.Items.*;
 import com.Gustav.demo.Entity.TheLoreMaster.LoreMasterKristoffer;
 import java.util.Scanner;
 import static com.Gustav.demo.Resources.Paint.Colors.*;

@@ -2,7 +2,7 @@ package com.Gustav.Test;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Entity.Heros.Mage;
-import com.Gustav.demo.Entity.ItemHandler.AItemAttributes;
+import com.Gustav.demo.Entity.Interface.AItemAttributes;
 import com.Gustav.demo.Entity.ItemHandler.Items.BookOfWisdom;
 import org.junit.jupiter.api.Test;
 

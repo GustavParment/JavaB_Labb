@@ -3,7 +3,7 @@ package com.Gustav.demo;
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Entity.Rooms.TheRoomOfRelics;
 import com.Gustav.demo.Entity.Heros.Hunter;
-import com.Gustav.demo.GameEngine.Menu.StartMenu;
+import com.Gustav.demo.Entity.Rooms.TheRoomOfRiddles;
 
 import java.util.Scanner;
 
@@ -28,8 +28,9 @@ public class Main {
          *
          *
          */
-        StartMenu startMenu = new StartMenu();
-            startMenu.options();
+        /*StartMenu startMenu = new StartMenu();
+            startMenu.options();*/
+
 
         /*AAttributes medusa = new Medusa();
         AAttributes hunter = new Hunter();
@@ -37,10 +38,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         play.fight(sc,hunter,medusa);*/
 
-        /*Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         AAttributes hunter = new Hunter();
         TheRoomOfRelics r = new TheRoomOfRelics();
-        r.roomOfRelicsOption(hunter,sc);*/
+        r.roomOfRelicsOption(hunter,sc);
+
 
 
 
