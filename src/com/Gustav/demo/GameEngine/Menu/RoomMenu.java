@@ -3,7 +3,8 @@ package com.Gustav.demo.GameEngine.Menu;
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Entity.Rooms.*;
 
-import java.util.Scanner;
+import java.util.*;
+
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
@@ -19,13 +20,18 @@ public class RoomMenu {
         TitansCave titansCave = new TitansCave();
         TheBadDj badDj = new TheBadDj();
         TheRoomOfRiddles riddles = new TheRoomOfRiddles();
+        TheRoomOfRelics relics = new TheRoomOfRelics();
+
 
         boolean rightInput;
         do {
 
             roomDisplayer(attacker);
-            rightInput = getRoom(attacker, sc, medusasLair, titansCave, squirrelsNest,
-                    laChancla, frida, theEvilKingBenny, badDj, returnTo,riddles);
+            rightInput = getRoom(attacker, sc,
+                    medusasLair, titansCave, squirrelsNest,
+                    laChancla, frida, theEvilKingBenny,
+                    badDj, returnTo,riddles,relics
+            );
 
         }while(!rightInput);
     }
@@ -33,7 +39,11 @@ public class RoomMenu {
     private boolean getRoom(AAttributes attacker, Scanner sc, MedusasLair medusasLair,
                             TitansCave titansCave, TheGiantBlackSquirrelsNest squirrelsNest,
                             LaChanclasCastle laChancla, FridasRedemption frida,
-                            TheEvilKingBenny theEvilKingBenny,TheBadDj badDj ,PlayerMenu returnTo,TheRoomOfRiddles riddles) {
+                            TheEvilKingBenny theEvilKingBenny,TheBadDj badDj ,
+                            PlayerMenu returnTo,TheRoomOfRiddles riddles,
+                            TheRoomOfRelics relics
+    )
+    {
         switch (sc.nextLine()) {
             case "1" ->{
                 if (attacker.getLevel() >= 2){
@@ -90,9 +100,18 @@ public class RoomMenu {
                 }
 
             }
+            case "6" ->{
+                if (attacker.getLevel() < 6){
+                    println(RED + "To low level for this room" + RESET);
+
+                } else{
+                    relics.roomOfRelicsOption(attacker,sc);
+
+                }
+            }
 
             case "7" ->{
-                if(attacker.getLevel() < 7) {
+                if(attacker.getLevel() < 6) {
                     println(RED + "To low level for this room");
 
                 }else{
@@ -103,7 +122,7 @@ public class RoomMenu {
                 if (attacker.getLevel() < 9){
                     println(RED + "To low level for this room");
 
-                }else if (attacker.getLevel() >= 10){
+                }else if (attacker.getLevel() >= 11){
                     println(GREEN + "To high level for this room..." + RESET);
 
                 }else{
@@ -217,19 +236,7 @@ public class RoomMenu {
                 println("9. ☠️☠️☠️"+ RED + "???" + RESET);
                 println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
             }
-            case 7 ->{
-                println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
-                println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
-                println(BLACK_BOLD_BRIGHT + "3.The Gigant Black Squirrel´s Nest" + RESET);
-                println(BLACK_BOLD_BRIGHT + "4.La Chancla's Castle" + RESET);
-                println(BLACK_BOLD_BRIGHT + "5.The Bad DJ" + RESET);
-                println(PURPLE + "6.Room of Relics" + RESET);
-                println("7. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("8. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("9. ☠️☠️☠️"+ RED + "???" + RESET);
-                println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
-            }
-            case 8 ->{
+            case 7,8 ->{
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
                 println(BLACK_BOLD_BRIGHT + "3.The Gigant Black Squirrel´s Nest" + RESET);

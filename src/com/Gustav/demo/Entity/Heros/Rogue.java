@@ -8,7 +8,6 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 
 public class Rogue extends AAttributes implements Colors {
-
     public Rogue() {
         super(0, 0, 8, 50,
                 0, 0, 5, 0);
@@ -19,13 +18,6 @@ public class Rogue extends AAttributes implements Colors {
     @Override
     public String attack() {
         return "Slice and dice!\n☠\uFE0F\uD83D\uDD2A ⚅〴 ⚅〴 ⚅〴 ⚅〴 ⚅〴 ⚅〴";
-
-    }
-
-    @Override
-    public void flee() {
-        println(getName() + YELLOW + " fled and lost 2 hp" + RESET);
-        setHealth(getHealth() - 2);
 
     }
 

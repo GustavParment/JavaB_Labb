@@ -18,11 +18,6 @@ public class Titan extends AAttributes {
     }
 
     @Override
-    public void flee() {
-        println("Titan runs away");
-    }
-
-    @Override
     public String dodge() {
         return GREEN + "dodged the attack and lost no HP" + RESET;
     }

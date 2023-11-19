@@ -27,8 +27,6 @@ public class TheRoomOfRelics {
         digForRelic(attacker,sc);
     }
 
-
-
     private void digForRelic(AAttributes attacker,Scanner sc) {
         PlayerMenu menu = new PlayerMenu();
         boolean relicFound;
@@ -47,22 +45,14 @@ public class TheRoomOfRelics {
                break;
            }
 
-
-
-
-
-
         }while (!relicFound);
     }
 
     private boolean chanceToFindRelic(AAttributes attacker){
         Random random = new Random();
-        int ranNum = random.nextInt(5)+1;
-        int num = 5;
+        int ranNum = random.nextInt(100)+1;
+        int num = 10;
         boolean relicFound;
-
-        println("RANNUM: " + ranNum);
-        println("NUM: " + num);
 
         if (ranNum < num){
             println(PURPLE + "You found "+ RESET);
@@ -97,7 +87,7 @@ public class TheRoomOfRelics {
 
     }
 
-    public int generateRelics(){
+    private int generateRelics(){
         List<ARelics> relicList = new ArrayList<>(relics());
         Random random = new Random();
         int ranNum = random.nextInt(3);
@@ -107,7 +97,7 @@ public class TheRoomOfRelics {
        return ranNum;
     }
 
-    public List<ARelics> relics(){
+    private List<ARelics> relics(){
         relicOfFury = new RelicOfFury();
         relicOfLife = new RelicOfLife();
         relicOfProtection = new RelicOfProtection();

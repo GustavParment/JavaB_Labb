@@ -94,19 +94,29 @@ public abstract class AAttributes implements ICombat {
 
     public void levelUp(AAttributes attacker) {
 
-        if (attacker.getExperience() >= 100) {
+        if (attacker.getExperience() >= 100 && attacker.getLevel() != 12) {
 
             attacker.setLevel(attacker.getLevel() + 1);
             attacker.setAgility(attacker.getAgility() + 2);
-            attacker.setAgilityCap(attacker);
+            attacker.agilityCap(attacker);
             attacker.setSpirit(attacker.getSpirit() + 2);
-            attacker.setSpiritCap(attacker);
+            attacker.spiritCap(attacker);
             attacker.setStrength(attacker.getStrength() + 2);
-            attacker.setStrengthCap(attacker);
+            attacker.strengthCap(attacker);
             println(BLUE_BOLD + "You reached level: " + attacker.getLevel() + RESET);
             attacker.setExperience(0);
+        }else{
+            levelCap(attacker);
         }
 
+
+    }
+
+    private void levelCap(AAttributes attacker){
+        if (attacker.getLevel() >= 12){
+        attacker.setLevel(12);
+        println(BLUE_BOLD + "You have reached the max Level 12 and wont benefit form any more attributes then health" + RESET);
+        }
 
     }
 
@@ -131,13 +141,13 @@ public abstract class AAttributes implements ICombat {
             println(BLUE_BOLD + "You are capped in Strength and won't benefit from more" +  RESET);
         }
         if (attacker.getSpirit() == 70){
-            print(BLUE_BOLD + ("You are capped in Spirit and wont benefit from more") + RESET) ;
+            println(BLUE_BOLD + ("You are capped in Spirit and wont benefit from more") + RESET) ;
         }
         if (attacker.getAgility() == 72){
             println(BLUE_BOLD + "You are capped in Agility and wont benefit from more" + RESET);
         }
-        if (attacker.getAgility() == 72 && attacker.getStrength() == 80 && attacker.getSpirit() == 70){
-            print("You are capped in all physical stats and wont benefit from more");
+        else if(attacker.getAgility() == 72 && attacker.getStrength() == 80 && attacker.getSpirit() == 70){
+            println(BLUE_BOLD + "You are capped in all physical stats and wont benefit from more" + RESET);
         }
     }
 
@@ -189,16 +199,16 @@ public abstract class AAttributes implements ICombat {
         }
     }
 
-    public void setSpiritCap(AAttributes attacker){
+    public void spiritCap(AAttributes attacker){
         if (attacker.getSpirit() >= 70) attacker.setSpirit(70);
 
     }
 
-    public void setAgilityCap(AAttributes attacker){
+    public void agilityCap(AAttributes attacker){
         if (attacker.getAgility() >= 72) attacker.setAgility(72);
     }
 
-    public void setStrengthCap(AAttributes attacker){
+    public void strengthCap(AAttributes attacker){
         if(attacker.getStrength() >= 80)attacker.setStrength(80);
     }
 }

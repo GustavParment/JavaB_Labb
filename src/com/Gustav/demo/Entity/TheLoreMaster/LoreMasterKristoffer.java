@@ -26,7 +26,7 @@ public class LoreMasterKristoffer extends Shop{
 
             switch (sc.nextLine()) {
                 case "1" -> buyItems(attacker, sc);
-                case "2" -> println(Lore.tellTheLore);
+                case "2" -> {println(Lore.tellTheLore); wrongInput = true;}
                 case "3" -> menu.playerOption(attacker, sc);
                 default ->{println(RED + "Wrong input" + RESET); wrongInput = true;}
             }

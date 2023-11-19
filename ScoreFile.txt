@@ -1,0 +1,8 @@
+Player Attributes on death
+Remaining Health: -10
+Agility: 31
+Strength: 6
+Spirit: 6
+Damage: 5
+Number of rooms completed: 3
+Gold: 60

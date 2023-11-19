@@ -19,12 +19,6 @@ public class Mage extends AAttributes implements Colors {
     }
 
     @Override
-    public void flee() {
-        println(getName() +  " fled and lost 2 hp");
-        setHealth(getHealth()-2);
-    }
-
-    @Override
     public String dodge() {
         return GREEN + "dodged the attack and lost no HP" + RESET;
     }

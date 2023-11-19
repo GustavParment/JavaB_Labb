@@ -16,11 +16,6 @@ public class Frida extends AAttributes {
     }
 
     @Override
-    public void flee() {
-        println(YELLOW + "Frida fled" + RESET);
-    }
-
-    @Override
     public String dodge() {
         return GREEN + "dodged the attack and lost no HP" + RESET;
     }

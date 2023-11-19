@@ -10,18 +10,13 @@ public class Medusa extends AAttributes implements Colors {
 
     public Medusa() {
 
-        super(0,0, 3, 5,
+        super(0,0, 3, 45,
                 0, 1, 5,20);
     }
 
     @Override
     public String attack() {
         return "Casts snakes!\n\uD83D\uDC0D ~~< ~~< ~~< ~~< ~~< ~~<";
-    }
-
-    @Override
-    public void flee() {
-        println(YELLOW + "Medusa fled" + RESET);
     }
 
     @Override

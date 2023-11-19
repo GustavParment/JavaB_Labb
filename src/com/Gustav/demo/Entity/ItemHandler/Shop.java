@@ -74,9 +74,9 @@ public class Shop {
                 attacker.setSpirit(attacker.getSpirit() + item.getSpirit());
                 attacker.setHealth(attacker.getHealth() + item.getHealth());
                 attacker.setGold(attacker.getGold() - 20);
-                attacker.setSpiritCap(attacker);
-                attacker.setAgilityCap(attacker);
-                attacker.setStrengthCap(attacker);
+                attacker.spiritCap(attacker);
+                attacker.agilityCap(attacker);
+                attacker.strengthCap(attacker);
 
                 println(YELLOW + "You purchased " + item.getName());
                 println(YELLOW + "Gold: "+ attacker.getGold() + RESET);
@@ -95,9 +95,9 @@ public class Shop {
             attacker.setSpirit(attacker.getSpirit() + item.getSpirit());
             attacker.setHealth(attacker.getHealth() + item.getHealth());
             attacker.setGold(attacker.getGold() - 40);
-            attacker.setSpiritCap(attacker);
-            attacker.setAgilityCap(attacker);
-            attacker.setStrengthCap(attacker);
+            attacker.spiritCap(attacker);
+            attacker.agilityCap(attacker);
+            attacker.strengthCap(attacker);
 
             println(YELLOW + "You purchased " + item.getName());
             println(YELLOW + "Gold: " + attacker.getGold() + RESET);
@@ -105,6 +105,7 @@ public class Shop {
 
         }
     }
+
     private void withdraw80GoldAndAddStats(AAttributes attacker, AItemAttributes item){
         if (attacker.getGold() < 80) {
             println("Inefficient funds");
@@ -116,9 +117,9 @@ public class Shop {
             attacker.setSpirit(attacker.getSpirit() + item.getSpirit());
             attacker.setHealth(attacker.getHealth() + item.getHealth());
             attacker.setGold(attacker.getGold() - 80);
-            attacker.setSpiritCap(attacker);
-            attacker.setAgilityCap(attacker);
-            attacker.setStrengthCap(attacker);
+            attacker.spiritCap(attacker);
+            attacker.agilityCap(attacker);
+            attacker.strengthCap(attacker);
 
             println(YELLOW + "You purchased " + item.getName());
             println(YELLOW + "Gold: " + attacker.getGold() + RESET);

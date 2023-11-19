@@ -16,12 +16,6 @@ public class LaChancla extends AAttributes {
     }
 
     @Override
-    public void flee() {
-        println(YELLOW + "La Chancla fled" + RESET);
-
-    }
-
-    @Override
     public String dodge() {
         return GREEN + "dodged the attack and lost no HP" + RESET;
     }
