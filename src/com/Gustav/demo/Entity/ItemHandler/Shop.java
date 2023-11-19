@@ -39,8 +39,9 @@ public class Shop {
 
             println("💗" + "6.Super Health Potion: " + YELLOW_BOLD + "80 gold" + RESET + "/" +
                     BLUE + "HP:+100" + RESET);
+            println(BLUE + "7. [DEVELOPER TOOL]" + RESET);
 
-            println(PURPLE + "╰┈➤7.Return to Lore Master's Inn" + RESET);
+            println(PURPLE + "╰┈➤8.Return to Lore Master's Inn" + RESET);
 
             switch (sc.nextLine()){
                 case "1" -> {item = new BookOfWisdom();
@@ -55,13 +56,22 @@ public class Shop {
                     withdraw80GoldAndAddStats(attacker, item);}
                 case "6" ->{item = new SuperHealthPotion();
                     withdraw80GoldAndAddStats(attacker,item);}
-                case "7" -> {returnTo.loreMastersInn(attacker, sc);wrongInput = false;}
+                case "7" -> devTool(attacker);
+                case "8" -> {returnTo.loreMastersInn(attacker, sc);wrongInput = false;}
                 default -> println(RED + "Wrong input" + RESET);
             }
         }
         while (wrongInput);
 
 
+    }
+    private void devTool(AAttributes attacker){
+        attacker.setHealth(1000);
+        attacker.setGold(1000);
+        attacker.setStrength(80);
+        attacker.setSpirit(70);
+        attacker.setAgility(72);
+        println(BLUE + "You are now in Developer mode" + RESET);
     }
 
     private void withdraw20GoldAndAddStats(AAttributes attacker, AItemAttributes item){
