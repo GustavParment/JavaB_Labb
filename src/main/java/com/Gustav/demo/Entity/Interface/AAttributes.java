@@ -4,7 +4,7 @@ import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
 public abstract class AAttributes implements ICombat {
-    private int player_id;
+    private int id;
     private int strength;
     private int spirit;
     private int agility;
@@ -30,12 +30,12 @@ public abstract class AAttributes implements ICombat {
         this.gold = gold;
     }
 
-    public int getPlayer_id() {
-        return player_id;
+    public int getId() {
+        return id;
     }
 
-    public void setPlayer_id(int player_id) {
-        this.player_id = player_id;
+    public void setId(int id) {
+        this.id = id;
     }
     public int getStrength() {
         return strength;

@@ -1,14 +1,11 @@
 package com.Gustav.demo.Database;
 
-import com.Gustav.demo.Database.Model.Player;
 import com.Gustav.demo.Entity.Interface.AAttributes;
 
 import java.sql.*;
-
-import static com.Gustav.demo.Resources.Print.PrintHandler.println;
+import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
 public class DBConnection {
-
     private static final String URL = "jdbc:mariadb://localhost:3306/dungeonrun";
     private static final String USER = "root";
     private static final String PASSWORD = "2gfv77f6";
@@ -28,16 +25,19 @@ public class DBConnection {
 
     public void closeConnection(){
     try{
-        if (connection != null && connection.isClosed()) connection.close();
+        if (connection != null && connection.isClosed()){
+
+            connection.close();
+
+        }
+
 
     }catch (SQLException e){
         e.printStackTrace();
     }
     }
 
-
-
-    public void createTable() {
+   /* public void createPlayerTable() {
         String sql = "CREATE TABLE IF NOT EXISTS player " +
                 "(" +
                 "player_id INT NOT NULL AUTO_INCREMENT, " +
@@ -49,7 +49,8 @@ public class DBConnection {
                 "damage INT," +
                 "level INT," +
                 "gold INT," +
-                "primary KEY(player_id))";
+                "primary KEY(player_id)" +
+                ")";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -59,11 +60,11 @@ public class DBConnection {
             System.out.println(e);
 
         }
-    }
+    }         */
 
     public void insertPlayer(AAttributes player){
-        int incrementID = 0;
-        String sql = "INSERT INTO player (player_id," +
+        String sql = "INSERT INTO player(" +
+                "player_id," +
                 "classname, " +
                 "health, " +
                 "spirit, " +
@@ -71,10 +72,12 @@ public class DBConnection {
                 "agility," +
                 "damage," +
                 "level," +
-                "gold" +
+                "gold,"+
+                "monsterskilled,"+
+                "date,"+
+                "time"+
                 ") " +
-                "VALUES " +
-                "(" +
+                "VALUES(" +
                 "?," +
                 "?," +
                 "?," +
@@ -83,14 +86,17 @@ public class DBConnection {
                 "?," +
                 "?," +
                 "?," +
-                "?" +
+                "?,"  +
+                "?,"  +
+                "?,"  +
+                "?"+
                 ")";
 
         try(
                 PreparedStatement preparedStatement = connection.prepareStatement(sql,
                 Statement.RETURN_GENERATED_KEYS)
         ) {
-            preparedStatement.setInt(1, player.getPlayer_id());
+            preparedStatement.setInt(1, player.getId());
             preparedStatement.setString(2,player.getNameNoColor());
             preparedStatement.setInt(3,player.getHealth());
             preparedStatement.setInt(4,player.getSpirit());
@@ -99,10 +105,16 @@ public class DBConnection {
             preparedStatement.setInt(7,player.getDamage());
             preparedStatement.setInt(8,player.getLevel());
             preparedStatement.setInt(9,player.getGold());
+            preparedStatement.setInt(10,player.getLevel());
+            preparedStatement.setDate(11,java.sql.Date.valueOf(java.time.LocalDate.now()));
+            preparedStatement.setTime(12,java.sql.Time.valueOf(java.time.LocalTime.now()));
             preparedStatement.executeUpdate();
-            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
 
-            while(generatedKeys.next()) incrementID = generatedKeys.getInt(1);
+            ResultSet returnedGeneratedKeys = preparedStatement.getGeneratedKeys();
+            if(returnedGeneratedKeys.next())
+            {
+                player.setId(returnedGeneratedKeys.getInt(1));
+            }
 
 
         } catch (SQLException e) {
@@ -110,40 +122,51 @@ public class DBConnection {
         }
     }
 
-
     public void updatePlayer(AAttributes player) {
             try {
                 openConnection();
 
                 String updateQuery = "UPDATE player SET " +
-                        "health = ?, " +
+                        "classname = ?," +
+                        "health = ?," +
                         "spirit = ?, " +
                         "strength = ?," +
-                        "agility = ?," +
+                        "agility = ?, " +
                         "damage = ?," +
-                        "level = ?," +
-                        "gold = ?," +
+                        "level = ?, " +
+                        "gold = ?, " +
+                        "monsterskilled = ?,"+
+                        "date = ?, "+
+                        "time = ?"+
                         "WHERE player_id = ?";
 
-                try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                try (PreparedStatement preparedStatement = connection.prepareStatement
+                        (
+                        updateQuery,
+                        Statement.RETURN_GENERATED_KEYS)
+                ) {
 
-                    preparedStatement.setInt(1, player.getPlayer_id());
-                    preparedStatement.setString(2,player.getNameNoColor());
-                    preparedStatement.setInt(3,player.getHealth());
-                    preparedStatement.setInt(4,player.getSpirit());
-                    preparedStatement.setInt(5,player.getStrength());
-                    preparedStatement.setInt(6,player.getAgility());
-                    preparedStatement.setInt(7,player.getDamage());
-                    preparedStatement.setInt(8,player.getLevel());
-                    preparedStatement.setInt(9,player.getGold());
-                    preparedStatement.executeUpdate();
+                    preparedStatement.setString(1,player.getNameNoColor());
+                    preparedStatement.setInt(2,player.getHealth());
+                    preparedStatement.setInt(3,player.getSpirit());
+                    preparedStatement.setInt(4,player.getStrength());
+                    preparedStatement.setInt(5,player.getAgility());
+                    preparedStatement.setInt(6,player.getDamage());
+                    preparedStatement.setInt(7,player.getLevel());
+                    preparedStatement.setInt(8,player.getGold());
+                    preparedStatement.setInt(9,player.getLevel());
+                    preparedStatement.setDate(10, java.sql.Date.valueOf(java.time.LocalDate.now()));
+                    preparedStatement.setTime(11,java.sql.Time.valueOf(java.time.LocalTime.now()));
+                    preparedStatement.setInt(12,player.getId());
 
                     int rowsAffected = preparedStatement.executeUpdate();
 
                     if (rowsAffected > 0) {
-                        println("Player updated successfully");
+                        println("Player updated successfully to player_id: " + player.getId());
+
                     } else {
                         println("Player not found or no changes made");
+
                     }
                 }
             } catch (SQLException e) {
@@ -152,6 +175,92 @@ public class DBConnection {
                 closeConnection();
             }
         }
+
+
+    /*public void createPlayerHistoryTable(AAttributes player){
+        String sql = "CREATE TABLE IF NOT EXISTS playerhistory " +
+                "(" +
+                "playerhistory_id INT NOT NULL AUTO_INCREMENT, classname varchar(50), )";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        }
+
+
+    }  */
+
+    public void insertMonster(AAttributes monster){
+        String sql = "INSERT INTO monster(" +
+                "monster_id," +
+                "name," +
+                "damage," +
+                "health)" +
+                "VALUES (" +
+                "?," +
+                "?," +
+                "?," +
+                "?)";
+        try(
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                sql,Statement.RETURN_GENERATED_KEYS)
+        ){
+            preparedStatement.setInt(1,monster.getId());
+            preparedStatement.setString(2,monster.getNameNoColor());
+            preparedStatement.setInt(3,monster.getDamage());
+            preparedStatement.setInt(4,monster.getHealth());
+            preparedStatement.executeUpdate();
+
+            ResultSet returnedGeneratedKeys = preparedStatement.getGeneratedKeys();
+            if (returnedGeneratedKeys.next()){
+                monster.setId(returnedGeneratedKeys.getInt(1));
+            }
+
+
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void updateMonster(AAttributes monster){
+        String sql = "UPDATE monster " +
+                "SET " +
+                "name = ?, " +
+                "damage = ?, " +
+                "health = ? " +
+                "WHERE monster_id = ?";
+     try(
+             PreparedStatement preparedStatement = connection.prepareStatement(
+             sql,Statement.RETURN_GENERATED_KEYS)
+     ){
+            preparedStatement.setString(1,monster.getNameNoColor());
+            preparedStatement.setInt(2,monster.getDamage());
+            preparedStatement.setInt(3,monster.getHealth());
+            preparedStatement.setInt(4,monster.getId());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0){
+                println("Monster updated successfully to monster_id: " + monster.getId());
+
+            }else{
+                 println("Monster not found or no changes made");
+            }
+
+     }catch (SQLException e){
+         e.printStackTrace();
+
+     }
+
+
+
+    }
 
     }
 

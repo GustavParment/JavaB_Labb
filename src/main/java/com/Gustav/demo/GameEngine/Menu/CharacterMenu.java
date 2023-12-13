@@ -10,7 +10,7 @@ import com.Gustav.demo.Entity.Heros.Rogue;
 import java.util.Scanner;
 
 import static com.Gustav.demo.Resources.Paint.Colors.*;
-import static com.Gustav.demo.Resources.Print.PrintHandler.println;
+import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
 public class CharacterMenu {
     Scanner sc;
@@ -32,10 +32,10 @@ public class CharacterMenu {
 
         AAttributes player = null;
         switch (sc.nextLine()) {
-            case "1" -> {player = new Rogue(); writePlayerToDB(player);}
-            case "2" -> {player = new Necromancer(); writePlayerToDB(player);}
-            case "3" -> {player = new Hunter(); writePlayerToDB(player);}
-            case "4" -> {player = new Mage(); writePlayerToDB(player);}
+            case "1" -> {player = new Rogue(); loadPlayerToDB(player);}
+            case "2" -> {player = new Necromancer(); loadPlayerToDB(player);}
+            case "3" -> {player = new Hunter(); loadPlayerToDB(player);}
+            case "4" -> {player = new Mage(); loadPlayerToDB(player);}
             case "5" -> start.options();
             default -> println("Wrong input");
         }
@@ -44,12 +44,11 @@ public class CharacterMenu {
 
 
     }
-    private void writePlayerToDB(AAttributes attacker){
+    private void loadPlayerToDB(AAttributes attacker){
         DBConnection db = new DBConnection();
         db.openConnection();
-        db.createTable();
         db.insertPlayer(attacker);
         db.closeConnection();
-
     }
+
 }

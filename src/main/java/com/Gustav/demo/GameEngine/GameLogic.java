@@ -14,7 +14,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 public class GameLogic implements Colors {
     public void fight(Scanner sc, AAttributes attacker, AAttributes defender) {
         PlayerMenu menu = new PlayerMenu();
-        DBConnection db = new DBConnection();
+
 
 
         boolean fightDone = false;
@@ -35,6 +35,9 @@ public class GameLogic implements Colors {
                     if (defender.getHealth() <= 0) {
                         fightDone = isFightDone(attacker, defender, false);
                         attacker.levelUp(attacker);
+                        updatePlayerData(attacker);
+                        insertMonsterData(defender);
+                        updateMonsterData(defender);
 
 
                     } else attack(defender, attacker);
@@ -44,6 +47,9 @@ public class GameLogic implements Colors {
                     }
                     if (attacker.getHealth() <= 0){
                         fightDone = isFightDone(attacker, defender, false);
+                        updatePlayerData(attacker);
+                        insertMonsterData(defender);
+                        updateMonsterData(defender);
 
                     }
 
@@ -51,7 +57,7 @@ public class GameLogic implements Colors {
                 case "2" -> attacker.getStatus(attacker);
                 case "3" -> {
                     attacker.flee(attacker);
-                    println("" + attacker.getHealth());
+                    println(YELLOW + "\nNow you have " + attacker.getHealth() + " hp" +  RESET);
                     fightDone = true;
                 }
                 default -> println(RED + "Wrong input, try again..." + RESET);
@@ -80,6 +86,7 @@ public class GameLogic implements Colors {
             attacker.setExperience(attacker.getExperience() + 100);
             attacker.setGold(attacker.getGold() + defender.getGold());
             attacker.setHealth(attacker.getHealth() + 10);
+
 
             fightDone = true;
 
@@ -159,6 +166,21 @@ public class GameLogic implements Colors {
         int num = 40;
 
         if (ranNum < num && attacker.getSpirit() >= 30) attacker.calculateHealthReg(attacker);
+    }
+
+    private void updatePlayerData(AAttributes player){
+        DBConnection db = new DBConnection();
+        db.updatePlayer(player);
+    }
+
+    private void updateMonsterData(AAttributes monster){
+        DBConnection db = new DBConnection();
+        db.updateMonster(monster);
+    }
+    private void insertMonsterData(AAttributes monster){
+        DBConnection db = new DBConnection();
+        db.openConnection();
+        db.insertMonster(monster);
     }
 
 

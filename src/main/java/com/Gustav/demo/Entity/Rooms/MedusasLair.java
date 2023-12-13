@@ -1,5 +1,6 @@
 package com.Gustav.demo.Entity.Rooms;
 
+import com.Gustav.demo.Database.DBConnection;
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.GameEngine.GameLogic;
 import com.Gustav.demo.Entity.Monsters.Medusa;
@@ -19,6 +20,9 @@ public class MedusasLair {
         GameLogic start = new GameLogic();
         RoomMenu menu = new RoomMenu();
         boolean fight = false;
+
+
+
 
         do {
             println(BLACK + RED_BACKGROUND + "☰ Medusas Lair ☰" + RESET);
