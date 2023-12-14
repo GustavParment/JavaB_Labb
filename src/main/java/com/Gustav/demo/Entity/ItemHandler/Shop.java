@@ -2,6 +2,7 @@ package com.Gustav.demo.Entity.ItemHandler;
 
 
 
+import com.Gustav.demo.Database.DBConnection;
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Entity.Interface.AItemAttributes;
 
@@ -45,16 +46,16 @@ public class Shop {
 
             switch (sc.nextLine()){
                 case "1" -> {item = new BookOfWisdom();
-                    withdraw20GoldAndAddStats(attacker, item);}
+                    withdraw20GoldAndAddStats(attacker, item); item.setId(1);}
                 case "2" -> {item = new HealthPotion();
-                    withdraw20GoldAndAddStats(attacker, item);}
+                    withdraw20GoldAndAddStats(attacker, item); item.setId(2);}
                 case "3" -> {item = new GolemHeartLongbow();
+                    withdraw40GoldAndAddStats(attacker, item); item.setId(3);}
+                case "4" -> {item = new HighScholarsGrandStaff(); item.setId(4);
                     withdraw40GoldAndAddStats(attacker, item);}
-                case "4" -> {item = new HighScholarsGrandStaff();
-                    withdraw40GoldAndAddStats(attacker, item);}
-                case "5" -> {item = new LungBreakerDagger();
+                case "5" -> {item = new LungBreakerDagger(); item.setId(5);
                     withdraw80GoldAndAddStats(attacker, item);}
-                case "6" ->{item = new SuperHealthPotion();
+                case "6" ->{item = new SuperHealthPotion(); item.setId(6);
                     withdraw80GoldAndAddStats(attacker,item);}
                 case "7" -> devTool(attacker);
                 case "8" -> {returnTo.loreMastersInn(attacker, sc);wrongInput = false;}
@@ -137,6 +138,8 @@ public class Shop {
         }
 
     }
+
+
 }
 
 

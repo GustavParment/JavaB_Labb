@@ -15,4 +15,9 @@ public class RelicOfProtection extends ARelics {
     public String getName() {
         return BLUE_BOLD + "Relic Of Protection" + RESET;
     }
+
+    @Override
+    public String getNameNoColor() {
+        return "Relic Of Protection";
+    }
 }

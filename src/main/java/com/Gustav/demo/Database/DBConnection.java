@@ -1,6 +1,7 @@
 package com.Gustav.demo.Database;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
+import com.Gustav.demo.Entity.Interface.AItemAttributes;
 
 import java.sql.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
@@ -122,7 +123,7 @@ public class DBConnection {
         }
     }
 
-    public void updatePlayer(AAttributes player) {
+    public void updatePlayer(AAttributes player, AAttributes monster) {
             try {
                 openConnection();
 
@@ -137,7 +138,8 @@ public class DBConnection {
                         "gold = ?, " +
                         "monsterskilled = ?,"+
                         "date = ?, "+
-                        "time = ?"+
+                        "time = ?, " +
+                        "monster_id = ? " +
                         "WHERE player_id = ?";
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement
@@ -157,7 +159,8 @@ public class DBConnection {
                     preparedStatement.setInt(9,player.getLevel());
                     preparedStatement.setDate(10, java.sql.Date.valueOf(java.time.LocalDate.now()));
                     preparedStatement.setTime(11,java.sql.Time.valueOf(java.time.LocalTime.now()));
-                    preparedStatement.setInt(12,player.getId());
+                    preparedStatement.setInt(12,monster.getId());
+                    preparedStatement.setInt(13,player.getId());
 
                     int rowsAffected = preparedStatement.executeUpdate();
 
@@ -194,39 +197,34 @@ public class DBConnection {
 
     }  */
 
-    public void insertMonster(AAttributes monster){
+    public void insertMonster(AAttributes monster) {
+        println("monster_id " + monster.getId());
         String sql = "INSERT INTO monster(" +
-                "monster_id," +
                 "name," +
                 "damage," +
                 "health)" +
                 "VALUES (" +
                 "?," +
                 "?," +
-                "?," +
                 "?)";
-        try(
+        try (
                 PreparedStatement preparedStatement = connection.prepareStatement(
-                sql,Statement.RETURN_GENERATED_KEYS)
-        ){
-            preparedStatement.setInt(1,monster.getId());
-            preparedStatement.setString(2,monster.getNameNoColor());
-            preparedStatement.setInt(3,monster.getDamage());
-            preparedStatement.setInt(4,monster.getHealth());
+                        sql, Statement.RETURN_GENERATED_KEYS)
+        ) {
+            preparedStatement.setString(1, monster.getNameNoColor());
+            preparedStatement.setInt(2, monster.getDamage());
+            preparedStatement.setInt(3, monster.getHealth());
             preparedStatement.executeUpdate();
 
             ResultSet returnedGeneratedKeys = preparedStatement.getGeneratedKeys();
-            if (returnedGeneratedKeys.next()){
+            if (returnedGeneratedKeys.next()) {
                 monster.setId(returnedGeneratedKeys.getInt(1));
             }
-
-
-
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
+
 
     public void updateMonster(AAttributes monster){
         String sql = "UPDATE monster " +
@@ -260,6 +258,32 @@ public class DBConnection {
 
 
 
+    }
+
+    public void updateItems(AItemAttributes item){
+        String sql = "UPDATE playeritem SET ItemsPurchased " +
+                "WHERE item_id = ?";
+
+        try(
+                PreparedStatement preparedStatement = connection.prepareStatement(sql,
+                        Statement.RETURN_GENERATED_KEYS)
+        ) {
+
+            preparedStatement.setString(2,item.getNameNoColor());
+            preparedStatement.setInt(2,item.getId());
+
+            preparedStatement.executeUpdate();
+
+            ResultSet returnedGeneratedKeys = preparedStatement.getGeneratedKeys();
+            if(returnedGeneratedKeys.next())
+            {
+                item.setId(returnedGeneratedKeys.getInt(1));
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     }

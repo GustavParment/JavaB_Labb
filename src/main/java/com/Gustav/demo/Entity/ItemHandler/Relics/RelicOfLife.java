@@ -16,4 +16,9 @@ public class RelicOfLife extends ARelics {
     public String getName() {
         return BLUE_BOLD + "Relic Of Life" + RESET;
     }
+
+    @Override
+    public String getNameNoColor() {
+        return "Relic Of Life";
+    }
 }

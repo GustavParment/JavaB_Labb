@@ -14,4 +14,9 @@ public class BookOfWisdom extends AItemAttributes {
         return YELLOW + "Book Of Wisdom" + RESET;
 
     }
+
+    @Override
+    public String getNameNoColor() {
+        return "Book Of Wisdom";
+    }
 }

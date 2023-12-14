@@ -1,7 +1,7 @@
 package com.Gustav.demo.Entity.Interface;
 
 public abstract class AItemAttributes implements IItems {
-
+    private int id;
     private int strength;
     private int spirit;
     private int agility;
@@ -47,6 +47,13 @@ public abstract class AItemAttributes implements IItems {
     }
 
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
 }

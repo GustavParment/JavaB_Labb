@@ -20,7 +20,6 @@ public class TitansCave {
         GameLogic start = new GameLogic();
         RoomMenu menu = new RoomMenu();
         boolean fight = false;
-
         do {
             println(BLACK + RED_BACKGROUND + "☰ The Titan's Cave ☰" + RESET);
             printDelay(RED + "You woke upp the Titan..." + RESET);

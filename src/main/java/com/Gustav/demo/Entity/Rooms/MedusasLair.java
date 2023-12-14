@@ -23,7 +23,6 @@ public class MedusasLair {
 
 
 
-
         do {
             println(BLACK + RED_BACKGROUND + "☰ Medusas Lair ☰" + RESET);
             printDelay(RED + "Medusa is angry be careful! " + RESET);

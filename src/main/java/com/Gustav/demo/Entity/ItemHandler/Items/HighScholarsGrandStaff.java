@@ -15,4 +15,9 @@ public class HighScholarsGrandStaff extends AItemAttributes {
     public String getName() {
         return YELLOW + "High Scholar Grand Staff" + RESET;
     }
+
+    @Override
+    public String getNameNoColor() {
+        return "High Scholars Grand Staff";
+    }
 }

@@ -13,4 +13,9 @@ public class SuperHealthPotion extends AItemAttributes {
     public String getName() {
         return GREEN_BOLD + "Super Health Potion" + RESET;
     }
+
+    @Override
+    public String getNameNoColor() {
+        return "Super Health Potion";
+    }
 }

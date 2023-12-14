@@ -15,4 +15,9 @@ public class RelicOfFury extends ARelics {
     public String getName() {
         return BLUE_BOLD + "Relic Of Fury" + RESET;
     }
+
+    @Override
+    public String getNameNoColor() {
+        return "Relic Of Fury";
+    }
 }

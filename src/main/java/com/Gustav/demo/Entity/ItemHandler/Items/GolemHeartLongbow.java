@@ -16,4 +16,9 @@ public class GolemHeartLongbow extends AItemAttributes {
         return YELLOW + "Golem Heart Longbow" + RESET;
 
     }
+
+    @Override
+    public String getNameNoColor() {
+        return "Golem Heart Longbow";
+    }
 }

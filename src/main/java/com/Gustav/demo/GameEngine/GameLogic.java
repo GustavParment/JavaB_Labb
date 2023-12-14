@@ -14,6 +14,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 public class GameLogic implements Colors {
     public void fight(Scanner sc, AAttributes attacker, AAttributes defender) {
         PlayerMenu menu = new PlayerMenu();
+        insertMonsterData(defender);
 
 
 
@@ -35,10 +36,8 @@ public class GameLogic implements Colors {
                     if (defender.getHealth() <= 0) {
                         fightDone = isFightDone(attacker, defender, false);
                         attacker.levelUp(attacker);
-                        updatePlayerData(attacker);
-                        insertMonsterData(defender);
+                        updatePlayerData(attacker,defender);
                         updateMonsterData(defender);
-
 
                     } else attack(defender, attacker);
 
@@ -47,10 +46,8 @@ public class GameLogic implements Colors {
                     }
                     if (attacker.getHealth() <= 0){
                         fightDone = isFightDone(attacker, defender, false);
-                        updatePlayerData(attacker);
-                        insertMonsterData(defender);
+                        updatePlayerData(attacker,defender);
                         updateMonsterData(defender);
-
                     }
 
                 }
@@ -168,13 +165,14 @@ public class GameLogic implements Colors {
         if (ranNum < num && attacker.getSpirit() >= 30) attacker.calculateHealthReg(attacker);
     }
 
-    private void updatePlayerData(AAttributes player){
+    private void updatePlayerData(AAttributes player, AAttributes monster){
         DBConnection db = new DBConnection();
-        db.updatePlayer(player);
+        db.updatePlayer(player,monster);
     }
 
     private void updateMonsterData(AAttributes monster){
         DBConnection db = new DBConnection();
+        db.openConnection();
         db.updateMonster(monster);
     }
     private void insertMonsterData(AAttributes monster){

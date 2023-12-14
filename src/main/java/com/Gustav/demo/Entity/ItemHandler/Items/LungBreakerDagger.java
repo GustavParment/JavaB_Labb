@@ -16,4 +16,9 @@ public class LungBreakerDagger extends AItemAttributes {
     public String getName() {
         return YELLOW + "Lung Breaker Dagger" + RESET ;
     }
+
+    @Override
+    public String getNameNoColor() {
+        return "Lung Breaker Dagger";
+    }
 }
