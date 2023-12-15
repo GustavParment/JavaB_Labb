@@ -2,6 +2,7 @@ package com.Gustav.demo;
 
 import com.Gustav.demo.Database.DBConnection;
 import com.Gustav.demo.Entity.Interface.AAttributes;
+import com.Gustav.demo.Entity.Monsters.Medusa;
 import com.Gustav.demo.Entity.Rooms.TheRoomOfRelics;
 import com.Gustav.demo.Entity.Heros.Hunter;
 import com.Gustav.demo.Entity.Rooms.TheRoomOfRiddles;
@@ -14,11 +15,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         DungeonRun.runGame();
-
-
-
-
     }
 }

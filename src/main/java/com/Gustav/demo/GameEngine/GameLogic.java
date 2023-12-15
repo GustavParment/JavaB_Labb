@@ -12,13 +12,15 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class GameLogic implements Colors {
+    DBConnection db = new DBConnection();
+
+
+
     public void fight(Scanner sc, AAttributes attacker, AAttributes defender) {
         PlayerMenu menu = new PlayerMenu();
         insertMonsterData(defender);
-
-
-
         boolean fightDone = false;
+
 
         println(YELLOW + "You Engaged " + defender.getName() + RESET);
         do {
@@ -32,22 +34,27 @@ public class GameLogic implements Colors {
 
                     if (attacker.getHealth() > 0) {
                         didDodge(attacker, defender);
+
                     }
                     if (defender.getHealth() <= 0) {
                         fightDone = isFightDone(attacker, defender, false);
                         attacker.levelUp(attacker);
                         updatePlayerData(attacker,defender);
-                        updateMonsterData(defender);
+                        db.insertFightHistory(attacker,defender);
 
-                    } else attack(defender, attacker);
+                    } else{
+                        attack(defender, attacker);
 
+
+                    }
                     if (defender.getHealth() > 0) {
                         didDodge(defender, attacker);
+
                     }
                     if (attacker.getHealth() <= 0){
                         fightDone = isFightDone(attacker, defender, false);
                         updatePlayerData(attacker,defender);
-                        updateMonsterData(defender);
+                        db.insertFightHistory(attacker,defender);
                     }
 
                 }
@@ -60,10 +67,13 @@ public class GameLogic implements Colors {
                 default -> println(RED + "Wrong input, try again..." + RESET);
             }
 
+
+
         } while (!fightDone);
 
+        System.out.println(attacker.getDamageDone());
         menu.playerOption(attacker, sc);
-        ;
+        
 
     }
 
@@ -125,28 +135,33 @@ public class GameLogic implements Colors {
             print(GREEN + " HIT FOR " + attacker.getDamage() + " DAMAGE ✔" + RESET);
             println("\n" + defender.getName() + YELLOW_BOLD + " remaining HP: "
                     + defender.getHealth() + RESET);
-
             chanceOnHealthReg(defender);
 
 
         }
-
-
     }
 
     private void attack(AAttributes attacker, AAttributes defender) {
         printDelay(attacker.getName() + " " + attacker.attack());
         attacker.calculateDamage(attacker);
+
         defender.setHealth(defender.getHealth() - attacker.getDamage());
 
+        attacker.calcDmgDone(attacker,defender);
 
+
+        System.out.println("DMG total attacker: " + attacker.getDamageDone() +
+                " DMG total defender: " + defender.getDamageDone() );
     }
+
+
+
+
 
     private boolean calculateDodge(AAttributes attacker, AAttributes defender) {
 
         int agilityDifference = attacker.getAgility() - defender.getAgility();
         int threshold = 20;
-
 
         Random random = new Random();
         int randomNumber = random.nextInt(30) + 1;
@@ -166,20 +181,20 @@ public class GameLogic implements Colors {
     }
 
     private void updatePlayerData(AAttributes player, AAttributes monster){
-        DBConnection db = new DBConnection();
         db.updatePlayer(player,monster);
     }
 
-    private void updateMonsterData(AAttributes monster){
-        DBConnection db = new DBConnection();
-        db.openConnection();
-        db.updateMonster(monster);
-    }
     private void insertMonsterData(AAttributes monster){
-        DBConnection db = new DBConnection();
         db.openConnection();
         db.insertMonster(monster);
     }
+
+
+
+
+
+
+
 
 
 

@@ -6,6 +6,7 @@ import com.Gustav.demo.Entity.Interface.AItemAttributes;
 import java.sql.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
+
 public class DBConnection {
     private static final String URL = "jdbc:mariadb://localhost:3306/dungeonrun";
     private static final String USER = "root";
@@ -198,15 +199,22 @@ public class DBConnection {
     }  */
 
     public void insertMonster(AAttributes monster) {
-        println("monster_id " + monster.getId());
         String sql = "INSERT INTO monster(" +
-                "name," +
-                "damage," +
-                "health)" +
+                "MonsterName," +
+                "MonsterDamage," +
+                "MonsterBaseHealth," +
+                "MonsterSpirit," +
+                "MonsterAgility," +
+                "MonsterGold" +
+                ")" +
                 "VALUES (" +
                 "?," +
                 "?," +
-                "?)";
+                "?," +
+                "?," +
+                "?," +
+                "?" +
+                ")";
         try (
                 PreparedStatement preparedStatement = connection.prepareStatement(
                         sql, Statement.RETURN_GENERATED_KEYS)
@@ -214,6 +222,9 @@ public class DBConnection {
             preparedStatement.setString(1, monster.getNameNoColor());
             preparedStatement.setInt(2, monster.getDamage());
             preparedStatement.setInt(3, monster.getHealth());
+            preparedStatement.setInt(4,monster.getSpirit());
+            preparedStatement.setInt(5,monster.getAgility());
+            preparedStatement.setInt(6,monster.getGold());
             preparedStatement.executeUpdate();
 
             ResultSet returnedGeneratedKeys = preparedStatement.getGeneratedKeys();
@@ -225,13 +236,12 @@ public class DBConnection {
         }
     }
 
-
     public void updateMonster(AAttributes monster){
         String sql = "UPDATE monster " +
                 "SET " +
-                "name = ?, " +
-                "damage = ?, " +
-                "health = ? " +
+                "monstername = ?, " +
+                "monsterdamage = ?, " +
+                "monsterhealth = ? " +
                 "WHERE monster_id = ?";
      try(
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -284,6 +294,51 @@ public class DBConnection {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void insertFightHistory(AAttributes player, AAttributes monster){
+        String sql = "INSERT INTO fighthistory(" +
+                "Monster,"+
+                "MonsterHealth,"+
+                "DamageDoneByMonster," +
+                "DamageDoneByPlayer, " +
+                "TimeOfFight," +
+                "monster_id," +
+                "player_id" +
+                ")" +
+                "VALUES (" +
+                "?," +
+                "?," +
+                "?," +
+                "?," +
+                "?," +
+                "?," +
+                "?)";
+
+        try(
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                sql, Statement.RETURN_GENERATED_KEYS)
+        ){
+                preparedStatement.setString(1,monster.getNameNoColor());
+                preparedStatement.setInt(2,monster.getHealth());
+                preparedStatement.setInt(3,monster.getDamage());
+                preparedStatement.setInt(4,player.getDamage());
+                preparedStatement.setTime(5,java.sql.Time.valueOf(java.time.LocalTime.now()));
+                preparedStatement.setInt(6,monster.getId());
+                preparedStatement.setInt(7,player.getId());
+
+
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                println("Fight history added successfully");
+                } else {
+                println("Failed to add fight history");
+                }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
     }
 
     }

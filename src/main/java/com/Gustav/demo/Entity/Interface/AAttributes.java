@@ -1,5 +1,8 @@
 package com.Gustav.demo.Entity.Interface;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
@@ -13,11 +16,22 @@ public abstract class AAttributes implements ICombat {
     private int experience;
     private int level;
     private int gold;
+    private int damageDone;
+    private int totalAttackerDamage = 0;
+    private int totalDefenderDamage = 0;
+
+    public int getDamageDone() {
+        return damageDone;
+    }
+
+    public void setDamageDone(int damageDone) {
+        this.damageDone = damageDone;
+    }
 
     public AAttributes(int strength, int spirit,
                        int agility, int health,
                        int experience, int level,
-                       int damage,int gold)
+                       int damage, int gold)
     {
         this.strength = strength;
         this.spirit = spirit;
@@ -224,8 +238,27 @@ public abstract class AAttributes implements ICombat {
         if(attacker.getStrength() >= 80)attacker.setStrength(80);
     }
 
+    public void calcDmgDone(AAttributes attacker, AAttributes defender){
+
+
+        if (this == attacker) {
+             totalAttackerDamage += attacker.getDamage();
+            attacker.setDamageDone(totalAttackerDamage);
+        } else {
+            totalDefenderDamage += defender.getDamage();
+            defender.setDamageDone(totalDefenderDamage);
+
+
+        }
+    }
+
+
 
 
 }
+
+
+
+
 
 
