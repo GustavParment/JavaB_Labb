@@ -46,16 +46,23 @@ public class Shop {
 
             switch (sc.nextLine()){
                 case "1" -> {item = new BookOfWisdom();
-                    withdraw20GoldAndAddStats(attacker, item); item.setId(1);}
+                    item.setId(1);
+                    withdraw20GoldAndAddStats(attacker, item);
+                }
                 case "2" -> {item = new HealthPotion();
-                    withdraw20GoldAndAddStats(attacker, item); item.setId(2);}
+                    item.setId(2);
+                    withdraw20GoldAndAddStats(attacker, item);}
                 case "3" -> {item = new GolemHeartLongbow();
-                    withdraw40GoldAndAddStats(attacker, item); item.setId(3);}
-                case "4" -> {item = new HighScholarsGrandStaff(); item.setId(4);
+                    item.setId(3);
                     withdraw40GoldAndAddStats(attacker, item);}
-                case "5" -> {item = new LungBreakerDagger(); item.setId(5);
+                case "4" -> {item = new HighScholarsGrandStaff();
+                    item.setId(4);
+                    withdraw40GoldAndAddStats(attacker, item);}
+                case "5" -> {item = new LungBreakerDagger();
+                    item.setId(5);
                     withdraw80GoldAndAddStats(attacker, item);}
-                case "6" ->{item = new SuperHealthPotion(); item.setId(6);
+                case "6" ->{item = new SuperHealthPotion();
+                    item.setId(6);
                     withdraw80GoldAndAddStats(attacker,item);}
                 case "7" -> devTool(attacker);
                 case "8" -> {returnTo.loreMastersInn(attacker, sc);wrongInput = false;}
@@ -80,6 +87,7 @@ public class Shop {
             println("Inefficient funds");
 
         } else {
+                writeItemToDB(item,attacker);
                 attacker.setStrength(attacker.getStrength() + item.getStrength());
                 attacker.setAgility(attacker.getAgility() + item.getAgility());
                 attacker.setSpirit(attacker.getSpirit() + item.getSpirit());
@@ -89,10 +97,12 @@ public class Shop {
                 attacker.agilityCap(attacker);
                 attacker.strengthCap(attacker);
 
+
                 println(YELLOW + "You purchased " + item.getName());
                 println(YELLOW + "Gold: "+ attacker.getGold() + RESET);
 
         }
+
     }
 
     private void withdraw40GoldAndAddStats(AAttributes attacker, AItemAttributes item){
@@ -101,6 +111,7 @@ public class Shop {
 
         }
         else {
+            writeItemToDB(item,attacker);
             attacker.setStrength(attacker.getStrength() + item.getStrength());
             attacker.setAgility(attacker.getAgility() + item.getAgility());
             attacker.setSpirit(attacker.getSpirit() + item.getSpirit());
@@ -110,11 +121,13 @@ public class Shop {
             attacker.agilityCap(attacker);
             attacker.strengthCap(attacker);
 
+
             println(YELLOW + "You purchased " + item.getName());
             println(YELLOW + "Gold: " + attacker.getGold() + RESET);
 
 
         }
+
     }
 
     private void withdraw80GoldAndAddStats(AAttributes attacker, AItemAttributes item){
@@ -123,6 +136,7 @@ public class Shop {
 
         }
         else {
+            writeItemToDB(item,attacker);
             attacker.setStrength(attacker.getStrength() + item.getStrength());
             attacker.setAgility(attacker.getAgility() + item.getAgility());
             attacker.setSpirit(attacker.getSpirit() + item.getSpirit());
@@ -132,10 +146,17 @@ public class Shop {
             attacker.agilityCap(attacker);
             attacker.strengthCap(attacker);
 
+
             println(YELLOW + "You purchased " + item.getName());
             println(YELLOW + "Gold: " + attacker.getGold() + RESET);
 
         }
+    }
+
+    private void writeItemToDB(AItemAttributes item, AAttributes player){
+        DBConnection db = new DBConnection();
+        db.openConnection();
+        db.insertItem(item,player);
 
     }
 

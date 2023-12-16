@@ -39,30 +39,6 @@ public class DBConnection {
     }
     }
 
-   /* public void createPlayerTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS player " +
-                "(" +
-                "player_id INT NOT NULL AUTO_INCREMENT, " +
-                "classname VARCHAR(100), " +
-                "health INT, " +
-                "spirit INT," +
-                "strength INT," +
-                "agility INT," +
-                "damage INT," +
-                "level INT," +
-                "gold INT," +
-                "primary KEY(player_id)" +
-                ")";
-
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.execute();
-        } catch (SQLException e) {
-
-            System.out.println(e);
-
-        }
-    }         */
 
     public void insertPlayer(AAttributes player){
         String sql = "INSERT INTO player(" +
@@ -76,8 +52,7 @@ public class DBConnection {
                 "level," +
                 "gold,"+
                 "monsterskilled,"+
-                "date,"+
-                "time"+
+                "date "+
                 ") " +
                 "VALUES(" +
                 "?," +
@@ -90,14 +65,14 @@ public class DBConnection {
                 "?," +
                 "?,"  +
                 "?,"  +
-                "?,"  +
-                "?"+
+                "? "  +
                 ")";
 
         try(
                 PreparedStatement preparedStatement = connection.prepareStatement(sql,
                 Statement.RETURN_GENERATED_KEYS)
-        ) {
+           )
+        {
             preparedStatement.setInt(1, player.getId());
             preparedStatement.setString(2,player.getNameNoColor());
             preparedStatement.setInt(3,player.getHealth());
@@ -109,7 +84,6 @@ public class DBConnection {
             preparedStatement.setInt(9,player.getGold());
             preparedStatement.setInt(10,player.getLevel());
             preparedStatement.setDate(11,java.sql.Date.valueOf(java.time.LocalDate.now()));
-            preparedStatement.setTime(12,java.sql.Time.valueOf(java.time.LocalTime.now()));
             preparedStatement.executeUpdate();
 
             ResultSet returnedGeneratedKeys = preparedStatement.getGeneratedKeys();
@@ -138,9 +112,7 @@ public class DBConnection {
                         "level = ?, " +
                         "gold = ?, " +
                         "monsterskilled = ?,"+
-                        "date = ?, "+
-                        "time = ?, " +
-                        "monster_id = ? " +
+                        "date = ? "+
                         "WHERE player_id = ?";
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement
@@ -159,9 +131,7 @@ public class DBConnection {
                     preparedStatement.setInt(8,player.getGold());
                     preparedStatement.setInt(9,player.getLevel());
                     preparedStatement.setDate(10, java.sql.Date.valueOf(java.time.LocalDate.now()));
-                    preparedStatement.setTime(11,java.sql.Time.valueOf(java.time.LocalTime.now()));
-                    preparedStatement.setInt(12,monster.getId());
-                    preparedStatement.setInt(13,player.getId());
+                    preparedStatement.setInt(11,player.getId());
 
                     int rowsAffected = preparedStatement.executeUpdate();
 
@@ -179,24 +149,6 @@ public class DBConnection {
                 closeConnection();
             }
         }
-
-
-    /*public void createPlayerHistoryTable(AAttributes player){
-        String sql = "CREATE TABLE IF NOT EXISTS playerhistory " +
-                "(" +
-                "playerhistory_id INT NOT NULL AUTO_INCREMENT, classname varchar(50), )";
-
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.execute();
-        } catch (SQLException e) {
-
-            System.out.println(e);
-
-        }
-
-
-    }  */
 
     public void insertMonster(AAttributes monster) {
         String sql = "INSERT INTO monster(" +
@@ -218,7 +170,8 @@ public class DBConnection {
         try (
                 PreparedStatement preparedStatement = connection.prepareStatement(
                         sql, Statement.RETURN_GENERATED_KEYS)
-        ) {
+            )
+        {
             preparedStatement.setString(1, monster.getNameNoColor());
             preparedStatement.setInt(2, monster.getDamage());
             preparedStatement.setInt(3, monster.getHealth());
@@ -236,51 +189,19 @@ public class DBConnection {
         }
     }
 
-    public void updateMonster(AAttributes monster){
-        String sql = "UPDATE monster " +
-                "SET " +
-                "monstername = ?, " +
-                "monsterdamage = ?, " +
-                "monsterhealth = ? " +
-                "WHERE monster_id = ?";
-     try(
-             PreparedStatement preparedStatement = connection.prepareStatement(
-             sql,Statement.RETURN_GENERATED_KEYS)
-     ){
-            preparedStatement.setString(1,monster.getNameNoColor());
-            preparedStatement.setInt(2,monster.getDamage());
-            preparedStatement.setInt(3,monster.getHealth());
-            preparedStatement.setInt(4,monster.getId());
-
-            int rowsAffected = preparedStatement.executeUpdate();
-
-            if (rowsAffected > 0){
-                println("Monster updated successfully to monster_id: " + monster.getId());
-
-            }else{
-                 println("Monster not found or no changes made");
-            }
-
-     }catch (SQLException e){
-         e.printStackTrace();
-
-     }
 
 
-
-    }
-
-    public void updateItems(AItemAttributes item){
-        String sql = "UPDATE playeritem SET ItemsPurchased " +
-                "WHERE item_id = ?";
+    public void insertItem(AItemAttributes item,AAttributes player){
+        String sql = "INSERT INTO itemhistory(ItemPurchased, player_id, item_id) VALUES (?,?,?)";
 
         try(
                 PreparedStatement preparedStatement = connection.prepareStatement(sql,
                         Statement.RETURN_GENERATED_KEYS)
         ) {
 
-            preparedStatement.setString(2,item.getNameNoColor());
-            preparedStatement.setInt(2,item.getId());
+            preparedStatement.setString(1,item.getNameNoColor());
+            preparedStatement.setInt(2,player.getId());
+            preparedStatement.setInt(3,item.getId());
 
             preparedStatement.executeUpdate();
 
@@ -320,11 +241,12 @@ public class DBConnection {
         try(
                 PreparedStatement preparedStatement = connection.prepareStatement(
                 sql, Statement.RETURN_GENERATED_KEYS)
-        ){
+           )
+        {
                 preparedStatement.setString(1,monster.getNameNoColor());
                 preparedStatement.setInt(2,monster.getHealth());
-                preparedStatement.setInt(3,monster.getDamage());
-                preparedStatement.setInt(4,player.getDamage());
+                preparedStatement.setInt(3,monster.getDamageDone());
+                preparedStatement.setInt(4,player.getDamageDone());
                 preparedStatement.setString(5,player.getNameNoColor());
                 preparedStatement.setTime(6,java.sql.Time.valueOf(java.time.LocalTime.now()));
                 preparedStatement.setInt(7,monster.getId());

@@ -17,11 +17,9 @@ public class CharacterMenu {
     PlayerMenu menu;
 
     public void characterChooser() {
-
         sc = new Scanner(System.in);
         menu = new PlayerMenu();
         StartMenu start = new StartMenu();
-
 
         println(BLUE + BLACK_BACKGROUND + "☰ Choose class ☰" + RESET);
         println("1." + YELLOW + "Rogue" + RESET);
@@ -32,23 +30,21 @@ public class CharacterMenu {
 
         AAttributes player = null;
         switch (sc.nextLine()) {
-            case "1" -> {player = new Rogue(); loadPlayerToDB(player);}
-            case "2" -> {player = new Necromancer(); loadPlayerToDB(player);}
-            case "3" -> {player = new Hunter(); loadPlayerToDB(player);}
-            case "4" -> {player = new Mage(); loadPlayerToDB(player);}
+            case "1" -> {player = new Rogue(); writeNewPlayerToDB(player);}
+            case "2" -> {player = new Necromancer(); writeNewPlayerToDB(player);}
+            case "3" -> {player = new Hunter(); writeNewPlayerToDB(player);}
+            case "4" -> {player = new Mage(); writeNewPlayerToDB(player);}
             case "5" -> start.options();
             default -> println("Wrong input");
         }
 
         menu.playerOption(player,sc);
 
-
     }
-    private void loadPlayerToDB(AAttributes attacker){
+
+    private void writeNewPlayerToDB(AAttributes attacker){
         DBConnection db = new DBConnection();
         db.openConnection();
         db.insertPlayer(attacker);
-        db.closeConnection();
     }
-
 }

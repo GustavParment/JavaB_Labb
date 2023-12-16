@@ -17,37 +17,14 @@ public abstract class AAttributes implements ICombat {
     private int level;
     private int gold;
     private int damageDone;
-    private int totalAttackerDamage = 0;
-    private int totalDefenderDamage = 0;
 
-    public int getTotalAttackerDamage() {
-        return totalAttackerDamage;
-    }
-
-    public void setTotalAttackerDamage(int totalAttackerDamage) {
-        this.totalAttackerDamage = totalAttackerDamage;
-    }
-
-    public int getTotalDefenderDamage() {
-        return totalDefenderDamage;
-    }
-
-    public void setTotalDefenderDamage(int totalDefenderDamage) {
-        this.totalDefenderDamage = totalDefenderDamage;
-    }
-
-    public int getDamageDone() {
-        return damageDone;
-    }
-
-    public void setDamageDone(int damageDone) {
-        this.damageDone = damageDone;
-    }
-
-    public AAttributes(int strength, int spirit,
-                       int agility, int health,
-                       int experience, int level,
-                       int damage, int gold)
+    public AAttributes
+            (
+            int strength, int spirit,
+            int agility, int health,
+            int experience, int level,
+            int damage, int gold
+            )
     {
         this.strength = strength;
         this.spirit = spirit;
@@ -129,6 +106,14 @@ public abstract class AAttributes implements ICombat {
 
     public void setGold(int gold) {
         this.gold = gold;
+    }
+
+    public int getDamageDone() {
+        return damageDone;
+    }
+
+    public void setDamageDone(int damageDone) {
+        this.damageDone = damageDone;
     }
 
     public void levelUp(AAttributes attacker) {
@@ -253,23 +238,6 @@ public abstract class AAttributes implements ICombat {
     public void strengthCap(AAttributes attacker){
         if(attacker.getStrength() >= 80)attacker.setStrength(80);
     }
-
-    public void calcDmgDone(AAttributes attacker, AAttributes defender){
-
-
-        if (this == attacker) {
-             totalAttackerDamage += attacker.getDamage();
-            attacker.setTotalAttackerDamage(totalAttackerDamage);
-        } else {
-            totalDefenderDamage += defender.getDamage();
-            defender.setTotalDefenderDamage(totalDefenderDamage);
-
-
-        }
-    }
-
-
-
 
 }
 

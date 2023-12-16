@@ -13,13 +13,12 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 public class GameLogic implements Colors {
     DBConnection db = new DBConnection();
 
-
-
     public void fight(Scanner sc, AAttributes attacker, AAttributes defender) {
         PlayerMenu menu = new PlayerMenu();
         insertMonsterData(defender);
+        attacker.setDamageDone(0);
+        defender.setDamageDone(0);
         boolean fightDone = false;
-
 
         println(YELLOW + "You Engaged " + defender.getName() + RESET);
         do {
@@ -70,11 +69,7 @@ public class GameLogic implements Colors {
 
         } while (!fightDone);
 
-        System.out.println("DMG total attacker: " + attacker.getTotalAttackerDamage());
-        System.out.println("DMG total defender: " + defender.getTotalDefenderDamage());
         menu.playerOption(attacker, sc);
-        
-
     }
 
     private boolean isFightDone(AAttributes attacker, AAttributes defender,
@@ -123,18 +118,20 @@ public class GameLogic implements Colors {
     }
 
     private void didDodge(AAttributes attacker, AAttributes defender) {
-
         if (calculateDodge(attacker, defender)) {
             print(RED + " ❌MISS❌" + RESET);
             println("\n" + defender.getName() + " " + defender.dodge());
 
             defender.setHealth(defender.getHealth() + attacker.getDamage());
-            defender.setDamageDone(-defender.getDamage());
+
 
         } else {
             print(GREEN + " HIT FOR " + attacker.getDamage() + " DAMAGE ✔" + RESET);
             println("\n" + defender.getName() + YELLOW_BOLD + " remaining HP: "
                     + defender.getHealth() + RESET);
+
+
+           attacker.setDamageDone(attacker.getDamageDone() + attacker.getDamage());
 
             chanceOnHealthReg(defender);
 
@@ -145,13 +142,11 @@ public class GameLogic implements Colors {
         printDelay(attacker.getName() + " " + attacker.attack());
         attacker.calculateDamage(attacker);
         defender.setHealth(defender.getHealth() - attacker.getDamage());
-        attacker.calcDmgDone(attacker,defender);
 
 
     }
 
     private boolean calculateDodge(AAttributes attacker, AAttributes defender) {
-
         int agilityDifference = attacker.getAgility() - defender.getAgility();
         int threshold = 20;
 
@@ -173,6 +168,7 @@ public class GameLogic implements Colors {
     }
 
     private void updatePlayerData(AAttributes player, AAttributes monster){
+        db.openConnection();
         db.updatePlayer(player,monster);
     }
 

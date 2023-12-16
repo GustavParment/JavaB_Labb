@@ -1,0 +1,73 @@
+ public void updateMonster(AAttributes monster){
+        String sql = "UPDATE monster " +
+                "SET " +
+                "monstername = ?, " +
+                "monsterdamage = ?, " +
+                "monsterhealth = ? " +
+                "WHERE monster_id = ?";
+     try(
+             PreparedStatement preparedStatement = connection.prepareStatement(
+             sql,Statement.RETURN_GENERATED_KEYS)
+     ){
+            preparedStatement.setString(1,monster.getNameNoColor());
+            preparedStatement.setInt(2,monster.getDamage());
+            preparedStatement.setInt(3,monster.getHealth());
+            preparedStatement.setInt(4,monster.getId());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0){
+                println("Monster updated successfully to monster_id: " + monster.getId());
+
+            }else{
+                 println("Monster not found or no changes made");
+            }
+
+     }catch (SQLException e){
+         e.printStackTrace();
+
+     }
+
+    }
+    _________________________________________________________________________
+    public void createPlayerHistoryTable(AAttributes player){
+            String sql = "CREATE TABLE IF NOT EXISTS playerhistory " +
+                    "(" +
+                    "playerhistory_id INT NOT NULL AUTO_INCREMENT, classname varchar(50), )";
+
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.execute();
+            } catch (SQLException e) {
+
+                System.out.println(e);
+
+            }
+
+
+        }
+----------------------------------------------------------------------------------
+  /* public void createPlayerTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS player " +
+                "(" +
+                "player_id INT NOT NULL AUTO_INCREMENT, " +
+                "classname VARCHAR(100), " +
+                "health INT, " +
+                "spirit INT," +
+                "strength INT," +
+                "agility INT," +
+                "damage INT," +
+                "level INT," +
+                "gold INT," +
+                "primary KEY(player_id)" +
+                ")";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+
+            System.out.println(e);
+
+        }
+    }         */
