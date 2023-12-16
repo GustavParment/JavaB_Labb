@@ -20,6 +20,22 @@ public abstract class AAttributes implements ICombat {
     private int totalAttackerDamage = 0;
     private int totalDefenderDamage = 0;
 
+    public int getTotalAttackerDamage() {
+        return totalAttackerDamage;
+    }
+
+    public void setTotalAttackerDamage(int totalAttackerDamage) {
+        this.totalAttackerDamage = totalAttackerDamage;
+    }
+
+    public int getTotalDefenderDamage() {
+        return totalDefenderDamage;
+    }
+
+    public void setTotalDefenderDamage(int totalDefenderDamage) {
+        this.totalDefenderDamage = totalDefenderDamage;
+    }
+
     public int getDamageDone() {
         return damageDone;
     }
@@ -243,10 +259,10 @@ public abstract class AAttributes implements ICombat {
 
         if (this == attacker) {
              totalAttackerDamage += attacker.getDamage();
-            attacker.setDamageDone(totalAttackerDamage);
+            attacker.setTotalAttackerDamage(totalAttackerDamage);
         } else {
             totalDefenderDamage += defender.getDamage();
-            defender.setDamageDone(totalDefenderDamage);
+            defender.setTotalDefenderDamage(totalDefenderDamage);
 
 
         }

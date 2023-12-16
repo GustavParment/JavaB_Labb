@@ -298,15 +298,17 @@ public class DBConnection {
 
     public void insertFightHistory(AAttributes player, AAttributes monster){
         String sql = "INSERT INTO fighthistory(" +
-                "Monster,"+
+                "Defender,"+
                 "MonsterHealth,"+
                 "DamageDoneByMonster," +
                 "DamageDoneByPlayer, " +
+                "Attacker," +
                 "TimeOfFight," +
                 "monster_id," +
                 "player_id" +
                 ")" +
                 "VALUES (" +
+                "?,"+
                 "?," +
                 "?," +
                 "?," +
@@ -323,9 +325,10 @@ public class DBConnection {
                 preparedStatement.setInt(2,monster.getHealth());
                 preparedStatement.setInt(3,monster.getDamage());
                 preparedStatement.setInt(4,player.getDamage());
-                preparedStatement.setTime(5,java.sql.Time.valueOf(java.time.LocalTime.now()));
-                preparedStatement.setInt(6,monster.getId());
-                preparedStatement.setInt(7,player.getId());
+                preparedStatement.setString(5,player.getNameNoColor());
+                preparedStatement.setTime(6,java.sql.Time.valueOf(java.time.LocalTime.now()));
+                preparedStatement.setInt(7,monster.getId());
+                preparedStatement.setInt(8,player.getId());
 
 
                 int rowsAffected = preparedStatement.executeUpdate();

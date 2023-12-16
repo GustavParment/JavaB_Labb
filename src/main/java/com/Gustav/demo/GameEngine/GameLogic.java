@@ -5,7 +5,6 @@ import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.GameEngine.Menu.PlayerMenu;
 import com.Gustav.demo.GameEngine.Menu.StartMenu;
 import com.Gustav.demo.Resources.Paint.Colors;
-
 import java.util.Random;
 import java.util.Scanner;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
@@ -71,7 +70,8 @@ public class GameLogic implements Colors {
 
         } while (!fightDone);
 
-        System.out.println(attacker.getDamageDone());
+        System.out.println("DMG total attacker: " + attacker.getTotalAttackerDamage());
+        System.out.println("DMG total defender: " + defender.getTotalDefenderDamage());
         menu.playerOption(attacker, sc);
         
 
@@ -125,18 +125,18 @@ public class GameLogic implements Colors {
     private void didDodge(AAttributes attacker, AAttributes defender) {
 
         if (calculateDodge(attacker, defender)) {
-
             print(RED + " ❌MISS❌" + RESET);
             println("\n" + defender.getName() + " " + defender.dodge());
 
             defender.setHealth(defender.getHealth() + attacker.getDamage());
+            defender.setDamageDone(-defender.getDamage());
 
         } else {
             print(GREEN + " HIT FOR " + attacker.getDamage() + " DAMAGE ✔" + RESET);
             println("\n" + defender.getName() + YELLOW_BOLD + " remaining HP: "
                     + defender.getHealth() + RESET);
-            chanceOnHealthReg(defender);
 
+            chanceOnHealthReg(defender);
 
         }
     }
@@ -144,19 +144,11 @@ public class GameLogic implements Colors {
     private void attack(AAttributes attacker, AAttributes defender) {
         printDelay(attacker.getName() + " " + attacker.attack());
         attacker.calculateDamage(attacker);
-
         defender.setHealth(defender.getHealth() - attacker.getDamage());
-
         attacker.calcDmgDone(attacker,defender);
 
 
-        System.out.println("DMG total attacker: " + attacker.getDamageDone() +
-                " DMG total defender: " + defender.getDamageDone() );
     }
-
-
-
-
 
     private boolean calculateDodge(AAttributes attacker, AAttributes defender) {
 
