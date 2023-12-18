@@ -13,6 +13,7 @@ import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
 public class Shop {
+    DBConnection db = new DBConnection();
 
     public void buyItems(AAttributes attacker, Scanner sc) {
         boolean wrongInput = true;
@@ -65,7 +66,9 @@ public class Shop {
                     item.setId(6);
                     withdraw80GoldAndAddStats(attacker,item);}
                 case "7" -> devTool(attacker);
-                case "8" -> {returnTo.loreMastersInn(attacker, sc);wrongInput = false;}
+                case "8" -> {updatePlayerToDB(attacker);
+                    returnTo.loreMastersInn(attacker, sc);
+                    wrongInput = false;}
                 default -> println(RED + "Wrong input" + RESET);
             }
         }
@@ -97,7 +100,6 @@ public class Shop {
                 attacker.agilityCap(attacker);
                 attacker.strengthCap(attacker);
 
-
                 println(YELLOW + "You purchased " + item.getName());
                 println(YELLOW + "Gold: "+ attacker.getGold() + RESET);
 
@@ -109,8 +111,7 @@ public class Shop {
         if (attacker.getGold() < 40) {
             println("Inefficient funds");
 
-        }
-        else {
+        } else {
             writeItemToDB(item,attacker);
             attacker.setStrength(attacker.getStrength() + item.getStrength());
             attacker.setAgility(attacker.getAgility() + item.getAgility());
@@ -120,7 +121,6 @@ public class Shop {
             attacker.spiritCap(attacker);
             attacker.agilityCap(attacker);
             attacker.strengthCap(attacker);
-
 
             println(YELLOW + "You purchased " + item.getName());
             println(YELLOW + "Gold: " + attacker.getGold() + RESET);
@@ -134,8 +134,7 @@ public class Shop {
         if (attacker.getGold() < 80) {
             println("Inefficient funds");
 
-        }
-        else {
+        } else {
             writeItemToDB(item,attacker);
             attacker.setStrength(attacker.getStrength() + item.getStrength());
             attacker.setAgility(attacker.getAgility() + item.getAgility());
@@ -154,13 +153,14 @@ public class Shop {
     }
 
     private void writeItemToDB(AItemAttributes item, AAttributes player){
-        DBConnection db = new DBConnection();
         db.openConnection();
         db.insertItem(item,player);
 
     }
 
-
+    private void updatePlayerToDB(AAttributes player){
+        db.updatePlayer(player);
+    }
 }
 
 

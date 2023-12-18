@@ -19,6 +19,7 @@ public class TheGiantBlackSquirrelsNest {
         AAttributes blackSquirrel = new BlackSquirrel();
         GameLogic start = new GameLogic();
         RoomMenu menu = new RoomMenu();
+        blackSquirrel.setId(3);
         boolean fight = false;
 
         do {

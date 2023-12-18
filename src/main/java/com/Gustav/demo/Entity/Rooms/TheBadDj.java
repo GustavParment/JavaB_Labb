@@ -17,6 +17,7 @@ public class TheBadDj {
         AAttributes badDj = new BadDj();
         GameLogic start = new GameLogic();
         RoomMenu menu = new RoomMenu();
+        badDj.setId(5);
         boolean fight = false;
 
         do {

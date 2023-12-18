@@ -7,7 +7,7 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class LaChancla extends AAttributes {
     public LaChancla() {
-        super(0, 60, 40, 150, 0, 4, 45,30);
+        super(0, 20, 40, 150, 0, 4, 45,30);
     }
 
     @Override

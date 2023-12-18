@@ -19,6 +19,7 @@ public class MedusasLair {
         AAttributes medusa = new Medusa();
         GameLogic start = new GameLogic();
         RoomMenu menu = new RoomMenu();
+        medusa.setId(1);
         boolean fight = false;
 
 

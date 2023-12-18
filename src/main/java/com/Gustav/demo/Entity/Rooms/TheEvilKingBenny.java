@@ -18,6 +18,7 @@ public class TheEvilKingBenny {
         AAttributes benny = new Benny();
         GameLogic start = new GameLogic();
         RoomMenu menu = new RoomMenu();
+        benny.setId(7);
         boolean fight = false;
 
         do {

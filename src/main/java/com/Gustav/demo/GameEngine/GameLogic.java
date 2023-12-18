@@ -15,7 +15,6 @@ public class GameLogic implements Colors {
 
     public void fight(Scanner sc, AAttributes attacker, AAttributes defender) {
         PlayerMenu menu = new PlayerMenu();
-        insertMonsterData(defender);
         attacker.setDamageDone(0);
         defender.setDamageDone(0);
         boolean fightDone = false;
@@ -32,52 +31,41 @@ public class GameLogic implements Colors {
 
                     if (attacker.getHealth() > 0) {
                         didDodge(attacker, defender);
-
                     }
                     if (defender.getHealth() <= 0) {
                         fightDone = isFightDone(attacker, defender, false);
-                        attacker.levelUp(attacker);
-                        updatePlayerData(attacker,defender);
-                        db.insertFightHistory(attacker,defender);
 
                     } else{
                         attack(defender, attacker);
-
-
                     }
                     if (defender.getHealth() > 0) {
                         didDodge(defender, attacker);
-
                     }
                     if (attacker.getHealth() <= 0){
                         fightDone = isFightDone(attacker, defender, false);
-                        updatePlayerData(attacker,defender);
-                        db.insertFightHistory(attacker,defender);
                     }
-
                 }
                 case "2" -> attacker.getStatus(attacker);
-                case "3" -> {
-                    attacker.flee(attacker);
-                    println(YELLOW + "\nNow you have " + attacker.getHealth() + " hp" +  RESET);
-                    fightDone = true;
-                }
+                case "3" -> {attackerFled(attacker, defender);fightDone = true;}
                 default -> println(RED + "Wrong input, try again..." + RESET);
             }
-
-
 
         } while (!fightDone);
 
         menu.playerOption(attacker, sc);
     }
 
+    private void attackerFled(AAttributes attacker, AAttributes defender) {
+        attacker.flee(attacker);
+        println(YELLOW + "\nNow you have " + attacker.getHealth() + " hp" +  RESET);
+        updatePlayerData(attacker);
+        db.insertFightHistory(attacker, defender,"Fled");
+
+    }
+
     private boolean isFightDone(AAttributes attacker, AAttributes defender,
                                 boolean fightDone) {
-
-
         if (defender.getHealth() <= 0) {
-
             printDelay(YELLOW + "\nCongratulations!" + RESET + " You have slayed "
                     + defender.getName());
             println("\n" + attacker.getName() + YELLOW + " looted " + defender.getGold() + " gold" + RESET);
@@ -88,17 +76,17 @@ public class GameLogic implements Colors {
             attacker.setExperience(attacker.getExperience() + 100);
             attacker.setGold(attacker.getGold() + defender.getGold());
             attacker.setHealth(attacker.getHealth() + 10);
+            attacker.levelUp(attacker);
 
+            updatePlayerData(attacker);
+            db.insertFightHistory(attacker,defender,"Victory");
 
             fightDone = true;
-
             defender = null;
-
         }
         if (attacker.getHealth() <= 0) {
             StartMenu start = new StartMenu();
             ScoreFile scoreFile = new ScoreFile();
-
 
             println(attacker.getName() + " was defeated by "
                     + defender.getName() + RESET);
@@ -108,6 +96,9 @@ public class GameLogic implements Colors {
                     + RESET);
             fightDone = true;
             scoreFile.writeScoreFile(attacker);
+
+            updatePlayerData(attacker);
+            db.insertFightHistory(attacker,defender,"Lost");
 
             start.options();
 
@@ -167,21 +158,9 @@ public class GameLogic implements Colors {
         if (ranNum < num && attacker.getSpirit() >= 30) attacker.calculateHealthReg(attacker);
     }
 
-    private void updatePlayerData(AAttributes player, AAttributes monster){
-        db.openConnection();
-        db.updatePlayer(player,monster);
+    private void updatePlayerData(AAttributes player){
+        db.updatePlayer(player);
     }
-
-    private void insertMonsterData(AAttributes monster){
-        db.openConnection();
-        db.insertMonster(monster);
-    }
-
-
-
-
-
-
 
 
 

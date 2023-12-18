@@ -18,6 +18,7 @@ public class LaChanclasCastle {
         AAttributes laChancla = new LaChancla();
         GameLogic start = new GameLogic();
         RoomMenu menu = new RoomMenu();
+        laChancla.setId(4);
         boolean fight = false;
 
         do {

@@ -175,7 +175,7 @@ public class RoomMenu {
             case 2 -> {
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(YELLOW + "2.The Titan's Cave" + RESET);
-                println(RED + "3.The Gigant Black Squirrel´s Nest" + RESET);
+                println(RED + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println("4. ☠️☠️☠️"+ RED + "???" + RESET);
                 println("5. ☠️☠️☠️"+ RED + "???" + RESET);
                 println("6. ☠️☠️☠️"+ RED + "???" + RESET);
@@ -188,7 +188,7 @@ public class RoomMenu {
             case 3 -> {
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
-                println(YELLOW + "3.The Gigant Black Squirrel´s Nest" + RESET);
+                println(YELLOW + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(RED + "4.La Chancla's Castle" + RESET);
                 println("5. ☠️☠️☠️"+ RED + "???" + RESET);
                 println("6. ☠️☠️☠️"+ RED + "???" + RESET);
@@ -200,7 +200,7 @@ public class RoomMenu {
             case 4 ->{
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
-                println(GREEN + "3.The Gigant Black Squirrel´s Nest" + RESET);
+                println(GREEN + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(YELLOW + "4.La Chancla's Castle" + RESET);
                 println(RED + "5.The Bad DJ" + RESET);
                 println("6. ☠️☠️☠️"+ RED + "???" + RESET);
@@ -213,7 +213,7 @@ public class RoomMenu {
             case 5 ->{
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
-                println(BLACK_BOLD_BRIGHT + "3.The Gigant Black Squirrel´s Nest" + RESET);
+                println(BLACK_BOLD_BRIGHT + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(GREEN + "4.La Chancla's Castle" + RESET);
                 println(YELLOW + "5.The Bad DJ" + RESET);
                 println("6. ☠️☠️☠️"+ RED + "???" + RESET);
@@ -226,7 +226,7 @@ public class RoomMenu {
             case 6 -> {
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
-                println(BLACK_BOLD_BRIGHT + "3.The Gigant Black Squirrel´s Nest" + RESET);
+                println(BLACK_BOLD_BRIGHT + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(BLACK_BOLD_BRIGHT + "4.La Chancla's Castle" + RESET);
                 println(GREEN + "5.The Bad DJ" + RESET);
                 println("6. ☠️☠️☠️"+ RED + "???" + RESET);
@@ -238,7 +238,7 @@ public class RoomMenu {
             case 7,8 ->{
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
-                println(BLACK_BOLD_BRIGHT + "3.The Gigant Black Squirrel´s Nest" + RESET);
+                println(BLACK_BOLD_BRIGHT + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(BLACK_BOLD_BRIGHT + "4.La Chancla's Castle" + RESET);
                 println(BLACK_BOLD_BRIGHT + "5.The Bad DJ" + RESET);
                 println(PURPLE + "6.Room of Relics" + RESET);
@@ -250,7 +250,7 @@ public class RoomMenu {
             case 9 ->{
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
-                println(BLACK_BOLD_BRIGHT + "3.The Gigant Black Squirrel´s Nest" + RESET);
+                println(BLACK_BOLD_BRIGHT + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(BLACK_BOLD_BRIGHT + "4.La Chancla's Castle" + RESET);
                 println(BLACK_BOLD_BRIGHT + "5.The Bad DJ" + RESET);
                 println(PURPLE + "6.Room of Relics" + RESET);
@@ -262,7 +262,7 @@ public class RoomMenu {
             case 10,11,12 ->{
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
-                println(BLACK_BOLD_BRIGHT + "3.The Gigant Black Squirrel´s Nest" + RESET);
+                println(BLACK_BOLD_BRIGHT + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(BLACK_BOLD_BRIGHT + "4.La Chancla's Castle" + RESET);
                 println(BLACK_BOLD_BRIGHT + "5.The Bad DJ" + RESET);
                 println(PURPLE + "6.Room of Relics" + RESET);

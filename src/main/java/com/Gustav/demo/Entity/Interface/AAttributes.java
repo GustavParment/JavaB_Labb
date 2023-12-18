@@ -17,6 +17,10 @@ public abstract class AAttributes implements ICombat {
     private int level;
     private int gold;
     private int damageDone;
+    private String className;
+
+
+    public AAttributes(){}
 
     public AAttributes
             (
@@ -37,6 +41,14 @@ public abstract class AAttributes implements ICombat {
         this.gold = gold;
     }
 
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
     public int getId() {
         return id;
     }
@@ -44,6 +56,7 @@ public abstract class AAttributes implements ICombat {
     public void setId(int id) {
         this.id = id;
     }
+
     public int getStrength() {
         return strength;
     }

@@ -71,3 +71,44 @@
 
         }
     }         */
+
+    -----------------------------------------------------------------------------------------
+
+    public void insertMonster(AAttributes monster) {
+        String sql = "INSERT INTO monster(" +
+                "MonsterName," +
+                "MonsterDamage," +
+                "MonsterBaseHealth," +
+                "MonsterSpirit," +
+                "MonsterAgility," +
+                "MonsterGold" +
+                ")" +
+                "VALUES (" +
+                "?," +
+                "?," +
+                "?," +
+                "?," +
+                "?," +
+                "?" +
+                ")";
+        try (
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        sql, Statement.RETURN_GENERATED_KEYS)
+            )
+        {
+            preparedStatement.setString(1, monster.getNameNoColor());
+            preparedStatement.setInt(2, monster.getDamage());
+            preparedStatement.setInt(3, monster.getHealth());
+            preparedStatement.setInt(4,monster.getSpirit());
+            preparedStatement.setInt(5,monster.getAgility());
+            preparedStatement.setInt(6,monster.getGold());
+            preparedStatement.executeUpdate();
+
+            ResultSet returnedGeneratedKeys = preparedStatement.getGeneratedKeys();
+            if (returnedGeneratedKeys.next()) {
+                monster.setId(returnedGeneratedKeys.getInt(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }

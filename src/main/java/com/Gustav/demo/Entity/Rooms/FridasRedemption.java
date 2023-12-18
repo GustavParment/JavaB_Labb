@@ -12,12 +12,11 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class FridasRedemption {
-
     public void fridaOption(AAttributes attacker, Scanner sc){
-
         AAttributes frida = new Frida();
         GameLogic start = new GameLogic();
         RoomMenu menu = new RoomMenu();
+        frida.setId(6);
         boolean fight = false;
 
         do {

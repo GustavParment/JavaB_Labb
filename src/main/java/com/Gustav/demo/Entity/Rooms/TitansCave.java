@@ -19,6 +19,7 @@ public class TitansCave {
         AAttributes titan = new Titan();
         GameLogic start = new GameLogic();
         RoomMenu menu = new RoomMenu();
+        titan.setId(2);
         boolean fight = false;
         do {
             println(BLACK + RED_BACKGROUND + "☰ The Titan's Cave ☰" + RESET);
