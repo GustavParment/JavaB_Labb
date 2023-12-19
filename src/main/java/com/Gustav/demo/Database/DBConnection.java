@@ -214,27 +214,26 @@ public class DBConnection {
 
 
     public void insertFightHistory(AAttributes player, AAttributes monster, String result) {
-        String sql = "INSERT INTO fighthistory(" +
+        String sql = "INSERT INTO fighthistory" +
+                "(" +
                 "DefenderHealth," +
                 "DamageDoneByDefender," +
                 "DamageDoneByAttacker, " +
-                "AttackerHealth," +
                 "Result," +
                 "Time, " +
-                "Date, " +
                 "monster_id," +
                 "player_id" +
                 ")" +
-                "VALUES (" +
+                "VALUES " +
+                "(" +
                 "?," +
                 "?," +
                 "?," +
                 "?," +
                 "?," +
                 "?," +
-                "?," +
-                "?," +
-                "?)";
+                "?" +
+                ")";
 
         try (
                 PreparedStatement preparedStatement = connection.prepareStatement(
@@ -243,12 +242,10 @@ public class DBConnection {
             preparedStatement.setInt(1, monster.getHealth());
             preparedStatement.setInt(2, monster.getDamageDone());
             preparedStatement.setInt(3, player.getDamageDone());
-            preparedStatement.setInt(4, player.getHealth());
-            preparedStatement.setString(5, result);
-            preparedStatement.setTime(6, java.sql.Time.valueOf(java.time.LocalTime.now()));
-            preparedStatement.setDate(7, java.sql.Date.valueOf(java.time.LocalDate.now()));
-            preparedStatement.setInt(8, monster.getId());
-            preparedStatement.setInt(9, player.getId());
+            preparedStatement.setString(4, result);
+            preparedStatement.setTime(5, java.sql.Time.valueOf(java.time.LocalTime.now()));
+            preparedStatement.setInt(6, monster.getId());
+            preparedStatement.setInt(7, player.getId());
 
             int rowsAffected = preparedStatement.executeUpdate();
 

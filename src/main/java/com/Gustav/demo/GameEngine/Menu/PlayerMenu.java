@@ -71,7 +71,6 @@ public class PlayerMenu {
                     println("Damage Done by Attacker: " + resultSet.getInt("DamageDoneByAttacker"));
                     println("Result: " + resultSet.getString("Result"));
                     println("Times: " + resultSet.getString("Time"));
-                    println("Date of fight: " + resultSet.getString("Date"));
                     println("Monster ID: " + resultSet.getInt("monster_id"));
                     println("Player ID: " + resultSet.getInt("player_id"));
 

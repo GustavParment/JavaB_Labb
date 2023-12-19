@@ -19,7 +19,6 @@ public class StartMenu implements Colors {
         CharacterMenu characterMenu = new CharacterMenu();
         Scanner sc = new Scanner(System.in);
 
-
         println(BLUE + BLACK_BACKGROUND + "☰ Start Menu ☰" + RESET);
         println("1.Start a new Game/Load Game");
         println("2.Learn the Lore Masters wisdom");
