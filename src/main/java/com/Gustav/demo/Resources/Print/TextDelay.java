@@ -1,8 +1,6 @@
 package com.Gustav.demo.Resources.Print;
 
 
-
-
 public class TextDelay {
 
     public static void printDelay(String text) {

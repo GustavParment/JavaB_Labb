@@ -22,7 +22,7 @@ public class Benny extends AAttributes {
 
     @Override
     public String getName() {
-        return RED+"\uD83D\uDC78Benny The Evil King\uD83D\uDC78"+RESET;
+        return RED + "\uD83D\uDC78Benny The Evil King\uD83D\uDC78" + RESET;
     }
 
     @Override

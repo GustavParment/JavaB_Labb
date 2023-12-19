@@ -5,20 +5,19 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public interface ICombat {
 
-   String attack();
+    String attack();
 
-   String dodge();
+    String dodge();
 
-   String getName();
+    String getName();
 
-   String getNameNoColor();
+    String getNameNoColor();
 
-   default void flee(AAttributes attacker){
-      println(YELLOW + getName() + " fled and lost 2 hp" + RESET);
-      attacker.setHealth(attacker.getHealth() - 2);
+    default void flee(AAttributes attacker) {
+        println(YELLOW + getName() + " fled and lost 2 hp" + RESET);
+        attacker.setHealth(attacker.getHealth() - 2);
 
-   }
-
+    }
 
 
 }

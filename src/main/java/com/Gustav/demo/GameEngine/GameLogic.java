@@ -5,8 +5,10 @@ import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.GameEngine.Menu.PlayerMenu;
 import com.Gustav.demo.GameEngine.Menu.StartMenu;
 import com.Gustav.demo.Resources.Paint.Colors;
+
 import java.util.Random;
 import java.util.Scanner;
+
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
@@ -35,18 +37,21 @@ public class GameLogic implements Colors {
                     if (defender.getHealth() <= 0) {
                         fightDone = isFightDone(attacker, defender, false);
 
-                    } else{
+                    } else {
                         attack(defender, attacker);
                     }
                     if (defender.getHealth() > 0) {
                         didDodge(defender, attacker);
                     }
-                    if (attacker.getHealth() <= 0){
+                    if (attacker.getHealth() <= 0) {
                         fightDone = isFightDone(attacker, defender, false);
                     }
                 }
                 case "2" -> attacker.getStatus(attacker);
-                case "3" -> {attackerFled(attacker, defender);fightDone = true;}
+                case "3" -> {
+                    attackerFled(attacker, defender);
+                    fightDone = true;
+                }
                 default -> println(RED + "Wrong input, try again..." + RESET);
             }
 
@@ -57,9 +62,9 @@ public class GameLogic implements Colors {
 
     private void attackerFled(AAttributes attacker, AAttributes defender) {
         attacker.flee(attacker);
-        println(YELLOW + "\nNow you have " + attacker.getHealth() + " hp" +  RESET);
+        println(YELLOW + "\nNow you have " + attacker.getHealth() + " hp" + RESET);
         updatePlayerData(attacker);
-        db.insertFightHistory(attacker, defender,"Fled");
+        db.insertFightHistory(attacker, defender, "Fled");
 
     }
 
@@ -79,7 +84,7 @@ public class GameLogic implements Colors {
             attacker.levelUp(attacker);
 
             updatePlayerData(attacker);
-            db.insertFightHistory(attacker,defender,"Victory");
+            db.insertFightHistory(attacker, defender, "Victory");
 
             fightDone = true;
             defender = null;
@@ -98,10 +103,9 @@ public class GameLogic implements Colors {
             scoreFile.writeScoreFile(attacker);
 
             updatePlayerData(attacker);
-            db.insertFightHistory(attacker,defender,"Lost");
+            db.insertFightHistory(attacker, defender, "Lost");
 
             start.options();
-
 
 
         }
@@ -122,7 +126,7 @@ public class GameLogic implements Colors {
                     + defender.getHealth() + RESET);
 
 
-           attacker.setDamageDone(attacker.getDamageDone() + attacker.getDamage());
+            attacker.setDamageDone(attacker.getDamageDone() + attacker.getDamage());
 
             chanceOnHealthReg(defender);
 
@@ -158,12 +162,9 @@ public class GameLogic implements Colors {
         if (ranNum < num && attacker.getSpirit() >= 30) attacker.calculateHealthReg(attacker);
     }
 
-    private void updatePlayerData(AAttributes player){
+    private void updatePlayerData(AAttributes player) {
         db.updatePlayer(player);
     }
-
-
-
 
 
 }

@@ -20,16 +20,16 @@ public abstract class AAttributes implements ICombat {
     private String className;
 
 
-    public AAttributes(){}
+    public AAttributes() {
+    }
 
     public AAttributes
             (
-            int strength, int spirit,
-            int agility, int health,
-            int experience, int level,
-            int damage, int gold
-            )
-    {
+                    int strength, int spirit,
+                    int agility, int health,
+                    int experience, int level,
+                    int damage, int gold
+            ) {
         this.strength = strength;
         this.spirit = spirit;
         this.agility = agility;
@@ -142,17 +142,17 @@ public abstract class AAttributes implements ICombat {
             attacker.strengthCap(attacker);
             println(BLUE_BOLD + "You reached level: " + attacker.getLevel() + RESET);
             attacker.setExperience(0);
-        }else{
+        } else {
             levelCap(attacker);
         }
 
 
     }
 
-    private void levelCap(AAttributes attacker){
-        if (attacker.getLevel() >= 12){
-        attacker.setLevel(12);
-        println(BLUE_BOLD + "You have reached the max Level 12 and wont benefit form any more attributes then health" + RESET);
+    private void levelCap(AAttributes attacker) {
+        if (attacker.getLevel() >= 12) {
+            attacker.setLevel(12);
+            println(BLUE_BOLD + "You have reached the max Level 12 and wont benefit form any more attributes then health" + RESET);
         }
 
     }
@@ -160,12 +160,12 @@ public abstract class AAttributes implements ICombat {
     public void getStatus(AAttributes attacker) {
 
         println(attacker.getName());
-        println(GREEN +"HP: " +  health + RESET);
-        println(BLUE +"Level: " +  level + RESET);
+        println(GREEN + "HP: " + health + RESET);
+        println(BLUE + "Level: " + level + RESET);
         println(RED + "Damage: " + damage + RESET);
-        println(YELLOW + "Gold: " +  gold + RESET);
+        println(YELLOW + "Gold: " + gold + RESET);
         println(PURPLE + "Spirit: " + spirit + RESET);
-        println(BLACK + "Strength " +  strength + RESET);
+        println(BLACK + "Strength " + strength + RESET);
         println(CYAN + "Agility: " + agility + RESET);
 
         cappedStatusMessage(attacker);
@@ -174,16 +174,15 @@ public abstract class AAttributes implements ICombat {
     }
 
     private void cappedStatusMessage(AAttributes attacker) {
-        if (attacker.getStrength() == 80){
-            println(BLUE_BOLD + "You are capped in Strength and won't benefit from more" +  RESET);
+        if (attacker.getStrength() == 80) {
+            println(BLUE_BOLD + "You are capped in Strength and won't benefit from more" + RESET);
         }
-        if (attacker.getSpirit() == 70){
-            println(BLUE_BOLD + ("You are capped in Spirit and wont benefit from more") + RESET) ;
+        if (attacker.getSpirit() == 70) {
+            println(BLUE_BOLD + ("You are capped in Spirit and wont benefit from more") + RESET);
         }
-        if (attacker.getAgility() == 72){
+        if (attacker.getAgility() == 72) {
             println(BLUE_BOLD + "You are capped in Agility and wont benefit from more" + RESET);
-        }
-        else if(attacker.getAgility() == 72 && attacker.getStrength() == 80 && attacker.getSpirit() == 70){
+        } else if (attacker.getAgility() == 72 && attacker.getStrength() == 80 && attacker.getSpirit() == 70) {
             println(BLUE_BOLD + "You are capped in all physical stats and wont benefit from more" + RESET);
         }
     }
@@ -198,40 +197,39 @@ public abstract class AAttributes implements ICombat {
             while (attacker.getStrength() % 2 == 0 && damage < maxIncrease) {
                 damage += 10;
                 attacker.setDamage(damage);
-                attacker.setDamage(getDamage()-10);
+                attacker.setDamage(getDamage() - 10);
 
             }
         }
     }
 
-    public void calculateHealthReg(AAttributes attacker){
-        switch (attacker.getSpirit()){
-            case 20,21,22,23,24,25,26,27,28,29 ->{
+    public void calculateHealthReg(AAttributes attacker) {
+        switch (attacker.getSpirit()) {
+            case 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 -> {
                 attacker.setHealth(attacker.getHealth() + 2);
-                println(attacker.getName() + YELLOW +  " regenerated 2 hp " + RESET);
-
+                println(attacker.getName() + YELLOW + " regenerated 2 hp " + RESET);
 
 
             }
-            case 30,31,32,33,34,35,36,37,38,39 ->{
+            case 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 -> {
                 attacker.setHealth(attacker.getHealth() + 4);
-                println(attacker.getName() + YELLOW +  " regenerated 4 hp " + RESET);
+                println(attacker.getName() + YELLOW + " regenerated 4 hp " + RESET);
             }
-            case 40,41,42,43,44,45,46,47,48,49 ->{
+            case 40, 41, 42, 43, 44, 45, 46, 47, 48, 49 -> {
                 attacker.setHealth(attacker.getHealth() + 6);
-                println(attacker.getName() + YELLOW +  " regenerated 6 hp " + RESET);
+                println(attacker.getName() + YELLOW + " regenerated 6 hp " + RESET);
             }
-            case 50,51,52,53,54,55,56,57,58,59 ->{
+            case 50, 51, 52, 53, 54, 55, 56, 57, 58, 59 -> {
                 attacker.setHealth(attacker.getHealth() + 8);
-                println(attacker.getName() + YELLOW +  " regenerated 8 hp " + RESET);
+                println(attacker.getName() + YELLOW + " regenerated 8 hp " + RESET);
             }
-            case 60,61,62,63,64,66,67,68,69 ->{
+            case 60, 61, 62, 63, 64, 66, 67, 68, 69 -> {
                 attacker.setHealth(attacker.getHealth() + 10);
-                println(attacker.getName() + YELLOW +  " regenerated 10 hp " + RESET);
+                println(attacker.getName() + YELLOW + " regenerated 10 hp " + RESET);
             }
-            case 70 ->{
+            case 70 -> {
                 attacker.setHealth(attacker.getHealth() + 20);
-                println(attacker.getName() + YELLOW +  " regenerated 20 hp " + RESET);
+                println(attacker.getName() + YELLOW + " regenerated 20 hp " + RESET);
 
             }
 
@@ -239,17 +237,17 @@ public abstract class AAttributes implements ICombat {
 
     }
 
-    public void spiritCap(AAttributes attacker){
+    public void spiritCap(AAttributes attacker) {
         if (attacker.getSpirit() >= 70) attacker.setSpirit(70);
 
     }
 
-    public void agilityCap(AAttributes attacker){
+    public void agilityCap(AAttributes attacker) {
         if (attacker.getAgility() >= 72) attacker.setAgility(72);
     }
 
-    public void strengthCap(AAttributes attacker){
-        if(attacker.getStrength() >= 80)attacker.setStrength(80);
+    public void strengthCap(AAttributes attacker) {
+        if (attacker.getStrength() >= 80) attacker.setStrength(80);
     }
 
 }

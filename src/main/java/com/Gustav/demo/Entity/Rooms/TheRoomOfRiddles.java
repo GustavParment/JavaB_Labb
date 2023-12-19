@@ -1,5 +1,6 @@
 package com.Gustav.demo.Entity.Rooms;
 
+import com.Gustav.demo.Database.DBConnection;
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.GameEngine.Menu.PlayerMenu;
 import com.Gustav.demo.GameEngine.Menu.StartMenu;
@@ -12,6 +13,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.*;
 
 
 public class TheRoomOfRiddles {
+    DBConnection db = DBConnection.getInstance();
 
     public void roomOFRiddlesOption(AAttributes attacker, Scanner sc) {
         PlayerMenu returnTo = new PlayerMenu();
@@ -19,10 +21,10 @@ public class TheRoomOfRiddles {
 
         println(PURPLE + BLACK_BACKGROUND + "❔ The Room Of Riddles ❔" + RESET);
 
-        printDelay(PURPLE_BOLD + "Welcome "+ attacker.getName()+ PURPLE_BOLD +
+        printDelay(PURPLE_BOLD + "Welcome " + attacker.getName() + PURPLE_BOLD +
                 " to The Room of Riddles!\nThe rules are simple answer the riddle and get " +
                 "passage to the next room. " +
-                "\nIf you fail to answer lightning will strike you and it will be a"+ RED + " Game Over" + RESET);
+                "\nIf you fail to answer lightning will strike you and it will be a" + RED + " Game Over" + RESET);
 
         boolean notOne = true;
         do {
@@ -39,6 +41,7 @@ public class TheRoomOfRiddles {
                             if (input.contains("keyboard")) {
                                 printDelay("\nGood jobb " + attacker.getName());
                                 reward(attacker);
+                                db.updatePlayer(attacker);
                                 returnTo.playerOption(attacker, sc);
                             } else {
                                 killAttacker(attacker);
@@ -49,6 +52,7 @@ public class TheRoomOfRiddles {
                             if (input.contains("m")) {
                                 printDelay("\nThat's correct " + attacker.getName());
                                 reward(attacker);
+                                db.updatePlayer(attacker);
                                 returnTo.playerOption(attacker, sc);
                             } else {
                                 killAttacker(attacker);
@@ -59,6 +63,7 @@ public class TheRoomOfRiddles {
                             if (input.contains("fire")) {
                                 printDelay("\nYou are so smart,that is correct " + attacker.getName());
                                 reward(attacker);
+                                db.updatePlayer(attacker);
                                 returnTo.playerOption(attacker, sc);
                             } else {
                                 killAttacker(attacker);
@@ -68,6 +73,7 @@ public class TheRoomOfRiddles {
                             if (input.contains("clock")) {
                                 printDelay("\nThat's correct " + attacker.getName());
                                 reward(attacker);
+                                db.updatePlayer(attacker);
                                 returnTo.playerOption(attacker, sc);
                             } else {
                                 killAttacker(attacker);
@@ -77,6 +83,7 @@ public class TheRoomOfRiddles {
                             if (input.contains("candle")) {
                                 printDelay("\nThat's the right answer " + attacker.getName());
                                 reward(attacker);
+                                db.updatePlayer(attacker);
                                 returnTo.playerOption(attacker, sc);
 
                             } else {
@@ -88,6 +95,7 @@ public class TheRoomOfRiddles {
                             if (input.contains("sponge")) {
                                 printDelay("\nSuper that is correct " + attacker.getName());
                                 reward(attacker);
+                                db.updatePlayer(attacker);
                                 returnTo.playerOption(attacker, sc);
 
                             } else {
@@ -100,13 +108,12 @@ public class TheRoomOfRiddles {
                 }
                 default -> println(RED + "Wrong notOne, try again" + RESET);
             }
-        }while (notOne);
+        } while (notOne);
     }
 
 
-
     private void reward(AAttributes attacker) {
-        println("\n"+ attacker.getName() + YELLOW +  " looted 20 gold" + RESET);
+        println("\n" + attacker.getName() + YELLOW + " looted 20 gold" + RESET);
         println(attacker.getName() + YELLOW + " gained +100 xp" + RESET);
         println(attacker.getName() + YELLOW + " gained +10 Hp" + RESET);
         println(attacker.getName() + YELLOW + " gained +2 in all Attributes" + RESET);
@@ -117,9 +124,9 @@ public class TheRoomOfRiddles {
         attacker.levelUp(attacker);
     }
 
-    private List<String> riddles(){
+    private List<String> riddles() {
         return Arrays.asList("I have keys but open no locks, I have space but no room, " +
-                "and you can enter, but you can't go inside. What am I?",//0
+                        "and you can enter, but you can't go inside. What am I?",//0
 
                 "What comes once in a minute, twice in a moment, but never in a thousand years?",//1
 
@@ -132,9 +139,9 @@ public class TheRoomOfRiddles {
                 "I'm full of holes, yet I still hold water. What am I?");//5
     }
 
-    private int generateRiddle(List<String> riddleList){
+    private int generateRiddle(List<String> riddleList) {
         Random random = new Random();
-        int ranNum = random.nextInt(0,6);
+        int ranNum = random.nextInt(0, 6);
 
         println(riddleList.get(ranNum));
 
@@ -143,15 +150,15 @@ public class TheRoomOfRiddles {
 
     }
 
-    private void killAttacker(AAttributes attacker){
+    private void killAttacker(AAttributes attacker) {
         StartMenu start = new StartMenu();
         attacker.setHealth(0);
-        printDelay(RED + "Wrong Answer "+ attacker.getName() + PURPLE_BOLD +
-                " to bad you will now be struck by lightning\n" +YELLOW_BOLD+
+        printDelay(RED + "Wrong Answer " + attacker.getName() + PURPLE_BOLD +
+                " to bad you will now be struck by lightning\n" + YELLOW_BOLD +
                 "⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ ⚡ \uD83D\uDD25\uD83D\uDC80" + RESET);
 
-        println("\n"+BLACK + RED_BACKGROUND + "\uD83D\uDC80Game over\uD83D\uDC80" + RESET);
-        printDelay(PURPLE_BOLD+"\nThanks for Playing better luck next time summoner...\n"
+        println("\n" + BLACK + RED_BACKGROUND + "\uD83D\uDC80Game over\uD83D\uDC80" + RESET);
+        printDelay(PURPLE_BOLD + "\nThanks for Playing better luck next time summoner...\n"
                 + RESET);
         start.options();
 

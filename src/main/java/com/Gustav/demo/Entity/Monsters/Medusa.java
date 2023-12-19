@@ -10,8 +10,7 @@ public class Medusa extends AAttributes implements Colors {
 
     public Medusa() {
 
-        super(0,0, 3, 45,
-                0, 1, 5,20);
+        super(0, 0, 3, 45, 0, 1, 5, 20);
     }
 
     @Override
@@ -26,7 +25,7 @@ public class Medusa extends AAttributes implements Colors {
 
     @Override
     public String getName() {
-        return  RED + "Medusa" + RESET;
+        return RED + "Medusa" + RESET;
     }
 
     @Override

@@ -14,12 +14,12 @@ public class ScoreFile {
 
     public void writeScoreFile(AAttributes attacker) {
 
-        try(
-            Writer writer =
-                    new BufferedWriter(
-                    new OutputStreamWriter(
-                    new FileOutputStream("ScoreFile.txt"), StandardCharsets.UTF_8)
-                    )){
+        try (
+                Writer writer =
+                        new BufferedWriter(
+                                new OutputStreamWriter(
+                                        new FileOutputStream("ScoreFile.txt"), StandardCharsets.UTF_8)
+                        )) {
 
 
             int numOfRoomsCompleted = numOfRoomsCompleted(attacker);
@@ -28,14 +28,14 @@ public class ScoreFile {
 
 
             writer.write(
-                        "Player Attributes on death" +
-                            "\nRemaining Health: " + attacker.getHealth()+
+                    "Player Attributes on death" +
+                            "\nRemaining Health: " + attacker.getHealth() +
                             "\nAgility: " + attacker.getAgility() +
-                            "\nStrength: " + attacker.getStrength()+
-                            "\nSpirit: " + attacker.getSpirit()+
-                            "\nDamage: " + attacker.getDamage()+
+                            "\nStrength: " + attacker.getStrength() +
+                            "\nSpirit: " + attacker.getSpirit() +
+                            "\nDamage: " + attacker.getDamage() +
                             "\nNumber of rooms completed: " + numOfRoomsCompleted +
-                            "\nGold: " + attacker.getGold()+
+                            "\nGold: " + attacker.getGold() +
                             "\n"
 
             );
@@ -46,6 +46,7 @@ public class ScoreFile {
         }
 
     }
+
     public int numOfRoomsCompleted(AAttributes attacker) {
         List<AAttributes> roomCompList = new ArrayList<>();
 

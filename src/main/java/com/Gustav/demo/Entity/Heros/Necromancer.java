@@ -8,8 +8,7 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class Necromancer extends AAttributes implements Colors {
     public Necromancer() {
-        super(0,0, 8, 50,
-                0, 0,5,0);
+        super(0, 0, 8, 50, 0, 0, 5, 0);
 
 
     }

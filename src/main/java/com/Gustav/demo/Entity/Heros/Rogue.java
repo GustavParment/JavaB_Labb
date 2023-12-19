@@ -9,8 +9,7 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class Rogue extends AAttributes implements Colors {
     public Rogue() {
-        super(0, 0, 8, 50,
-                0, 0, 5, 0);
+        super(0, 0, 8, 50, 0, 0, 5, 0);
 
 
     }

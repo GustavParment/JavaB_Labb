@@ -16,10 +16,13 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 public class PlayerMenu {
     private RoomMenu menu;
     private DBConnection db;
+    private StartMenu start;
 
     public void playerOption(AAttributes attacker, Scanner sc) {
         db = new DBConnection();
         menu = new RoomMenu();
+        start = new StartMenu();
+
         LoreMasterKristoffer enter = new LoreMasterKristoffer();
         boolean input = false;
 
@@ -29,6 +32,7 @@ public class PlayerMenu {
             println("2.Enter new Room");
             println("3.Player Attributes");
             println("4.View Fight History");
+            println(PURPLE + "╰┈➤5.Back to Start Menu" + RESET);
 
             switch (sc.nextLine()) {
                 case "1" -> {
@@ -41,6 +45,7 @@ public class PlayerMenu {
                 }
                 case "3" -> attacker.getStatus(attacker);
                 case "4" -> viewFightHistory(attacker.getId());
+                case "5" -> start.options();
 
                 default -> println(RED + "Wrong input try again..." + RESET);
             }
@@ -68,13 +73,13 @@ public class PlayerMenu {
                     println("Times: " + resultSet.getString("Time"));
                     println("Date of fight: " + resultSet.getString("Date"));
                     println("Monster ID: " + resultSet.getInt("monster_id"));
-                    println("Player ID: " + resultSet.getInt("player_id" ));
+                    println("Player ID: " + resultSet.getInt("player_id"));
 
                     println(RED + "--------------------------------------" + RESET);
 
                 }
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

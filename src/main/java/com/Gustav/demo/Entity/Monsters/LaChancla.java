@@ -7,12 +7,12 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
 public class LaChancla extends AAttributes {
     public LaChancla() {
-        super(0, 20, 40, 150, 0, 4, 45,30);
+        super(0, 20, 40, 150, 0, 4, 45, 30);
     }
 
     @Override
     public String attack() {
-        return  "Throws a cat and a rat!\n\uD83D\uDC08\uD83D\uDC01.ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* ";
+        return "Throws a cat and a rat!\n\uD83D\uDC08\uD83D\uDC01.ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* .ೃ࿔* ";
     }
 
     @Override

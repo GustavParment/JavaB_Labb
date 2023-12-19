@@ -6,8 +6,11 @@ import com.Gustav.demo.Entity.Heros.Necromancer;
 import com.Gustav.demo.Entity.Heros.Rogue;
 import com.Gustav.demo.Entity.Interface.AAttributes;
 import com.Gustav.demo.Entity.Interface.AItemAttributes;
+import com.Gustav.demo.Entity.Interface.ARelics;
 import com.Gustav.demo.GameEngine.Menu.CharacterMenu;
+
 import java.sql.*;
+
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
@@ -17,6 +20,14 @@ public class DBConnection {
     private static final String PASSWORD = "2gfv77f6";
     private Connection connection;
     private CharacterMenu menu = new CharacterMenu();
+    private static DBConnection instance;
+
+    public static DBConnection getInstance() {
+        if (instance == null) {
+            instance = new DBConnection();
+        }
+        return instance;
+    }
 
     public Connection getConnection() {
         return connection;
@@ -141,10 +152,10 @@ public class DBConnection {
                 int rowsAffected = preparedStatement.executeUpdate();
 
                 if (rowsAffected > 0) {
-                    println("Player updated successfully to player_id: " + player.getId());
+                    println(BLUE + "Player updated successfully to player_id: " + player.getId() + RESET);
 
                 } else {
-                    println("Player not found or no changes made");
+                    println(RED + "Player not found or no changes made" + RESET);
 
                 }
             }
@@ -177,6 +188,30 @@ public class DBConnection {
             throw new RuntimeException(e);
         }
     }
+
+    public void insertRelic(ARelics relic, AAttributes player) {
+        String sql = "INSERT INTO itemhistory(player_id, item_id) VALUES (?,?)";
+
+        try (
+                PreparedStatement preparedStatement = connection.prepareStatement(sql,
+                        Statement.RETURN_GENERATED_KEYS)
+        ) {
+
+            preparedStatement.setInt(1, player.getId());
+            preparedStatement.setInt(2, relic.getId());
+            preparedStatement.executeUpdate();
+
+            ResultSet returnedGeneratedKeys = preparedStatement.getGeneratedKeys();
+            if (returnedGeneratedKeys.next()) {
+                relic.setId(returnedGeneratedKeys.getInt(1));
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void insertFightHistory(AAttributes player, AAttributes monster, String result) {
         String sql = "INSERT INTO fighthistory(" +

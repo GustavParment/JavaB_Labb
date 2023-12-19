@@ -1,6 +1,7 @@
 package com.Gustav.demo.Entity.Monsters;
 
 import com.Gustav.demo.Entity.Interface.AAttributes;
+
 import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 
@@ -8,8 +9,7 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.println;
 public class Titan extends AAttributes {
 
     public Titan() {
-        super(0,0, 20, 80,
-                0, 2, 10,20);
+        super(0, 0, 20, 80, 0, 2, 10, 20);
     }
 
     @Override

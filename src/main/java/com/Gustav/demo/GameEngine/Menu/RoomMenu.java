@@ -14,14 +14,13 @@ public class RoomMenu {
         PlayerMenu returnTo = new PlayerMenu();
         FridasRedemption frida = new FridasRedemption();
         LaChanclasCastle laChancla = new LaChanclasCastle();
-        MedusasLair medusasLair =  new MedusasLair();
+        MedusasLair medusasLair = new MedusasLair();
         TheEvilKingBenny theEvilKingBenny = new TheEvilKingBenny();
         TheGiantBlackSquirrelsNest squirrelsNest = new TheGiantBlackSquirrelsNest();
         TitansCave titansCave = new TitansCave();
         TheBadDj badDj = new TheBadDj();
         TheRoomOfRiddles riddles = new TheRoomOfRiddles();
-        TheRoomOfRelics relics = new TheRoomOfRelics();
-
+        TheRoomOfRelics roomOfRelics = TheRoomOfRelics.getInstance();
 
         boolean rightInput;
         do {
@@ -29,50 +28,48 @@ public class RoomMenu {
             rightInput = getRoom(attacker, sc,
                     medusasLair, titansCave, squirrelsNest,
                     laChancla, frida, theEvilKingBenny,
-                    badDj, returnTo,riddles,relics
+                    badDj, returnTo, riddles, roomOfRelics
             );
 
-        }while(!rightInput);
+        } while (!rightInput);
     }
 
     private boolean getRoom(AAttributes attacker, Scanner sc, MedusasLair medusasLair,
                             TitansCave titansCave, TheGiantBlackSquirrelsNest squirrelsNest,
                             LaChanclasCastle laChancla, FridasRedemption frida,
-                            TheEvilKingBenny theEvilKingBenny,TheBadDj badDj ,
-                            PlayerMenu returnTo,TheRoomOfRiddles riddles,
-                            TheRoomOfRelics relics
-    )
-    {
+                            TheEvilKingBenny theEvilKingBenny, TheBadDj badDj,
+                            PlayerMenu returnTo, TheRoomOfRiddles riddles,
+                            TheRoomOfRelics roomOfRelics
+    ) {
         switch (sc.nextLine()) {
-            case "1" ->{
-                if (attacker.getLevel() >= 2){
+            case "1" -> {
+                if (attacker.getLevel() >= 2) {
                     println(GREEN + "To high level for this room..." + RESET);
 
-                }else{
+                } else {
                     medusasLair.medusasLairOptions(attacker, sc);
                 }
             }
 
-            case "2" ->{
-                if (attacker.getLevel() < 1){
+            case "2" -> {
+                if (attacker.getLevel() < 1) {
                     println(RED + "To low level for this room...");
 
-                }else if (attacker.getLevel() >= 3){
+                } else if (attacker.getLevel() >= 3) {
                     println(GREEN + "To high level for this room..." + RESET);
-                }
-                else {
+                } else {
                     titansCave.titansCaveOption(attacker, sc);
                 }
-                
+
             }
             case "3" -> {
-                if (attacker.getLevel() < 3){
+                if (attacker.getLevel() < 3) {
                     println(RED + "To low level for this room");
 
-                } else if (attacker.getLevel() >= 5){
+                } else if (attacker.getLevel() >= 5) {
                     println(GREEN + "To high level for this room..." + RESET);
-                    
-                } else{
+
+                } else {
                     squirrelsNest.gigantBlackSquirrelOptions(attacker, sc);
                 }
             }
@@ -80,59 +77,60 @@ public class RoomMenu {
                 if (attacker.getLevel() < 4) {
                     println(RED + "To low level for this room");
 
-                }else if (attacker.getLevel() >= 6){
+                } else if (attacker.getLevel() >= 6) {
                     println(GREEN + "To high level for this room..." + RESET);
-                    
-                }else{
+
+                } else {
                     laChancla.laChanclaOption(attacker, sc);
                 }
             }
-            case "5" ->{
+            case "5" -> {
                 if (attacker.getLevel() < 5) {
                     println(RED + "To low level for this room");
 
-                }else if (attacker.getLevel() >= 7){
+                } else if (attacker.getLevel() >= 7) {
                     println(GREEN + "To high level for this room..." + RESET);
 
-                }else{
-                    badDj.badDjOption(attacker,sc);
+                } else {
+                    badDj.badDjOption(attacker, sc);
                 }
 
             }
-            case "6" ->{
-                if (attacker.getLevel() < 6){
+            case "6" -> {
+                if (attacker.getLevel() < 6) {
                     println(RED + "To low level for this room" + RESET);
 
-                } else{
-                    relics.roomOfRelicsOption(attacker,sc);
+                } else {
+
+                    roomOfRelics.enterRoomOfRelics(attacker, sc);
 
                 }
             }
 
-            case "7" ->{
-                if(attacker.getLevel() < 6) {
+            case "7" -> {
+                if (attacker.getLevel() < 6) {
                     println(RED + "To low level for this room");
 
-                }else{
+                } else {
                     riddles.roomOFRiddlesOption(attacker, sc);
                 }
             }
-            case "8" ->{
-                if (attacker.getLevel() < 9){
+            case "8" -> {
+                if (attacker.getLevel() < 9) {
                     println(RED + "To low level for this room");
 
-                }else if (attacker.getLevel() >= 11){
+                } else if (attacker.getLevel() >= 11) {
                     println(GREEN + "To high level for this room..." + RESET);
 
-                }else{
+                } else {
                     frida.fridaOption(attacker, sc);
                 }
             }
-            case "9" ->{
+            case "9" -> {
                 if (attacker.getLevel() < 10) {
                     println(RED + "To low level for this room");
 
-                }else{
+                } else {
                     theEvilKingBenny.bennyOption(attacker, sc);
                 }
             }
@@ -146,29 +144,29 @@ public class RoomMenu {
 
     private void roomDisplayer(AAttributes attacker) {
         println(BLUE + BLACK_BACKGROUND + "☰ Room's ☰" + RESET);
-        switch(attacker.getLevel()) {
-            case 0 ->{
+        switch (attacker.getLevel()) {
+            case 0 -> {
                 println(YELLOW + "1.Medusas Lair" + RESET);
-                println("2. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("3. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("4. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("5. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("6. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("7. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("8. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("9. ☠️☠️☠️"+ RED + "???" + RESET);
+                println("2. ☠️☠️☠️" + RED + "???" + RESET);
+                println("3. ☠️☠️☠️" + RED + "???" + RESET);
+                println("4. ☠️☠️☠️" + RED + "???" + RESET);
+                println("5. ☠️☠️☠️" + RED + "???" + RESET);
+                println("6. ☠️☠️☠️" + RED + "???" + RESET);
+                println("7. ☠️☠️☠️" + RED + "???" + RESET);
+                println("8. ☠️☠️☠️" + RED + "???" + RESET);
+                println("9. ☠️☠️☠️" + RED + "???" + RESET);
                 println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
             }
             case 1 -> {
                 println(GREEN + "1.Medusas Lair" + RESET);
                 println(YELLOW + "2.The Titan's Cave" + RESET);
-                println("3. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("4. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("5. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("6. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("7. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("8. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("9. ☠️☠️☠️"+ RED + "???" + RESET);
+                println("3. ☠️☠️☠️" + RED + "???" + RESET);
+                println("4. ☠️☠️☠️" + RED + "???" + RESET);
+                println("5. ☠️☠️☠️" + RED + "???" + RESET);
+                println("6. ☠️☠️☠️" + RED + "???" + RESET);
+                println("7. ☠️☠️☠️" + RED + "???" + RESET);
+                println("8. ☠️☠️☠️" + RED + "???" + RESET);
+                println("9. ☠️☠️☠️" + RED + "???" + RESET);
                 println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
 
             }
@@ -176,12 +174,12 @@ public class RoomMenu {
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(YELLOW + "2.The Titan's Cave" + RESET);
                 println(RED + "3.The Giant Black Squirrel´s Nest" + RESET);
-                println("4. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("5. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("6. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("7. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("8. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("9. ☠️☠️☠️"+ RED + "???" + RESET);
+                println("4. ☠️☠️☠️" + RED + "???" + RESET);
+                println("5. ☠️☠️☠️" + RED + "???" + RESET);
+                println("6. ☠️☠️☠️" + RED + "???" + RESET);
+                println("7. ☠️☠️☠️" + RED + "???" + RESET);
+                println("8. ☠️☠️☠️" + RED + "???" + RESET);
+                println("9. ☠️☠️☠️" + RED + "???" + RESET);
                 println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
 
             }
@@ -190,36 +188,36 @@ public class RoomMenu {
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
                 println(YELLOW + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(RED + "4.La Chancla's Castle" + RESET);
-                println("5. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("6. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("7. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("8. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("9. ☠️☠️☠️"+ RED + "???" + RESET);
+                println("5. ☠️☠️☠️" + RED + "???" + RESET);
+                println("6. ☠️☠️☠️" + RED + "???" + RESET);
+                println("7. ☠️☠️☠️" + RED + "???" + RESET);
+                println("8. ☠️☠️☠️" + RED + "???" + RESET);
+                println("9. ☠️☠️☠️" + RED + "???" + RESET);
                 println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
             }
-            case 4 ->{
+            case 4 -> {
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
                 println(GREEN + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(YELLOW + "4.La Chancla's Castle" + RESET);
                 println(RED + "5.The Bad DJ" + RESET);
-                println("6. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("7. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("8. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("9. ☠️☠️☠️"+ RED + "???" + RESET);
+                println("6. ☠️☠️☠️" + RED + "???" + RESET);
+                println("7. ☠️☠️☠️" + RED + "???" + RESET);
+                println("8. ☠️☠️☠️" + RED + "???" + RESET);
+                println("9. ☠️☠️☠️" + RED + "???" + RESET);
                 println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
 
             }
-            case 5 ->{
+            case 5 -> {
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
                 println(BLACK_BOLD_BRIGHT + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(GREEN + "4.La Chancla's Castle" + RESET);
                 println(YELLOW + "5.The Bad DJ" + RESET);
-                println("6. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("7. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("8. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("9. ☠️☠️☠️"+ RED + "???" + RESET);
+                println("6. ☠️☠️☠️" + RED + "???" + RESET);
+                println("7. ☠️☠️☠️" + RED + "???" + RESET);
+                println("8. ☠️☠️☠️" + RED + "???" + RESET);
+                println("9. ☠️☠️☠️" + RED + "???" + RESET);
                 println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
 
             }
@@ -229,13 +227,13 @@ public class RoomMenu {
                 println(BLACK_BOLD_BRIGHT + "3.The Giant Black Squirrel´s Nest" + RESET);
                 println(BLACK_BOLD_BRIGHT + "4.La Chancla's Castle" + RESET);
                 println(GREEN + "5.The Bad DJ" + RESET);
-                println("6. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("7. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("8. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("9. ☠️☠️☠️"+ RED + "???" + RESET);
+                println("6. ☠️☠️☠️" + RED + "???" + RESET);
+                println("7. ☠️☠️☠️" + RED + "???" + RESET);
+                println("8. ☠️☠️☠️" + RED + "???" + RESET);
+                println("9. ☠️☠️☠️" + RED + "???" + RESET);
                 println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
             }
-            case 7,8 ->{
+            case 7, 8 -> {
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
                 println(BLACK_BOLD_BRIGHT + "3.The Giant Black Squirrel´s Nest" + RESET);
@@ -243,11 +241,11 @@ public class RoomMenu {
                 println(BLACK_BOLD_BRIGHT + "5.The Bad DJ" + RESET);
                 println(PURPLE + "6.Room of Relics" + RESET);
                 println(PURPLE + "7.Room of Riddles " + RESET);
-                println("8. ☠️☠️☠️"+ RED + "???" + RESET);
-                println("9. ☠️☠️☠️"+ RED + "???" + RESET);
+                println("8. ☠️☠️☠️" + RED + "???" + RESET);
+                println("9. ☠️☠️☠️" + RED + "???" + RESET);
                 println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
             }
-            case 9 ->{
+            case 9 -> {
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
                 println(BLACK_BOLD_BRIGHT + "3.The Giant Black Squirrel´s Nest" + RESET);
@@ -256,10 +254,10 @@ public class RoomMenu {
                 println(PURPLE + "6.Room of Relics" + RESET);
                 println(PURPLE + "7.Room of Riddles " + RESET);
                 println(YELLOW + "8.Fridas Redemption" + RESET);
-                println("9.☠️☠️☠️"+ RED + "???" + RESET);
+                println("9.☠️☠️☠️" + RED + "???" + RESET);
                 println(PURPLE + "╰┈➤10.Back to Player Menu" + RESET);
             }
-            case 10,11,12 ->{
+            case 10, 11, 12 -> {
                 println(BLACK_BOLD_BRIGHT + "1.Medusas Lair" + RESET);
                 println(BLACK_BOLD_BRIGHT + "2.The Titan's Cave" + RESET);
                 println(BLACK_BOLD_BRIGHT + "3.The Giant Black Squirrel´s Nest" + RESET);

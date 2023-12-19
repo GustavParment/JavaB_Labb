@@ -14,7 +14,7 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class TheGiantBlackSquirrelsNest {
 
-    public void gigantBlackSquirrelOptions(AAttributes attacker, Scanner sc){
+    public void gigantBlackSquirrelOptions(AAttributes attacker, Scanner sc) {
 
         AAttributes blackSquirrel = new BlackSquirrel();
         GameLogic start = new GameLogic();
@@ -27,10 +27,13 @@ public class TheGiantBlackSquirrelsNest {
             printDelay(RED + "The Giant Squirrel thinks you look like a delicious nut...." + RESET);
             println(RED + "\n1.Engage The Giant Black Squirrel" +
                     BLUE_BOLD + "\n2.Squirrel's attributes "
-                    + PURPLE + "\n╰┈➤3.Back to Rooms"+ RESET);
+                    + PURPLE + "\n╰┈➤3.Back to Rooms" + RESET);
 
             switch (sc.nextLine()) {
-                case "1" -> {start.fight(sc, attacker, blackSquirrel);fight = true;}
+                case "1" -> {
+                    start.fight(sc, attacker, blackSquirrel);
+                    fight = true;
+                }
                 case "2" -> {
                     println(GREEN + "Hp: " + blackSquirrel.getHealth());
                     println(RED + "Damage: " + blackSquirrel.getDamage());
@@ -38,10 +41,10 @@ public class TheGiantBlackSquirrelsNest {
                     println(BLUE_BOLD + "AGI: " + blackSquirrel.getAgility());
                     println(YELLOW + "Gold: " + blackSquirrel.getGold() + RESET);
                 }
-                case "3" -> menu.roomChooser(attacker,sc);
+                case "3" -> menu.roomChooser(attacker, sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);
             }
-        }while(!fight);
+        } while (!fight);
     }
 }
 

@@ -5,6 +5,7 @@ public abstract class ARelics implements IItems {
     private int relicAgility;
     private int relicSpirit;
     private int relicStrength;
+    private int id;
 
     public ARelics(int relicHealth, int relicAgility, int relicSpirit, int relicStrength) {
         this.relicHealth = relicHealth;
@@ -43,6 +44,14 @@ public abstract class ARelics implements IItems {
 
     public void setRelicStrength(int relicStrength) {
         this.relicStrength = relicStrength;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

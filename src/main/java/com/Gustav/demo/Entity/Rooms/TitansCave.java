@@ -14,22 +14,25 @@ import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class TitansCave {
 
-    public void titansCaveOption(AAttributes attacker, Scanner sc){
-
+    public void titansCaveOption(AAttributes attacker, Scanner sc) {
         AAttributes titan = new Titan();
         GameLogic start = new GameLogic();
         RoomMenu menu = new RoomMenu();
         titan.setId(2);
         boolean fight = false;
+
         do {
             println(BLACK + RED_BACKGROUND + "☰ The Titan's Cave ☰" + RESET);
             printDelay(RED + "You woke upp the Titan..." + RESET);
-            println(RED + "\n1.Engage Titan"+
-                     BLUE_BOLD + "\n2.Titans attributes " +
-                    PURPLE+"\n╰┈➤3.Back to Rooms"+RESET);
+            println(RED + "\n1.Engage Titan" +
+                    BLUE_BOLD + "\n2.Titans attributes " +
+                    PURPLE + "\n╰┈➤3.Back to Rooms" + RESET);
 
             switch (sc.nextLine()) {
-                case "1" -> {start.fight(sc, attacker, titan);fight = true;}
+                case "1" -> {
+                    start.fight(sc, attacker, titan);
+                    fight = true;
+                }
                 case "2" -> {
                     println(GREEN + "Hp: " + titan.getHealth());
                     println(RED + "Damage: " + titan.getDamage());
@@ -40,7 +43,7 @@ public class TitansCave {
                 case "3" -> menu.roomChooser(attacker, sc);
                 default -> println(RED + "Wrong input, try again..." + RESET);
             }
-        }while(!fight);
+        } while (!fight);
 
     }
 }
