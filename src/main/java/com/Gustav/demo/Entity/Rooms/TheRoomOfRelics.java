@@ -65,7 +65,7 @@ public class TheRoomOfRelics {
 
     private boolean chanceToFindRelic(AAttributes attacker) {
         Random random = new Random();
-        int ranNum = random.nextInt(10) + 1;
+        int ranNum = random.nextInt(100) + 1;
         int num = 10;
         boolean relicFound;
 

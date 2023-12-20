@@ -1,5 +1,5 @@
 Player Attributes on death
-Remaining Health: -2
+Remaining Health: -7
 Agility: 10
 Strength: 2
 Spirit: 2
