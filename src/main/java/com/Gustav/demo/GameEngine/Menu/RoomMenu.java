@@ -34,11 +34,17 @@ public class RoomMenu {
         } while (!rightInput);
     }
 
-    private boolean getRoom(AAttributes attacker, Scanner sc, MedusasLair medusasLair,
-                            TitansCave titansCave, TheGiantBlackSquirrelsNest squirrelsNest,
-                            LaChanclasCastle laChancla, FridasRedemption frida,
-                            TheEvilKingBenny theEvilKingBenny, TheBadDj badDj,
-                            PlayerMenu returnTo, TheRoomOfRiddles riddles,
+    private boolean getRoom(AAttributes attacker,
+                            Scanner sc,
+                            MedusasLair medusasLair,
+                            TitansCave titansCave,
+                            TheGiantBlackSquirrelsNest squirrelsNest,
+                            LaChanclasCastle laChancla,
+                            FridasRedemption frida,
+                            TheEvilKingBenny theEvilKingBenny,
+                            TheBadDj badDj,
+                            PlayerMenu returnTo,
+                            TheRoomOfRiddles riddles,
                             TheRoomOfRelics roomOfRelics
     ) {
         switch (sc.nextLine()) {
