@@ -13,7 +13,7 @@ import static com.Gustav.demo.Resources.Paint.Colors.*;
 import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 
 public class Shop {
-    DBConnection db = new DBConnection();
+    DBConnection db = DBConnection.getInstance();
 
     public void buyItems(AAttributes attacker, Scanner sc) {
         boolean wrongInput = true;

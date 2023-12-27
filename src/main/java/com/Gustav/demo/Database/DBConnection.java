@@ -212,7 +212,10 @@ public class DBConnection {
         }
     }
 
-    public void insertFightHistory(AAttributes player, AAttributes monster, String result) {
+    public void insertFightHistory(AAttributes player,
+                                   AAttributes monster,
+                                   String result
+    ) {
         String sql = "INSERT INTO fighthistory" +
                 "(" +
                 "DefenderHealth," +

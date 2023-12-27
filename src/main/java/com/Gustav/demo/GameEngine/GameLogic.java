@@ -13,9 +13,12 @@ import static com.Gustav.demo.Resources.Print.PrintHandler.*;
 import static com.Gustav.demo.Resources.Print.TextDelay.printDelay;
 
 public class GameLogic implements Colors {
-    DBConnection db = new DBConnection();
+    DBConnection db = DBConnection.getInstance();
 
-    public void fight(Scanner sc, AAttributes attacker, AAttributes defender) {
+    public void fight(Scanner sc,
+                      AAttributes attacker,
+                      AAttributes defender
+    ) {
         PlayerMenu menu = new PlayerMenu();
         attacker.setDamageDone(0);
         defender.setDamageDone(0);
@@ -68,8 +71,11 @@ public class GameLogic implements Colors {
 
     }
 
-    private boolean isFightDone(AAttributes attacker, AAttributes defender,
-                                boolean fightDone) {
+    private boolean isFightDone(
+            AAttributes attacker,
+            AAttributes defender,
+            boolean fightDone
+    ) {
         if (defender.getHealth() <= 0) {
             printDelay(YELLOW + "\nCongratulations!" + RESET + " You have slayed "
                     + defender.getName());
@@ -154,7 +160,6 @@ public class GameLogic implements Colors {
     }
 
     private void chanceOnHealthReg(AAttributes attacker) {
-
         Random random = new Random();
         int ranNum = random.nextInt(100) + 1;
         int num = 40;
